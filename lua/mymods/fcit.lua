@@ -1,0 +1,6 @@
+-- vim.api.nvim_create_autocmd("ModeChanged", {
+--   pattern = "*",
+--   callback = function()
+--     print("joi")
+--   end,
+-- })

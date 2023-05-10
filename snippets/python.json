@@ -1,0 +1,24 @@
+{
+  "DocstringFunc": {
+    "prefix": ["func_description"],
+    "body": [
+      "\"\"\"${1:Hello, func}",
+      "",
+      "${2:Loren ipsum dolor sit amet,}",
+      "",
+      "Args:",
+      "\t${3:arg1 (str): First\n\targ2 (:obj:`str`, optional): Second}",
+      "",
+      "Returns:",
+      "\t${4:bool: True if successful, False otherwise.}",
+      "",
+      "Raises:",
+      "\t${5:ValueError: If `param2` is equal to `param1`.}",
+      "",
+      "Examples:",
+      "\t${6:>>> print([i for i in example_generator(4)])\n\t[0, 1, 2, 3]}",
+      "\"\"\""
+    ],
+    "description": ""
+  }
+}

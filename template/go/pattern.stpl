@@ -1,0 +1,99 @@
+\(\S\+\)\.var$
+	var {{$1}} = {{_cursor_}}
+
+\(\S\+\)\.iferr$
+	if {{$1}} != nil {
+		return {{$1}}
+	}
+	{{_cursor_}}
+
+\(\S\+\)\.fatal$
+	if {{$1}} != nil {
+		log.Fatal({{$1}})
+	}
+	{{_cursor_}}
+
+\(\S\+\)\.log$
+	log.Println({{$1}})
+	{{_cursor_}}
+
+\(\S\+\)\.close$
+	defer {{$1}}.Close()
+	{{_cursor_}}
+
+\(\S\+\)\.query$
+	{{$1}}.Query("{{_cursor_}}")
+
+\(\S.*\)\.pr\%[int]$
+	fmt.Print({{$1}})
+	{{_cursor_}}
+
+\(\S.*\)\.pr\%[int]f$
+	fmt.Printf({{$1}})
+	{{_cursor_}}
+
+\(\S.*\)\.pr\%[int]l\%[n]$
+	fmt.Println({{$1}})
+	{{_cursor_}}
+
+\(\S.*\)\.fpr\%[int]$
+	fmt.Fprint({{$1}})
+	{{_cursor_}}
+
+\(\S.*\)\.fpr\%[int]f$
+	fmt.Fprintf({{$1}})
+	{{_cursor_}}
+
+\(\S.*\)\.fpr\%[int]l\%[n]$
+	fmt.Fprintln({{$1}})
+	{{_cursor_}}
+
+\(\S.*\)\.spr\%[int]\>
+	{{_cursor_}} fmt.Sprint({{$1}})
+
+\(\S.*\)\.spr\%[int]f\>
+	{{_cursor_}} fmt.Sprintf({{$1}})
+
+\(\S.*\)\.spr\%[int]l\%[n]\>
+	{{_cursor_}} fmt.Sprintln({{$1}})
+
+\(\S\+\)\.func$
+	func {{$1}} {
+		{{_cursor_}}
+	}
+
+\(\S\+\)\.struct$
+	type {{$1}} struct {
+		{{_cursor_}}
+	}
+
+\(\S\+\)\.int$
+	{{$1}}	int
+	{{_cursor_}}
+
+\(\S\+\)\.string$
+	{{$1}}	string
+	{{_cursor_}}
+
+\(\S\+\)\.bool$
+	{{$1}}	bool
+	{{_cursor_}}
+
+\(\S\+\)\.append$
+	{{$1}} = append({{$1}}, {{_cursor_}})
+
+\(\S\+\)\.jsondecode$
+	if err := json.NewDecoder({{$1}}).Decode({{_cursor_}}); err != nil {
+		return err
+	}
+
+\(\S\+\)\.jsonencode$
+	if err := json.NewEncoder({{$1}}).Encode({{_cursor_}}); err != nil {
+		return err
+	}
+
+\("[^"]*"\|\S\+\)\.split\>
+	strings.Split({{$1}}, "{{_cursor_}}")
+
+\("[^"]*"\|\S\+\)\.join\>
+	strings.Join({{$1}}, "{{_cursor_}}")

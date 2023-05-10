@@ -1,0 +1,61 @@
+{
+  "Template1": {
+    "prefix": ["template1"],
+    "body": [
+      "---",
+      "tag: ",
+      "created: ${VIM:strftime('%Y/%m/%d %H:%M', localtime())}",
+      "---",
+      "",
+      "# ${VIM:substitute(expand('%:.:r'), '[/_]', ' ', 'g')}",
+      "",
+      "$0"
+    ],
+    "description": ""
+  },
+  "Minutes2": {
+    "prefix": ["minutes2"],
+    "body": ["## $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE", "### 概要", "### Memo", "- ", "### TODO", "- ", "-"],
+    "description": ""
+  },
+  "Minutes3": {
+    "prefix": ["minutes3"],
+    "body": ["### $CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE", "- $1"],
+    "description": ""
+  },
+  "Date": {
+    "prefix": ["date_YYYY/MM/DD"],
+    "body": ["$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE"],
+    "description": ""
+  },
+  "Diary": {
+    "prefix": ["date_YYYY-MM-DD"],
+    "body": ["$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE"],
+    "description": ""
+  },
+  "Time": {
+    "prefix": ["time"],
+    "body": ["$CURRENT_HOUR:$CURRENT_MINUTE"],
+    "description": ""
+  },
+  "DateTime": {
+    "prefix": ["datetime"],
+    "body": ["$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE-$CURRENT_HOUR:$CURRENT_MINUTE"],
+    "description": ""
+  },
+  "TimeReport": {
+    "prefix": ["timereport"],
+    "body": ["[$CURRENT_YEAR/$CURRENT_MONTH/$CURRENT_DATE-$CURRENT_HOUR:$CURRENT_MINUTE] "],
+    "description": ""
+  },
+  "LinkUrl": {
+    "prefix": ["link"],
+    "body": ["[${1:title}](${VIM:@+})$0"],
+    "description": ""
+  },
+  "Image": {
+    "prefix": ["media"],
+    "body": ["![media](./uploads/${1:png})"],
+    "description": ""
+  }
+}

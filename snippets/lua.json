@@ -1,0 +1,67 @@
+{
+  "Class": {
+    "prefix": ["class"],
+    "body": [
+      "/**",
+      " * @author ${VIM:\\$USER}",
+      " */",
+      "class $1 ${2:extends ${3:Parent} }{",
+      "\tconstructor() {",
+      "\t\t$0",
+      "\t}",
+      "}"
+    ],
+    "description": "Class definition template."
+  },
+  "Require": {
+    "prefix": ["require"],
+    "body": ["require(\"${1:path}\")$0"],
+    "description": ""
+  },
+  "Function": {
+    "prefix": ["function", "fn"],
+    "body": ["function ${1:name}(${2:ops})", "\t$0", "end"],
+    "description": ""
+  },
+  "Local": {
+    "prefix": ["local"],
+    "body": ["local ${1:var} = ${2:hoge}$0"],
+    "description": ""
+  },
+  "Return": {
+    "prefix": ["return"],
+    "body": ["return $1"],
+    "description": ""
+  },
+  "For": {
+    "prefix": ["for i,", "for _, ", "forpairs"],
+    "body": ["for ${1:k}, ${2:v} in pairs(${3:table}) do", "\t$0", "end"],
+    "description": ""
+  },
+  "If": {
+    "prefix": ["if"],
+    "body": ["if ${1:hoge} then", "\t$0", "end"],
+    "description": ""
+  },
+  "Pairs": {
+    "prefix": ["pairs", "in pairs"],
+    "body": ["pairs($1)$0"],
+    "description": ""
+  },
+  "Print": {
+    "prefix": ["print("],
+    "body": ["print(${1:hoge})$0"],
+    "description": ""
+  },
+  "Autocmd": {
+    "prefix": ["autocmd"],
+    "body": [
+      "vim.api.nvim_create_autocmd(\"${1:autocmd}\", {",
+      "\tpattern = \"${2:pattern}\",",
+      "\tcallback = function()",
+      "\t\t$0",
+      "\tend,",
+      "})"
+    ]
+  }
+}

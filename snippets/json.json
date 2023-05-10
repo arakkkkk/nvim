@@ -1,0 +1,6 @@
+{
+  "snip": {
+    "prefix": ["snip"],
+    "body": ["\"new\": {", "\t\"prefix\": [\"new\"],", "\t\"body\": [\"\"]", "}"]
+  }
+}

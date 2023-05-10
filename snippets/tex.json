@@ -1,0 +1,82 @@
+{
+  "Figure": {
+    "prefix": ["figure"],
+    "body": [
+      "\\begin{figure}",
+      "\t\\centering",
+      "\t\\includegraphics[width=12.4cm,clip]{figures/${1:path}.png}",
+      "\t\\caption{",
+      "\t${3:caption}",
+      "\t\\}",
+      "\t\\label{fig:${2:label}}",
+      "\\end{figure}$0"
+    ],
+    "description": ""
+  },
+  "Table": {
+    "prefix": ["table"],
+    "body": [
+      "\\begin{table}[htbp]",
+      "\t\\caption{${2:caption}}",
+      "\t\\begin{center}",
+      "\t\\label{tab:${1:label}}",
+      "\t\\begin{tabular}{l|l}",
+      "\t\\hline",
+      "$0",
+      "\t\\end{tabular}",
+      "\t\\end{center}",
+      "\\end{table}$0"
+    ],
+    "description": ""
+  },
+  "Italic": {
+    "prefix": ["italic"],
+    "body": ["\\textit{${1:hoge}}$0"],
+    "description": ""
+  },
+  "Reference": {
+    "prefix": ["ref"],
+    "body": ["\\ref{${1:hoge}}$0"],
+    "description": ""
+  },
+  "Citation": {
+    "prefix": ["cite"],
+    "body": ["\\cite{${1:hoge}}$0"],
+    "description": ""
+  },
+  "Label": {
+    "prefix": ["label"],
+    "body": ["\\label{${1:hoge}}$0"],
+    "description": ""
+  },
+  "Subsection": {
+    "prefix": ["subsection"],
+    "body": ["\\subsection{${1:hoge}}$0"],
+    "description": ""
+  },
+  "Subsubsection": {
+    "prefix": ["subsubsection"],
+    "body": ["\\subsubsection{${1:hoge}}$0"],
+    "description": ""
+  },
+  "Subsubsubsection": {
+    "prefix": ["paragraph"],
+    "body": ["\\paragraph{${1:hoge}}$0"],
+    "description": ""
+  },
+  "List": {
+    "prefix": ["list"],
+    "body": [
+      "\\begin{enumerate}",
+      "\t\\item ",
+      "\t\\item ",
+      "\\end{enumerate}"
+    ]
+  },
+  "Slach": {
+    "prefix": ["slash"],
+    "body": [
+      "{\\slash}"
+    ]
+  }
+}

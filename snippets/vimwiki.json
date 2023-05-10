@@ -1,0 +1,12 @@
+{
+  "TODO": {
+    "prefix": ["todotxt"],
+    "body": ["* [ ] $0"],
+    "description": ""
+  },
+  "Date": {
+    "prefix": ["date_YYYY-MM-DD"],
+    "body": ["($CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE)"],
+    "description": ""
+  }
+}
