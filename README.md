@@ -2,7 +2,7 @@
 ## Instration
 ```sh
 https://github.com/arakkkkk/nvim
-apt install nvim
+sudo apt install nvim
 ```
 or
 
