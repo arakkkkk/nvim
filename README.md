@@ -1,4 +1,13 @@
 # neovim config by arakkk
+## Instration
+```sh
+https://github.com/arakkkkk/nvim
+apt install nvim
+```
+or
+
+https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
+
 ## Plugins
 
 ### LSP
