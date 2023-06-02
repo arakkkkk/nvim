@@ -31,6 +31,33 @@ vim.g.mapleader = " "
 -----------------------
 -- default
 -----------------------
+
+cmap(nil, function()
+	local fn = vim.fn
+-- vim.cmd("echo synIDattr(synID(line('.'), col('.'), 1), 'name')")
+	-- vim.fn.synIDattr(synID(line('.'), col('.'), 1), 'name')
+
+	local synid = fn.synID(35, 2, true)
+	-- print(synid)
+	-- print(vim.fn.synIDattr(synid, 'name'))
+	-- local hi_group = vim.cmd[[echo synIDattr(synID(line("."), col("."), 1), "name")]]
+
+	local function get_color(group, attr)
+    	-- return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), "name")
+    	return fn.synIDtrans(fn.hlID(group))
+	end
+	-- print(get_color("Normal", "bg#"))
+
+	local result = vim.treesitter.get_captures_at_cursor(0)
+	print(result)
+	-- print(vim.inspect(result))
+
+
+
+
+
+end, { "n", ":qq<cr>" }, SET)
+
 cmap(nil, "<cmd>w<cr>", { "n", ":w<cr>" }, SET)
 cmap(nil, "<cmd>q<cr>", { "n", ":q<cr>" }, SET)
 cmap(nil, "<cmd>e<cr>", { "n", ":e<cr>" }, SET)

@@ -308,8 +308,6 @@ require("lazy").setup({
 
 	{
 		-- "arakkkkk/kanban.nvim",
-		-- "~/local_file/practice/kanban.nvim",
-		-- "~/localfile/plug-nvim/kanban.nvim",
 		dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
 		config = function()
 			require("configs.kanban")
@@ -320,9 +318,9 @@ require("lazy").setup({
 	-- Markdown
 	--------------------
 	{
-		-- "~/ghq/github.com/arakkkkk/mkdnflow.nvim",
-		"jakewvincent/mkdnflow.nvim",
+		-- "jakewvincent/mkdnflow.nvim",
 		-- rocks = "luautf8", -- Ensures optional luautf8 dependency is installed
+		dir = "~/ghq/github.com/arakkkkk/mkdnflow.nvim",
 		config = function()
 			require("configs.mkdnflow")
 		end,

@@ -8,6 +8,10 @@ for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
+require('lspconfig').html.setup({
+  filetypes = {'html', 'htmldjango'},
+})
+
 vim.diagnostic.config({
   virtual_text = true,
   signs = { active = signs },
@@ -50,22 +54,3 @@ local on_attach = function(client, bufnr)
   -- vim.keymap.set('n', '<C-f>', vim.lsp.buf.formatting, bufopts)
 end
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require("mason-lspconfig").setup_handlers({
-  function(server_name) -- default handler (optional)
-    require("lspconfig")[server_name].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = {
-              "vim",
-            },
-          },
-          formatterLineLength = 80,
-        },
-      },
-    })
-  end,
-})
