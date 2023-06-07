@@ -2,4 +2,4 @@ undo
 plugin/packer_compiled.lua
 src/file_frecency.sqlite3
 src/neoclip.sqlite3
-
+lazy-lock.json
