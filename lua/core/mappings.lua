@@ -34,7 +34,7 @@ vim.g.mapleader = " "
 
 cmap(nil, function()
 	local fn = vim.fn
--- vim.cmd("echo synIDattr(synID(line('.'), col('.'), 1), 'name')")
+	-- vim.cmd("echo synIDattr(synID(line('.'), col('.'), 1), 'name')")
 	-- vim.fn.synIDattr(synID(line('.'), col('.'), 1), 'name')
 
 	local synid = fn.synID(35, 2, true)
@@ -43,19 +43,14 @@ cmap(nil, function()
 	-- local hi_group = vim.cmd[[echo synIDattr(synID(line("."), col("."), 1), "name")]]
 
 	local function get_color(group, attr)
-    	-- return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), "name")
-    	return fn.synIDtrans(fn.hlID(group))
+		-- return fn.synIDattr(fn.synIDtrans(fn.hlID(group)), "name")
+		return fn.synIDtrans(fn.hlID(group))
 	end
 	-- print(get_color("Normal", "bg#"))
 
 	local result = vim.treesitter.get_captures_at_cursor(0)
 	print(result)
 	-- print(vim.inspect(result))
-
-
-
-
-
 end, { "n", ":qq<cr>" }, SET)
 
 cmap(nil, "<cmd>w<cr>", { "n", ":w<cr>" }, SET)
@@ -383,8 +378,8 @@ end, { "n", ":tl<cr>" }, ADD_SET)
 -- 	vim.cmd("%s/kdk/kmd/g")
 -- 	vim.cmd("%s/kdb/kmn/g")
 --
-local kopts = {noremap = true, silent = true}
-vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+local kopts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
+vim.api.nvim_set_keymap("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)

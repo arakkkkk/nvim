@@ -18,7 +18,7 @@ local highlights = {}
 --
 for _, plugin in ipairs({
 	-- "bufferline",
-	-- "gitsigns",
+	"gitsigns",
 	-- "hop",
 	-- "rainbow",
 	-- "indent_blankline",
@@ -41,3 +41,4 @@ end
 --
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "None" })
 -- vim.api.nvim_set_hl(0, "WinSeparator", { fg = C.white, bold = true })
+--

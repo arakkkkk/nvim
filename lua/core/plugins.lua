@@ -30,6 +30,8 @@ require("lazy").setup({
 			require("configs.telescope")
 		end,
 	},
+
+
 	{
 		"AckslD/nvim-neoclip.lua",
 		dependencies = {
@@ -172,14 +174,15 @@ require("lazy").setup({
 	{
 		"petertriho/nvim-scrollbar",
 		config = function()
-			require("scrollbar").setup()
+			require("configs.scrollbar")
 		end,
 	},
 
 	{
-		'kevinhwang91/nvim-hlslens',
+		"kevinhwang91/nvim-hlslens",
 		config = function()
-			require('hlslens').setup()
+			require("hlslens").setup()
+			require("scrollbar.handlers.search").setup()
 		end,
 	},
 
@@ -288,11 +291,11 @@ require("lazy").setup({
 		"arakkkkk/cmp-builder",
 		dependencies = { "hrsh7th/nvim-cmp", "kyoh86/vim-ripgrep" },
 	},
-	{ "hrsh7th/cmp-vsnip",    after = "nvim-cmp" },
-	{ "hrsh7th/cmp-buffer",   after = "nvim-cmp" },
-	{ "hrsh7th/cmp-path",     after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
-	{ "hrsh7th/vim-vsnip",    after = "nvim-cmp" },
-	{ "hrsh7th/cmp-cmdline",  after = "nvim-cmp" },
+	{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-path", after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
+	{ "hrsh7th/vim-vsnip", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
 	{ "onsails/lspkind.nvim", after = "nvim-cmp" },
 
 	--------------------
@@ -417,13 +420,12 @@ require("lazy").setup({
 			require("close_buffers").setup({})
 		end,
 	},
-
 	{
 		"mattn/vim-sonictemplate",
 		config = function()
 			vim.g.sonictemplate_vim_template_dir = vim.g.nvim_path .. "template"
 		end,
 	},
-
 	{ "junegunn/vim-easy-align" },
 })
+

@@ -84,6 +84,7 @@ local base = {
   CmpItemMenuDefault = { fg = C.fg },
   FloatBorder = { bg = C.none },
   MatchParen = { fg = C.none, bg = C.grey_5 },
+
 }
 
 return base
