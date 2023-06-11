@@ -373,12 +373,10 @@ cmap({ desc = "Translator", cat = "app" }, function()
 	end
 end, { "n", ":tl<cr>" }, ADD_SET)
 
--- vim.api.nvim_create_user_command("Replace", function()
--- 	vim.cmd("%s/kdi/km/g")
--- 	vim.cmd("%s/kdk/kmd/g")
--- 	vim.cmd("%s/kdb/kmn/g")
---
+
 local kopts = { noremap = true, silent = true }
+vim.api.nvim_set_keymap("n", "<C-u>", "<Cmd>ScrollbarHide<CR><Cmd>lua Scroll('<C-u>', 1, 1)<CR><Cmd>ScrollbarShow<CR>", kopts)
+vim.api.nvim_set_keymap("n", "<C-d>", "<Cmd>ScrollbarHide<CR><Cmd>lua Scroll('<C-d>', 1, 1)<CR><Cmd>ScrollbarShow<CR>", kopts)
 vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
 vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
 vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)

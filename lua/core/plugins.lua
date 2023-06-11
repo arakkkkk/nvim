@@ -85,7 +85,7 @@ require("lazy").setup({
 	{
 		"declancm/cinnamon.nvim",
 		config = function()
-			require("cinnamon").setup()
+			require("configs.cinnamon")
 		end,
 	},
 
@@ -225,31 +225,26 @@ require("lazy").setup({
 			require("configs.substitute")
 		end,
 	},
-	{
-		"jinh0/eyeliner.nvim",
-		config = function()
-			require("configs.eyeliner")
-		end,
-	},
-
 	--------------------
 	-- LSP integration
 	--------------------
 	{
 		"neovim/nvim-lspconfig",
+		lazy = false,
 		config = function()
 			require("configs.nvim-lspconfig")
 		end,
 	},
 	{
 		"williamboman/mason.nvim",
-		build = ":MasonUpdate",
+		lazy = false,
 		config = function()
 			require("configs.mason")
 		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
 		config = function()
 			require("configs.mason-lspconfig")
 		end,
@@ -257,6 +252,7 @@ require("lazy").setup({
 
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		lazy = false,
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			require("configs.null-ls")
