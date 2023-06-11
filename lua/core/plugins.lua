@@ -169,6 +169,20 @@ require("lazy").setup({
 		end,
 	},
 
+	{
+		"petertriho/nvim-scrollbar",
+		config = function()
+			require("scrollbar").setup()
+		end,
+	},
+
+	{
+		'kevinhwang91/nvim-hlslens',
+		config = function()
+			require('hlslens').setup()
+		end,
+	},
+
 	--------------------
 	-- Key support
 	--------------------
@@ -274,11 +288,11 @@ require("lazy").setup({
 		"arakkkkk/cmp-builder",
 		dependencies = { "hrsh7th/nvim-cmp", "kyoh86/vim-ripgrep" },
 	},
-	{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
-	{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-	{ "hrsh7th/cmp-path", after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
-	{ "hrsh7th/vim-vsnip", after = "nvim-cmp" },
-	{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-vsnip",    after = "nvim-cmp" },
+	{ "hrsh7th/cmp-buffer",   after = "nvim-cmp" },
+	{ "hrsh7th/cmp-path",     after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
+	{ "hrsh7th/vim-vsnip",    after = "nvim-cmp" },
+	{ "hrsh7th/cmp-cmdline",  after = "nvim-cmp" },
 	{ "onsails/lspkind.nvim", after = "nvim-cmp" },
 
 	--------------------
