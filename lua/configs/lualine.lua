@@ -46,7 +46,6 @@ require("lualine").setup({
 					unnamed = "  ",
 				},
 			},
-			"lsp_progress",
 		},
 		lualine_x = { { lsp_clients }, "encoding", "fileformat", "filetype" },
 		lualine_y = { "progress" },
