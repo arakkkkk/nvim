@@ -169,13 +169,6 @@ require("lazy").setup({
 		end,
 	},
 
-	-- {
-	-- 	"~/Downloads/switchpanel.nvim",
-	-- 	config = function()
-	-- 		require("switchpanel").setup({})
-	-- 	end,
-	-- })
-
 	--------------------
 	-- Key support
 	--------------------
