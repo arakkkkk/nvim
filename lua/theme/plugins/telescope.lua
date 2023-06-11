@@ -54,14 +54,4 @@ return {
   -- TelescopeResultsDiffAdd = { fg = C.none, bg = C.green },
   -- TelescopeResultsDiffDelete = { fg = C.none, bg = C.red },
   -- TelescopeResultsDiffUntracked = { fg = C.none, bg = C.grey_1 },
-  ScrollbarHandle = { fg = C.none, bg = C.grey_2 },
-  ScrollbarCursor = { fg = C.none, bg = C.grey_2 },
-  ScrollbarCursorHandle = { fg = C.none, bg = C.grey_2 },
-
-  ScrollbarGitAdd = { fg = C.none, bg = C.green },
-  ScrollbarGitAddHandle = { fg = C.none, bg = C.green },
-  ScrollbarGitChange = { fg = C.none, bg = C.orange_1 },
-  ScrollbarGitChangeHandle = { fg = C.none, bg = C.orange_1 },
-  ScrollbarGitDelete = { fg = C.none, bg = C.red_1 },
-  ScrollbarGitDeleteHandle = { fg = C.none, bg = C.red_1 },
 }

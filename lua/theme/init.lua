@@ -28,6 +28,7 @@ for _, plugin in ipairs({
 	"nvim-cmp",
 	"mkdnflow",
 	"vimtex",
+	"scrollbar",
 }) do
 	highlights = vim.tbl_deep_extend("force", highlights, require("theme.plugins." .. plugin))
 end

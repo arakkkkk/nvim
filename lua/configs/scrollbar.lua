@@ -87,7 +87,8 @@ require("scrollbar").setup({
 			gui = nil,
 			color = nil,
 			cterm = nil,
-			color_nr = nil, -- cterm
+			color_nr
+			= nil, -- cterm
 			highlight = "GitSignsDelete",
 		},
 	},
@@ -100,6 +101,6 @@ require("scrollbar").setup({
 		"noice",
 		"prompt",
 		"TelescopePrompt",
-		"NvimTree"
+		"NvimTree",
 	},
 })
