@@ -97,7 +97,7 @@ require("lazy").setup({
 	{
 		"folke/noice.nvim",
 		config = function()
-			require("configs.noice")
+			-- require("configs.noice")
 		end,
 		dependencies = {
 			"MunifTanjim/nui.nvim",

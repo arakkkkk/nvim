@@ -1,6 +1,7 @@
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"ruff_lsp",
+		-- "ruff_lsp",
+		"pyrigt",
 		"dockerls",
 		"docker_compose_language_service",
 		"sqlls",
