@@ -31,7 +31,6 @@ require("lazy").setup({
 		end,
 	},
 
-
 	{
 		"AckslD/nvim-neoclip.lua",
 		dependencies = {
@@ -424,4 +423,3 @@ require("lazy").setup({
 	},
 	{ "junegunn/vim-easy-align" },
 })
-
