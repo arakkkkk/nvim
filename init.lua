@@ -16,4 +16,8 @@ for _, source in ipairs({
 	end
 end
 
+vim.cmd([[
+let g:vim_markdown_folding_disabled = 1
+set conceallevel=2
 
+]])
