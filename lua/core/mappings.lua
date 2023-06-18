@@ -128,11 +128,6 @@ cmap(nil, "<cmd>SidebarNvimToggle<CR>", { "n", "<C-2>" }, SET)
 -- sidebar
 cmap(nil, "<cmd>UndotreeToggle<CR>", { "n", "<C-3>" }, SET)
 
--- null-ls
-cmap(nil, function()
-	vim.lsp.buf.format()
-end, { "n", "<leader>fm" }, SET)
-
 -- telescope
 cmap(nil, ":Telescope command_center<cr>", { "n", "<leader>k" }, SET)
 --------------------
