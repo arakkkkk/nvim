@@ -1,2 +1,2 @@
 #!/bin/bash
-ln -fsn ${target} ${link}
+ln -fsn nvim ~/.config/
