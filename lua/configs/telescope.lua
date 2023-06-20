@@ -52,13 +52,11 @@ require("telescope").setup({
 				["q"] = actions.close,
 				[":q<CR>"] = actions.close,
 				["d"] = actions.delete_buffer,
-				["<leader>j"] = { "j", type = "command" },
-				["<leader>k"] = { "k", type = "command" },
 				["<C-t>"] = actions.file_tab,
 				["<C-s>"] = actions.file_split,
 				["<C-v>"] = actions.file_vsplit,
 				["<C-c>"] = actions.close,
-				["<C-y>"] = function()
+				["yy"] = function()
 					local buf_select = action_state.get_selected_entry()
 					vim.fn.setreg("+", buf_select[1])
 				end,
@@ -70,14 +68,12 @@ require("telescope").setup({
 				["<C-t>"] = actions.file_tab,
 				["<C-s>"] = actions.file_split,
 				["<C-v>"] = actions.file_vsplit,
-				["yy"] = function()
-					local buf_select = action_state.get_selected_entry()
-					vim.fn.setreg("+", buf_select[1])
-				end,
-				-- ["<CR>"] = function(picker)
-				-- 	actions.select_default(picker)
-				-- end,
 				["<C-^>"] = swicher.file_browser,
+				["<C-p>"] = function()
+					local register = vim.fn.getreg('"')
+					register	= string.gsub(register, "\n", "")
+					vim.api.nvim_feedkeys(register, "i", true)
+				end,
 			},
 		},
 	},
