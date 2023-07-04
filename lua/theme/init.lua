@@ -37,9 +37,3 @@ local utils = require("theme.utils")
 for group, spec in pairs(highlights) do
 	vim.api.nvim_set_hl(0, group, utils.parse_style(spec))
 end
-
--- vim.api.nvim_win_set_option(0, "winhighlight", "KanbanFloat:Normal")
---
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "None" })
--- vim.api.nvim_set_hl(0, "WinSeparator", { fg = C.white, bold = true })
---

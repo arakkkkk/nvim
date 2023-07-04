@@ -21,7 +21,7 @@ local swicher = {
 	end,
 	find_files = function(picker)
 		actions.close(picker)
-		require("telescope").extensions.frecency.frecency({ workspace = vim.g.telescope_cwd})
+		require("telescope").extensions.frecency.frecency({ workspace = vim.g.telescope_cwd })
 	end,
 }
 
@@ -69,9 +69,9 @@ require("telescope").setup({
 				["<C-s>"] = actions.file_split,
 				["<C-v>"] = actions.file_vsplit,
 				["<C-^>"] = swicher.file_browser,
-				["<C-p>"] = function()
+				["<C-V>"] = function()
 					local register = vim.fn.getreg('"')
-					register	= string.gsub(register, "\n", "")
+					register = string.gsub(register, "\n", "")
 					vim.api.nvim_feedkeys(register, "i", true)
 				end,
 			},
@@ -165,14 +165,13 @@ require("telescope").setup({
 						local buf_select = action_state.get_selected_entry()
 						vim.fn.setreg("+", buf_select[1]:match("([^:]+):"))
 					end,
-				}
+				},
 			},
 		},
 	},
 })
-require("telescope").load_extension("neoclip")
 require("telescope").load_extension("file_browser")
 require("telescope").load_extension("command_center")
 -- require("telescope").load_extension("fzf")
-require("telescope").load_extension("frecency")
+-- require("telescope").load_extension("frecency")
 require("telescope").load_extension("live_grep_args")

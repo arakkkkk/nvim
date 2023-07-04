@@ -35,7 +35,7 @@ cmap(nil, function()
 	local register = vim.fn.getreg('"')
 	register	= string.gsub(register, "\n", "")
 	vim.api.nvim_feedkeys(register, "i", true)
-end, { "c", "<C-p>" }, SET)
+end, { "c", "<C-V>" }, SET)
 
 cmap(nil, "<cmd>w<cr>", { "n", ":w<cr>" }, SET)
 cmap(nil, "<cmd>q<cr>", { "n", ":q<cr>" }, SET)
@@ -190,9 +190,9 @@ cmap(
 	{ "n", "<leader>ak" },
 	ADD_SET
 )
-cmap({ desc = "Note", cat = "app" }, function()
-	vim.cmd(":e " .. vim.g.note_path .. "index.md")
-end, { "n", "mm" }, ADD_SET)
+-- cmap({ desc = "Note", cat = "app" }, function()
+-- 	vim.cmd(":e " .. vim.g.note_path .. "index.md")
+-- end, { "n", "mm" }, ADD_SET)
 cmap({ desc = "Find note status open", cat = "app" }, function()
 	require("telescope").extensions.live_grep_args.live_grep_args({ default_text = '"status: open"' })
 end, { "n", "mo" }, ADD_SET)
@@ -246,7 +246,7 @@ cmap(nil, function()
 end, { "n", "<BS>" }, SET)
 cmap(nil, function()
 	smart_splits.move_cursor_down()
-end, { "n", "<C-j>" }, SET)
+end, { "n", "<leader>j" }, SET)
 cmap(nil, function()
 	smart_splits.move_cursor_up()
 end, { "n", "<C-k>" }, SET)
@@ -274,7 +274,7 @@ cmap(nil, "<cmd>BufferLineMovePrev<cr>", { "n", "<b" }, SET)
 cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, SET)
 
 -- hop.vim
-cmap(nil, "<cmd>HopWord<CR>", { "n", "<leader>o" }, SET)
+cmap(nil, "<cmd>HopWord<CR>", { "n", "<C-j>" }, SET)
 
 -- toggleterm
 local Terminal = require("toggleterm.terminal").Terminal

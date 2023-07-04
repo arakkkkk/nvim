@@ -32,24 +32,15 @@ require("lazy").setup({
 	},
 
 	{
-		"AckslD/nvim-neoclip.lua",
-		dependencies = {
-			{ "kkharji/sqlite.lua", module = "sqlite" },
-		},
-		config = function()
-			require("configs.neoclip")
-		end,
-	},
-	{
 		"/arakkkkk/marktodo.nvim",
 		config = function()
 			require("configs.marktodo")
 		end,
 	},
-	{
-		"nvim-telescope/telescope-frecency.nvim",
-		dependencies = { "kkharji/sqlite.lua" },
-	},
+	-- {
+	-- 	"nvim-telescope/telescope-frecency.nvim",
+	-- 	dependencies = { "kkharji/sqlite.lua" },
+	-- },
 
 	---------------------
 	-- Theme
@@ -184,6 +175,13 @@ require("lazy").setup({
 			require("scrollbar.handlers.search").setup()
 		end,
 	},
+
+	-- {
+	-- 	'tomasky/bookmarks.nvim',
+	-- 	config = function()
+	-- 		require('configs.bookmarks')
+	-- 	end
+	-- },
 
 	--------------------
 	-- Key support
@@ -338,7 +336,7 @@ require("lazy").setup({
 		config = function()
 			require("configs.clipboard-image")
 		end,
-		ft = { "markdown" },
+		ft = { "markdown", "vimwiki" },
 	},
 
 	-- List2Tree
