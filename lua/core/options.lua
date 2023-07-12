@@ -41,13 +41,11 @@ vim.o.writebackup = false -- Disable making a backup before overwriting a file
 vim.opt.formatoptions:remove("t")
 vim.opt.formatoptions:append("mM")
 
-vim.g.hostos = utils.getOS()
-if vim.g.hostos == "Windows" then
-  vim.g.nvim_path = "~/AppData/Local/"
-  vim.g.note_path = "~/Note/"
-  vim.g.vsnip_snippet_dir = vim.g.nvim_path .. "snippets"
+if utils.getOS() == "Windows" then
+  vim.g.nvim_path = utils.setHOMEPath("~\\AppData\\Local\\nvim\\")
+  vim.g.note_path = utils.setHOMEPath("~\\Note\\")
 else
-  vim.g.nvim_path = string.gsub("~/.config/nvim/", "^~", os.getenv("HOME"))
-  vim.g.note_path = string.gsub("~/Note/", "^~", os.getenv("HOME"))
-  vim.g.vsnip_snippet_dir = vim.g.nvim_path .. "snippets"
+  vim.g.nvim_path = utils.setHOMEPath("~/.config/nvim/")
+  vim.g.note_path = utils.setHOMEPath("~/Note/")
 end
+vim.g.vsnip_snippet_dir = vim.g.nvim_path .. "snippets"
