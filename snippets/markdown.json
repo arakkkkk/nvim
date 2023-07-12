@@ -57,5 +57,20 @@
     "prefix": ["media"],
     "body": ["![media](./uploads/${1:png})"],
     "description": ""
+  },
+    "TODO Comment": {
+    "prefix": ["todo comment"],
+    "body": ["${VIM:split(&commentstring, '%s')[0]} TODO: $0 ${VIM:split(&commentstring, '%s')[1]}"],
+    "description": ""
+  },
+  "NOTE Comment": {
+    "prefix": ["note comment"],
+    "body": ["${VIM:split(&commentstring, '%s')[0]} NOTE: $0 ${VIM:split(&commentstring, '%s')[1]}"],
+    "description": ""
+  },
+  "FIX Comment": {
+    "prefix": ["fix comment"],
+    "body": ["${VIM:split(&commentstring, '%s')[0]} FIX: $0 ${VIM:split(&commentstring, '%s')[1]}"],
+    "description": ""
   }
 }
