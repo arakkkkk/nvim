@@ -12,7 +12,6 @@ require("toggleterm").setup({
 	insert_mappings = true,
 	terminal = true,
 	start_in_insert = true,
-	shell = "fish",
 	-- open_mapping = [[<c-\>]],
 	shading_factor = 2,
 	direction = "float",
