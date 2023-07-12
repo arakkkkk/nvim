@@ -51,14 +51,23 @@ function utils.getOS()
 	if jit then
 		return jit.os
 	end
-
 	-- Unix, Linux variants
 	local fh,err = assert(io.popen("uname -o 2>/dev/null","r"))
 	if fh then
 		osname = fh:read()
 	end
-
 	return osname or "Windows"
 end
+
+function utils.setHOMEPath(path)
+	local replaced_path
+	if utils.getOS() == "Windows" then
+   replaced_path	= string.gsub(path, "^~", os.getenv("UserProfile"))
+	else
+   replaced_path	= string.gsub(path, "^~", os.getenv("HOME"))
+	end
+	return replaced_path
+end
+
 
 return utils
