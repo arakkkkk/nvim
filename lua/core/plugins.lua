@@ -256,6 +256,14 @@ require("lazy").setup({
 		end,
 	},
 
+	{
+		"nvimdev/lspsaga.nvim",
+		lazy = false,
+		config = function()
+			require("configs.lspsaga")
+		end,
+	},
+
 	--------------------
 	-- Complement
 	--------------------
@@ -290,6 +298,7 @@ require("lazy").setup({
 	{ "hrsh7th/vim-vsnip",    after = "nvim-cmp" },
 	{ "hrsh7th/cmp-cmdline",  after = "nvim-cmp" },
 	{ "onsails/lspkind.nvim", after = "nvim-cmp" },
+
 
 	--------------------
 	-- Integration
