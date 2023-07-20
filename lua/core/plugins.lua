@@ -419,4 +419,20 @@ require("lazy").setup({
 		end,
 	},
 	{ "junegunn/vim-easy-align" },
+
+        {
+	    "ShikChen/osc52.vim",
+	    config = function()
+		if require("core.utils").getOS() == "Windows" then
+		      vim.api.nvim_create_augroup('osc52', {})
+		      vim.api.nvim_create_autocmd('TextYankPost', {
+		        group = 'osc52',
+		        callback = function(event)
+		          vim.cmd([[if v:event.operator ==# 'y' | call SendViaOSC52(getreg(v:event.regname)) | endif]])
+		        end,
+		      })
+		end
+	    end,
+	  },
+	
 })
