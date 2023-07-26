@@ -341,7 +341,7 @@ require("lazy").setup({
 	},
 
 	{
-		"ekickx/clipboard-image.nvim",
+		"postfen/clipboard-image.nvim",
 		config = function()
 			require("configs.clipboard-image")
 		end,
