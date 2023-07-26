@@ -23,5 +23,9 @@ require('indent-o-matic').setup {
 	filetype_rust = {
 		standard_widths = { 4 },
 	},
+
+	filetype_markdown = {
+		standard_widths = { 2 },
+	},
 }
 
