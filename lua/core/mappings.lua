@@ -355,11 +355,13 @@ cmap({ desc = "Translator", cat = "app" }, function()
 	end
 end, { "n", ":tl<cr>" }, ADD_SET)
 
+cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, SET)
 
-local kopts = { noremap = true, silent = true }
--- vim.api.nvim_set_keymap("n", "<C-u>", "<Cmd>ScrollbarHide<CR><Cmd>lua Scroll('<C-u>', 1, 1)<CR><Cmd>ScrollbarShow<CR>", kopts)
--- vim.api.nvim_set_keymap("n", "<C-d>", "<Cmd>ScrollbarHide<CR><Cmd>lua Scroll('<C-d>', 1, 1)<CR><Cmd>ScrollbarShow<CR>", kopts)
-vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
-vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
-vim.api.nvim_set_keymap("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], kopts)
+cmap({desc="lspsaga hover doc", cat="app"}, "<cmd>Lspsaga hover_doc<CR>", { "n", "K" }, ADD_SET)
+cmap({desc="lspsaga lsp finder", cat="app"}, "<cmd>Lspsaga lsp_finder<CR>", { "n", "gr"}, ADD_SET)
+cmap({desc="lspsaga peek definition", cat="app"}, "<cmd>Lspsaga peek_definition<CR>", { "n", "gd"}, ADD_SET)
+cmap({desc="lspsaga code action", cat="app"}, "<cmd>Lspsaga code_action<CR>", { "n", "ga"}, ADD_SET)
+cmap({desc="lspsaga rename", cat="app"}, "<cmd>Lspsaga rename<CR>", { "n", "gn"}, ADD_SET)
+cmap({desc="lspsaga show line dagnostics", cat="app"}, "<cmd>Lspsaga show_line_diagnostics<CR>", { "n", "ge"}, ADD_SET)
+cmap({desc="lspsaga diagnostic jump next", cat="app"}, "<cmd>Lspsaga diagnostic_jump_next<CR>", { "n", "[e"}, ADD_SET)
+cmap({desc="lspsaga diagnostic jump prev", cat="app"}, "<cmd>Lspsaga diagnostic_jump_prev<CR>", { "n", "]e"}, ADD_SET)
