@@ -155,13 +155,6 @@ require("lazy").setup({
 	{ "mbbill/undotree" },
 
 	{
-		"sidebar-nvim/sidebar.nvim",
-		config = function()
-			require("configs.sidebar")
-		end,
-	},
-
-	{
 		"petertriho/nvim-scrollbar",
 		config = function()
 			require("configs.scrollbar")
@@ -257,12 +250,11 @@ require("lazy").setup({
 	},
 
 	{
-		"nvimdev/lspsaga.nvim",
-		lazy = false,
-		config = function()
-			require("configs.lspsaga")
-		end,
-	},
+	  	'nvimdev/lspsaga.nvim',
+	  	config = function()
+	    	require('configs.lspsaga')
+	  	end,
+  	},
 
 	--------------------
 	-- Complement
@@ -319,13 +311,13 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"arakkkkk/kanban.nvim",
-		-- dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
-		config = function()
-			require("configs.kanban")
-		end,
-	},
+	-- {
+	-- 	"arakkkkk/kanban.nvim",
+	-- 	-- dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+	-- 	config = function()
+	-- 		require("configs.kanban")
+	-- 	end,
+	-- },
 
 	--------------------
 	-- Markdown
@@ -355,7 +347,10 @@ require("lazy").setup({
 	},
 
 	-- cav to table
-	{ "mattn/vim-maketable" },
+	{
+		"mattn/vim-maketable",
+		ft = { "markdown" },
+	},
 
 	{
 		"toppair/peek.nvim",
@@ -364,17 +359,6 @@ require("lazy").setup({
 			require("configs.peek")
 		end,
 		ft = { "markdown" },
-	},
-
-	--------------------
-	-- LaTeX integration
-	--------------------
-	{
-		"lervag/vimtex",
-		config = function()
-			require("configs.vimtex")
-		end,
-		ft = { "tex" },
 	},
 
 	-- Others
@@ -386,6 +370,18 @@ require("lazy").setup({
 		config = function()
 			require("configs.image")
 		end,
+		ft = { "markdown", tex },
+	},
+
+	--------------------
+	-- LaTeX integration
+	--------------------
+	{
+		"lervag/vimtex",
+		config = function()
+			require("configs.vimtex")
+		end,
+		ft = { "tex" },
 	},
 
 	--------------------
@@ -420,19 +416,18 @@ require("lazy").setup({
 	},
 	{ "junegunn/vim-easy-align" },
 
-        {
-	    "ShikChen/osc52.vim",
-	    config = function()
+  	{
+	  "ShikChen/osc52.vim",
+	  config = function()
 		if require("core.utils").getOS() == "Windows" then
-		      vim.api.nvim_create_augroup('osc52', {})
-		      vim.api.nvim_create_autocmd('TextYankPost', {
-		        group = 'osc52',
-		        callback = function(event)
-		          vim.cmd([[if v:event.operator ==# 'y' | call SendViaOSC52(getreg(v:event.regname)) | endif]])
-		        end,
-		      })
+		    vim.api.nvim_create_augroup('osc52', {})
+		    vim.api.nvim_create_autocmd('TextYankPost', {
+		      group = 'osc52',
+		      callback = function(event)
+		        vim.cmd([[if v:event.operator ==# 'y' | call SendViaOSC52(getreg(v:event.regname)) | endif]])
+		      end,
+		    })
 		end
-	    end,
-	  },
-	
+	  end,
+	}
 })
