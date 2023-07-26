@@ -33,14 +33,13 @@ require("mkdnflow").setup({
 		implicit_extension = nil,
 		transform_implicit = false,
 		transform_explicit = function(text)
-			text = text:gsub(" ", "-")
+			text = text:gsub(" ", "_")
 			text = text:lower()
-			text = os.date("%Y-%m-%d_") .. text
-			return "subdir/" .. text
+			return text
 		end,
 	},
 	to_do = {
-		symbols = { " ", "-", "x" },
+		symbols = { " ", "x" },
 		update_parents = true,
 		not_started = " ",
 		in_progress = "-",
