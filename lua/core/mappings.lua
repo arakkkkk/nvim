@@ -190,9 +190,9 @@ cmap(
 	{ "n", "<leader>ak" },
 	ADD_SET
 )
--- cmap({ desc = "Note", cat = "app" }, function()
--- 	vim.cmd(":e " .. vim.g.note_path .. "index.md")
--- end, { "n", "mm" }, ADD_SET)
+cmap({ desc = "Note", cat = "app" }, function()
+	utils.openFloatingWindow(vim.g.note_path .. "home.md")
+end, { "n", "mm" }, ADD_SET)
 cmap({ desc = "Find note status open", cat = "app" }, function()
 	require("telescope").extensions.live_grep_args.live_grep_args({ default_text = '"status: open"' })
 end, { "n", "mo" }, ADD_SET)
