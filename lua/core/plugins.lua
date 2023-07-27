@@ -353,12 +353,13 @@ require("lazy").setup({
 	},
 
 	{
-		"toppair/peek.nvim",
-		run = "deno task --quiet build:fast",
-		config = function()
-			require("configs.peek")
-		end,
-		ft = { "markdown" },
+	    "toppair/peek.nvim",
+	    event = { "VeryLazy" },
+	    build = "deno task --quiet build:fast",
+	    config = function()
+		    require("configs.peek")
+	    end,
+	    ft = { "markdown" },
 	},
 
 	-- Others
