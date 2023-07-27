@@ -43,7 +43,7 @@ vim.opt.formatoptions:append("mM")
 
 if utils.getOS() == "Windows" then
   vim.g.nvim_path = utils.setHOMEPath("~\\AppData\\Local\\nvim\\")
-  vim.g.note_path = utils.setHOMEPath("~\\Note\\")
+  vim.g.note_path = utils.setHOMEPath("~\\notes.wiki\\")
 else
   vim.g.nvim_path = utils.setHOMEPath("~/.config/nvim/")
   vim.g.note_path = utils.setHOMEPath("~/Note/")
