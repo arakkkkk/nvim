@@ -69,5 +69,29 @@ function utils.setHOMEPath(path)
 	return replaced_path
 end
 
+function utils.openFloatingWindow(path)
+	local buf_nr = vim.api.nvim_create_buf(false, "nomodeline")
+	local win_conf = {
+		relative = "editor",
+		row = 5,
+		col = 10,
+		width = vim.o.columns - 10 * 2,
+		height = vim.fn.winheight(0) - 5 * 2,
+		border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
+		-- style = "minimal",
+		zindex = 10,
+	}
+	local win = vim.api.nvim_open_win(buf_nr, true, win_conf)
+	vim.cmd(":e " .. path)
+
+	vim.api.nvim_create_autocmd("BufLeave", {
+		buffer = buf_nr,
+		callback = function()
+			vim.api.nvim_buf_delete(buf_nr,{})
+		end,
+	})
+
+	vim.api.nvim_win_set_option(win, "winhighlight", "NormalFloat:Normal")
+end
 
 return utils
