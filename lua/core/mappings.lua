@@ -211,19 +211,7 @@ cmap({ desc = "Find note", cat = "app" }, function()
 		cwd = vim.g.note_path,
 	})
 end, { "n", "mf" }, ADD_SET)
-cmap({ desc = "Weekly note", cat = "markdown" }, function()
-	if vim.bo[vim.api.nvim_get_current_buf()].filetype ~= "markdown" then
-		return
-	end
-	local peek = require("peek")
-	if not peek.is_open() then
-		-- vim.fn.system("i3-msg split horizontal")
-		peek.open()
-	elseif peek.is_open() then
-		peek.close()
-		-- vim.fn.system('i3-msg move left')
-	end
-end, { "n", "mp" }, ADD_SET)
+cmap({ desc = "Markdown preview", cat = "markdown" }, ":MarkdownPreviewToggle<cr>", { "n", "mp" }, ADD_SET)
 
 --------------------
 -- Markdown categories
