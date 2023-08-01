@@ -250,11 +250,11 @@ require("lazy").setup({
 	},
 
 	{
-	  	'nvimdev/lspsaga.nvim',
-	  	config = function()
-	    	require('configs.lspsaga')
-	  	end,
-  	},
+		"nvimdev/lspsaga.nvim",
+		config = function()
+			require("configs.lspsaga")
+		end,
+	},
 
 	--------------------
 	-- Complement
@@ -284,13 +284,12 @@ require("lazy").setup({
 		"arakkkkk/cmp-builder",
 		dependencies = { "hrsh7th/nvim-cmp", "kyoh86/vim-ripgrep" },
 	},
-	{ "hrsh7th/cmp-vsnip",    after = "nvim-cmp" },
-	{ "hrsh7th/cmp-buffer",   after = "nvim-cmp" },
-	{ "hrsh7th/cmp-path",     after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
-	{ "hrsh7th/vim-vsnip",    after = "nvim-cmp" },
-	{ "hrsh7th/cmp-cmdline",  after = "nvim-cmp" },
+	{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-path", after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
+	{ "hrsh7th/vim-vsnip", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
 	{ "onsails/lspkind.nvim", after = "nvim-cmp" },
-
 
 	--------------------
 	-- Integration
@@ -352,14 +351,21 @@ require("lazy").setup({
 		ft = { "markdown" },
 	},
 
+	-- {
+	-- 	"toppair/peek.nvim",
+	-- 	event = { "VeryLazy" },
+	-- 	build = "deno task --quiet build:fast",
+	-- 	config = function()
+	-- 		require("configs.peek")
+	-- 	end,
+	-- 	ft = { "markdown" },
+	-- },
+
 	{
-	    "toppair/peek.nvim",
-	    event = { "VeryLazy" },
-	    build = "deno task --quiet build:fast",
-	    config = function()
-		    require("configs.peek")
-	    end,
-	    ft = { "markdown" },
+		"iamcco/markdown-preview.nvim",
+		config = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	},
 
 	-- Others
@@ -417,18 +423,18 @@ require("lazy").setup({
 	},
 	{ "junegunn/vim-easy-align" },
 
-  	{
-	  "ShikChen/osc52.vim",
-	  config = function()
-		if require("core.utils").getOS() == "Windows" then
-		    vim.api.nvim_create_augroup('osc52', {})
-		    vim.api.nvim_create_autocmd('TextYankPost', {
-		      group = 'osc52',
-		      callback = function(event)
-		        vim.cmd([[if v:event.operator ==# 'y' | call SendViaOSC52(getreg(v:event.regname)) | endif]])
-		      end,
-		    })
-		end
-	  end,
-	}
+	{
+		"ShikChen/osc52.vim",
+		config = function()
+			if require("core.utils").getOS() == "Windows" then
+				vim.api.nvim_create_augroup("osc52", {})
+				vim.api.nvim_create_autocmd("TextYankPost", {
+					group = "osc52",
+					callback = function(event)
+						vim.cmd([[if v:event.operator ==# 'y' | call SendViaOSC52(getreg(v:event.regname)) | endif]])
+					end,
+				})
+			end
+		end,
+	},
 })
