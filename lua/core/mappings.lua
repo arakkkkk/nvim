@@ -262,7 +262,7 @@ cmap(nil, "<cmd>BufferLineMovePrev<cr>", { "n", "<b" }, SET)
 cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, SET)
 
 -- hop.vim
-cmap(nil, "<cmd>HopWord<CR>", { "n", "<C-j>" }, SET)
+cmap(nil, "<cmd>HopWord<CR>", { "n", "<leader>j" }, SET)
 
 -- toggleterm
 local Terminal = require("toggleterm.terminal").Terminal
