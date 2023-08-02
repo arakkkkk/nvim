@@ -4,20 +4,10 @@ function M.getWebTitle(url)
 	if not url:match("https?://.+") then
 		return false
 	end
-	local curl = require("plenary.curl")
-
-	local request = {
-		url = url,
-		method = "GET",
-	}
-	local res = curl.request(request)
-
-	if not (res.status == 200) then
-		print(vim.json.encode(request))
-		return error("Error occured in get request.\n" .. res.body)
-	end
-
-	local html_txt = res.body
+	local handle = io.popen("curl " .. url)
+	assert(handle)
+	local stdout = handle:read("*a")
+	local html_txt = stdout
 	local _, _, html_title = html_txt:find("<title>(..-)</title>")
 	html_title = html_title:gsub("&amp;", "-")
 	return html_title
