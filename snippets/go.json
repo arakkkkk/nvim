@@ -1,0 +1,11 @@
+{
+  "new": {
+    "prefix": ["err"],
+    "body": [
+      "if err != nil {",
+      "\tfmt.Errorf(\"Error.\")",
+      "\treturn",
+      "}"
+    ]
+  }
+}
