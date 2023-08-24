@@ -1,10 +1,44 @@
 {
-  "new": {
+  "err": {
     "prefix": ["err"],
     "body": [
       "if err != nil {",
       "\tfmt.Errorf(\"Error.\")",
       "\treturn",
+      "}"
+    ]
+  },
+  "func": {
+    "prefix": ["func hoge() () {}"],
+    "body": [
+      "func $1($2) ($3) {",
+      "\t$0",
+      "}"
+    ]
+  },
+  "funcForStruct": {
+    "prefix": ["func (h *Hoge) foo(fuga) {}"],
+    "body": [
+      "func ($1 *$2) $3($4) {",
+      "\t$0",
+      "}"
+    ]
+  },
+  "func": {
+    "prefix": ["func New() *Hoge {}"],
+    "body": [
+      "func New($2) *$3 {",
+      "\treturn &$1{",
+      "\t\t$0}",
+      "\t}",
+      "}"
+    ]
+  },
+  "struct": {
+    "prefix": ["type"],
+    "body": [
+      "type $1 struct {",
+      "\t$0",
       "}"
     ]
   }

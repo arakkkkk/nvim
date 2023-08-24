@@ -24,6 +24,7 @@ require("lazy").setup({
 				"FeiyouG/command_center.nvim",
 				"nvim-telescope/telescope-file-browser.nvim",
 				"nvim-telescope/telescope-live-grep-args.nvim",
+				"arakkkkk/telescope-sonictemplate.nvim",
 			},
 		},
 		config = function()
@@ -284,12 +285,19 @@ require("lazy").setup({
 		"arakkkkk/cmp-builder",
 		dependencies = { "hrsh7th/nvim-cmp", "kyoh86/vim-ripgrep" },
 	},
-	{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
-	{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-	{ "hrsh7th/cmp-path", after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
-	{ "hrsh7th/vim-vsnip", after = "nvim-cmp" },
-	{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-vsnip",    after = "nvim-cmp" },
+	{ "hrsh7th/cmp-buffer",   after = "nvim-cmp" },
+	{ "hrsh7th/cmp-path",     after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
+	{ "hrsh7th/vim-vsnip",    after = "nvim-cmp" },
+	{ "hrsh7th/cmp-cmdline",  after = "nvim-cmp" },
 	{ "onsails/lspkind.nvim", after = "nvim-cmp" },
+
+	{
+		"mattn/vim-sonictemplate",
+		config = function()
+			vim.g.sonictemplate_vim_template_dir = vim.g.nvim_path .. "template"
+		end,
+	},
 
 	--------------------
 	-- Integration
@@ -377,7 +385,7 @@ require("lazy").setup({
 		config = function()
 			require("configs.image")
 		end,
-		ft = { "markdown", tex },
+		ft = { "markdown", "tex" },
 	},
 
 	--------------------
@@ -415,12 +423,7 @@ require("lazy").setup({
 			require("close_buffers").setup({})
 		end,
 	},
-	{
-		"mattn/vim-sonictemplate",
-		config = function()
-			vim.g.sonictemplate_vim_template_dir = vim.g.nvim_path .. "template"
-		end,
-	},
+
 	{ "junegunn/vim-easy-align" },
 
 	{
