@@ -285,9 +285,10 @@ require("lazy").setup({
 		"arakkkkk/cmp-builder",
 		dependencies = { "hrsh7th/nvim-cmp", "kyoh86/vim-ripgrep" },
 	},
-	{ "hrsh7th/cmp-vsnip",    after = "nvim-cmp" },
+
 	{ "hrsh7th/cmp-buffer",   after = "nvim-cmp" },
 	{ "hrsh7th/cmp-path",     after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
+	{ "hrsh7th/cmp-vsnip",    after = "nvim-cmp" },
 	{ "hrsh7th/vim-vsnip",    after = "nvim-cmp" },
 	{ "hrsh7th/cmp-cmdline",  after = "nvim-cmp" },
 	{ "onsails/lspkind.nvim", after = "nvim-cmp" },

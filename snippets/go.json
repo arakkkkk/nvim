@@ -24,12 +24,12 @@
       "}"
     ]
   },
-  "func": {
+  "funcName": {
     "prefix": ["func New() *Hoge {}"],
     "body": [
       "func New($2) *$3 {",
       "\treturn &$1{",
-      "\t\t$0}",
+      "\t\t$0",
       "\t}",
       "}"
     ]
