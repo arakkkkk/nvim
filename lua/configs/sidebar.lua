@@ -4,6 +4,10 @@ require("sidebar-nvim").setup({
 		["<leader>"] = function()
 			vim.cmd[[NvimTreeFocus]]
 			vim.cmd[[SidebarNvimClose]]
+		end,
+		["<CR>"] = function()
+			vim.api.nvim_input('t')
+			vim.api.nvim_input('e')
 		end
 	},
 	open = false,
