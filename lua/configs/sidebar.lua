@@ -1,12 +1,17 @@
 require("sidebar-nvim").setup({
 	disable_default_keybindings = 0,
-	bindings = nil,
+	bindings = {
+		["<leader>"] = function()
+			vim.cmd[[NvimTreeFocus]]
+			vim.cmd[[SidebarNvimClose]]
+		end
+	},
 	open = false,
 	side = "left",
 	initial_width = 35,
 	hide_statusline = false,
 	update_interval = 1000,
-	sections = { "buffers", "todos", "diagnostics" },
+	sections = { "buffers", "todos", "diagnostics", "containers" },
 	section_separator = { "" },
 	section_title_separator = {},
 	containers = {

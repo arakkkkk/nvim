@@ -27,5 +27,17 @@ else
 		filters = {
 			dotfiles = true,
 		},
+		on_attach = function(bufnr)
+			local api = require("nvim-tree.api")
+			api.config.mappings.default_on_attach(bufnr)
+			local function opts(desc)
+				return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+			end
+			vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+			vim.keymap.set("n", "<leader>", function()
+					vim.cmd[[SidebarNvimFocus]]
+					vim.cmd[[NvimTreeClose]]
+			end, opts("Help"))
+		end,
 	})
 end

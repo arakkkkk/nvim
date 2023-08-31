@@ -123,10 +123,10 @@ cmap(nil, require("nvim-tree.api").marks.navigate.prev, { "n", "<leader>mp" }, S
 cmap(nil, require("nvim-tree.api").marks.navigate.select, { "n", "<leader>ms" }, SET)
 
 -- sidebar
-cmap(nil, "<cmd>SidebarNvimToggle<CR>", { "n", "<C-2>" }, SET)
+cmap(nil, "<cmd>SidebarNvimFocus<CR>", { "n", "<leader>s" }, SET)
 
 -- sidebar
-cmap(nil, "<cmd>UndotreeToggle<CR>", { "n", "<C-3>" }, SET)
+cmap(nil, "<cmd>UndotreeFocus<CR>", { "n", "<leader>u" }, SET)
 
 -- telescope
 cmap(nil, ":Telescope command_center<cr>", { "n", "<leader>k" }, SET)

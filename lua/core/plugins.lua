@@ -155,6 +155,14 @@ require("lazy").setup({
 
 	{ "mbbill/undotree" },
 
+	
+	{
+		"sidebar-nvim/sidebar.nvim",
+		config = function()
+			require("configs.sidebar")
+		end,
+	},
+
 	{
 		"petertriho/nvim-scrollbar",
 		config = function()
