@@ -6,9 +6,13 @@ require("aerial").setup({
 		vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
 	end,
 
-	show_guides = false,
+	show_guides = true,
 
 	open_automatic = false,
+	attach_mode = "window",
+	highlight_on_hover = true,
+	update_events = "TextChanged,InsertLeave",
+
 
 	filter_kind = {
 		["_"] = {

@@ -113,7 +113,8 @@ cmap(nil, "<cmd>PackerSync<CR>", { "n", "<leader>ps" }, SET)
 
 -- AerialToggle
 cmap(nil, "<cmd>AerialToggle!<CR>", { "n", "<leader>t" }, SET)
-cmap(nil, "<cmd>AerialToggle!<CR>", { "n", "<C-0>" }, SET)
+cmap(nil, "<cmd>AerialToggle!<CR>", { "n", "<leader>t" }, SET)
+cmap(nil, "<cmd>AerialToggle!<CR>", { "n", "<leader>t" }, SET)
 
 -- nvim-tree
 cmap(nil, "<cmd>NvimTreeFindFile<CR>", { "n", "<leader>e" }, SET)
@@ -140,7 +141,6 @@ end, { "n", "<leader>fg" }, ADD_SET)
 cmap({ desc = "Help tags" }, function()
 	require("telescope.builtin").help_tags()
 end, { "n", "<leader>fh" }, ADD_SET)
-cmap({ desc = "Neoclip" }, ":Telescope neoclip<cr>", { "n", "<leader>fr" }, ADD_SET)
 cmap({ desc = "Find files" }, function()
 	require("telescope.builtin").find_files({})
 end, { "n", "<leader>ff" }, ADD_SET)
@@ -193,6 +193,17 @@ cmap(
 	{ "n", "<leader>ak" },
 	ADD_SET
 )
+
+--------------------
+-- Markdown categories
+--------------------
+cmap(nil, ":Telescope command_center category=markdown<cr>", { "n", "m" }, SET)
+cmap({ desc = "Markdown TODO", cat = "markdown" }, ":Marktodo float<cr>", { "n", "mt" }, ADD_SET)
+cmap({ desc = "Csv to table", cat = "markdown" }, ":MakeTable<cr>", { "n", "F1" }, ADD)
+cmap({ desc = "Tsv to table", cat = "markdown" }, ":MakeTable! \t<cr>", { "n", "F1" }, ADD)
+cmap({ desc = "Insert web link", cat = "markdown" }, ":MdUrlInsert<cr>", { "n", "F1" }, ADD)
+cmap({ desc = "Set web link title", cat = "markdown" }, ":MdUrlSet<cr>", { "n", "F1" }, ADD)
+cmap({ desc = "Paste image", cat = "markdown" }, ":PasteImg<cr>", { "n", "F1" }, ADD)
 cmap({ desc = "Note", cat = "app" }, function()
 	utils.openFloatingWindow(vim.g.note_path .. "home.md")
 end, { "n", "mm" }, ADD_SET)
@@ -215,17 +226,6 @@ cmap({ desc = "Find note", cat = "app" }, function()
 	})
 end, { "n", "mf" }, ADD_SET)
 cmap({ desc = "Markdown preview", cat = "markdown" }, ":MarkdownPreviewToggle<cr>", { "n", "mp" }, ADD_SET)
-
---------------------
--- Markdown categories
---------------------
-cmap(nil, ":Telescope command_center category=markdown<cr>", { "n", "<leader>m" }, SET)
-cmap({ desc = "Markdown TODO", cat = "markdown" }, ":Marktodo float<cr>", { "n", "mt" }, ADD_SET)
-cmap({ desc = "Csv to table", cat = "markdown" }, ":MakeTable<cr>", { "n", "F1" }, ADD)
-cmap({ desc = "Tsv to table", cat = "markdown" }, ":MakeTable! \t<cr>", { "n", "F1" }, ADD)
-cmap({ desc = "Insert web link", cat = "markdown" }, ":MdUrlInsert<cr>", { "n", "F1" }, ADD)
-cmap({ desc = "Set web link title", cat = "markdown" }, ":MdUrlSet<cr>", { "n", "F1" }, ADD)
-cmap({ desc = "Paste image", cat = "markdown" }, ":PasteImg<cr>", { "n", "F1" }, ADD)
 
 -- smart-splits
 local smart_splits = require("smart-splits")
@@ -348,11 +348,13 @@ end, { "n", ":tl<cr>" }, ADD_SET)
 
 cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, SET)
 
-cmap({desc="lspsaga hover doc", cat="app"}, "<cmd>Lspsaga hover_doc<CR>", { "n", "K" }, ADD_SET)
-cmap({desc="lspsaga lsp finder", cat="app"}, "<cmd>Lspsaga lsp_finder<CR>", { "n", "gr"}, ADD_SET)
-cmap({desc="lspsaga peek definition", cat="app"}, "<cmd>Lspsaga peek_definition<CR>", { "n", "gd"}, ADD_SET)
-cmap({desc="lspsaga code action", cat="app"}, "<cmd>Lspsaga code_action<CR>", { "n", "ga"}, ADD_SET)
-cmap({desc="lspsaga rename", cat="app"}, "<cmd>Lspsaga rename<CR>", { "n", "gn"}, ADD_SET)
-cmap({desc="lspsaga show line dagnostics", cat="app"}, "<cmd>Lspsaga show_line_diagnostics<CR>", { "n", "ge"}, ADD_SET)
-cmap({desc="lspsaga diagnostic jump next", cat="app"}, "<cmd>Lspsaga diagnostic_jump_next<CR>", { "n", "[e"}, ADD_SET)
-cmap({desc="lspsaga diagnostic jump prev", cat="app"}, "<cmd>Lspsaga diagnostic_jump_prev<CR>", { "n", "]e"}, ADD_SET)
+cmap(nil, ":Telescope command_center category=lsp<cr>", { "n", "g" }, SET)
+cmap({desc="lspsaga hover doc", cat="lsp"}, "<cmd>Lspsaga hover_doc<CR>", { "n", "K" }, ADD_SET)
+cmap({desc="lspsaga lsp finder", cat="lsp"}, "<cmd>Lspsaga lsp_finder<CR>", { "n", "gr"}, ADD_SET)
+cmap({desc="lspsaga lsp finder", cat="lsp"}, "<cmd>Lspsaga finder def+ref<CR>", { "n", "gf"}, ADD_SET)
+cmap({desc="lspsaga peek definition", cat="lsp"}, "<cmd>Lspsaga peek_definition<CR>", { "n", "gd"}, ADD_SET)
+cmap({desc="lspsaga code action", cat="lsp"}, "<cmd>Lspsaga code_action<CR>", { "n", "ga"}, ADD_SET)
+cmap({desc="lspsaga rename", cat="lsp"}, "<cmd>Lspsaga rename<CR>", { "n", "gn"}, ADD_SET)
+cmap({desc="lspsaga show line dagnostics", cat="lsp"}, "<cmd>Lspsaga show_line_diagnostics<CR>", { "n", "ge"}, ADD_SET)
+cmap({desc="lspsaga diagnostic jump next", cat="lsp"}, "<cmd>Lspsaga diagnostic_jump_next<CR>", { "n", "[e"}, ADD_SET)
+cmap({desc="lspsaga diagnostic jump prev", cat="lsp"}, "<cmd>Lspsaga diagnostic_jump_prev<CR>", { "n", "]e"}, ADD_SET)
