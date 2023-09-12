@@ -1,11 +1,21 @@
 run:
-	docker-compose up -d
+	docker compose up -d
 
-logs:
-	docker-compose logs -f
+restart:
+	docker compose build && \
+	docker compose restart
+
+build:
+	docker compose build
 
 down:
-	docker-compose down
+	docker compose down
 
 downall:
-	docker-compose down --rmi all --volumes --remove-orphans
+	docker compose down --rmi all --volumes --remove-orphans
+
+logs:
+	docker compose logs -f
+
+watch:
+	watch docker compose ps
