@@ -1,4 +1,4 @@
-type {{__var__:name}} struc {
+type {{__var__:name}} struct {
   {{__cursor__}}
 }
 

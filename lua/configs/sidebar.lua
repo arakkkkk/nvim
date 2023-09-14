@@ -1,7 +1,7 @@
 require("sidebar-nvim").setup({
 	disable_default_keybindings = 0,
 	bindings = {
-		["<leader>"] = function()
+		["<tab>"] = function()
 			vim.cmd[[NvimTreeFocus]]
 			vim.cmd[[SidebarNvimClose]]
 		end,

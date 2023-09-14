@@ -31,6 +31,13 @@ require("lazy").setup({
 		end,
 	},
 
+	{
+		"/arakkkkk/marktodo.nvim",
+		config = function()
+			require("configs.marktodo")
+		end,
+	},
+
 	---------------------
 	-- Theme
 	---------------------
@@ -221,6 +228,9 @@ require("lazy").setup({
 		end,
 		opts = {
 		},
+		config = function()
+			require("configs.substitute")
+		end,
 	},
 	--------------------
 	-- LSP integration

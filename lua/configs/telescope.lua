@@ -111,9 +111,6 @@ require("telescope").setup({
 	},
 
 	extensions = {
-		command_center = {
-			separator = "         ",
-		},
 		file_browser = {
 			hide_parent_dir = true,
 			dir_icon_hl = "DevIconLua",
@@ -172,7 +169,6 @@ require("telescope").setup({
 	},
 })
 require("telescope").load_extension("file_browser")
-require("telescope").load_extension("command_center")
 -- require("telescope").load_extension("fzf")
 -- require("telescope").load_extension("frecency")
 require("telescope").load_extension("live_grep_args")

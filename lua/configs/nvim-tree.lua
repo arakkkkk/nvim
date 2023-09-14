@@ -34,7 +34,7 @@ else
 				return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 			end
 			vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
-			vim.keymap.set("n", "<leader>", function()
+			vim.keymap.set("n", "<tab>", function()
 					vim.cmd[[SidebarNvimFocus]]
 					vim.cmd[[NvimTreeClose]]
 			end, opts("Help"))

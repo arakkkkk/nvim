@@ -1,29 +1,8 @@
 local utils = require("core.utils")
 local map = vim.keymap.set
-local noremap = { noremap = true }
-local cc_loaded, cc = pcall(require, "command_center")
-local ADD = cc_loaded and cc.mode.ADD or nil
-local SET = cc_loaded and cc.mode.SET or nil
-local ADD_SET = cc_loaded and cc.mode.ADD_SET or nil
 
-local function cmap(ops, cmd, keys, mode)
-	ops = ops or { desc = keys[2], cat = "default" }
-	ops.cat = ops.cat or "default"
-	keys[3] = keys[3] or noremap
-	if cc_loaded then
-		cc.add({
-			{
-				desc = ops.desc,
-				cmd = cmd,
-				keybindings = keys,
-				category = ops.cat,
-			},
-		}, {
-			mode = mode,
-		})
-	else
-		map(keys[1], keys[2], cmd)
-	end
+local function cmap(_, cmd, keys, _)
+	map(keys[1], keys[2], cmd)
 end
 
 vim.g.mapleader = " "
@@ -33,52 +12,43 @@ vim.g.mapleader = " "
 -----------------------
 cmap(nil, function()
 	local register = vim.fn.getreg('"')
-	register	= string.gsub(register, "\n", "")
+	register = string.gsub(register, "\n", "")
 	vim.api.nvim_feedkeys(register, "i", true)
-end, { "c", "<C-V>" }, SET)
+end, { "c", "<C-V>" }, true)
+cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, true)
 
-cmap(nil, "<cmd>w<cr>", { "n", ":w<cr>" }, SET)
-cmap(nil, "<cmd>q<cr>", { "n", ":q<cr>" }, SET)
-cmap(nil, "<cmd>e<cr>", { "n", ":e<cr>" }, SET)
 cmap(nil, function()
 	vim.cmd("wa")
 	vim.cmd("qa")
-end, { "n", "<leader>q" }, SET)
-cmap(nil, function()
-	vim.cmd("wa")
-end, { "n", "<leader>w" }, SET)
-cmap(nil, ":split<cr>", { "n", "<leader>ss" }, SET)
-cmap(nil, ":vsplit<cr>", { "n", "<leader>sv" }, SET)
+end, { "n", "<leader>q" }, true)
 cmap(nil, function()
 	print("Path yanked >>", vim.fn.expand("%:.:p"))
 	vim.cmd("let @* = expand('%:.:p')")
-end, { "n", "yp" }, SET)
+end, { "n", "yp" }, true)
 cmap(nil, function()
 	print("Path yanked >>", vim.fn.expand("%:p"))
 	vim.cmd("let @* = expand('%:p')")
-end, { "n", "yP" }, SET)
+end, { "n", "yP" }, true)
 cmap({ desc = "Clean buffers" }, function()
 	vim.cmd("BDelete other")
-end, { "n", ":cl" }, ADD_SET)
+end, { "n", "<leader><BS>" }, true)
 
 -----------------------
 -- option
 -----------------------
-cmap(nil, ":<Up><cr>", { "n", ":<cr>" }, SET)
-cmap(nil, ":open<cr>", { "n", ":!open<cr>" }, SET)
 cmap(nil, function()
 	utils.run_in_term()
 end, {
 	"n",
 	":r<CR>",
-}, SET)
+}, true)
 cmap(nil, function()
 	vim.cmd.write()
 	utils.run_in_term()
 end, {
 	"n",
 	":wr<CR>",
-}, SET)
+}, true)
 cmap(nil, function()
 	local text = utils.input("Quic run shell command: ", vim.fn.getreg("R"))
 	if text then
@@ -87,13 +57,13 @@ cmap(nil, function()
 end, {
 	"n",
 	":rr<CR>",
-}, SET)
+}, true)
 cmap(nil, function()
 	vim.cmd(vim.fn.getreg("C"))
 end, {
 	"n",
 	":c<CR>",
-}, SET)
+}, true)
 cmap(nil, function()
 	local text = utils.input("Quic run vim command: ", vim.fn.getreg("C"))
 	if text then
@@ -102,185 +72,79 @@ cmap(nil, function()
 end, {
 	"n",
 	":cc<CR>",
-}, SET)
--- xdotool search --onlyvisible --class Firefox key ctrl+r
+}, true)
 
 -----------------------
 -- plugins
 -----------------------
--- packer
-cmap(nil, "<cmd>PackerSync<CR>", { "n", "<leader>ps" }, SET)
+cmap(nil, "<cmd>Lazy sync<CR>", { "n", "<leader>ls" }, true)
 
 -- AerialToggle
-cmap(nil, "<cmd>AerialToggle!<CR>", { "n", "<leader>t" }, SET)
-cmap(nil, "<cmd>AerialToggle!<CR>", { "n", "<leader>t" }, SET)
-cmap(nil, "<cmd>AerialToggle!<CR>", { "n", "<leader>t" }, SET)
+cmap(nil, "<cmd>AerialToggle!<CR>", { "n", "<leader>t" }, true)
 
 -- nvim-tree
-cmap(nil, "<cmd>NvimTreeFindFile<CR>", { "n", "<leader>e" }, SET)
-cmap(nil, "<cmd>NvimTreeToggle<CR>", { "n", "<C-1>" }, SET)
-cmap(nil, require("nvim-tree.api").marks.navigate.next, { "n", "<leader>mn" }, SET)
-cmap(nil, require("nvim-tree.api").marks.navigate.prev, { "n", "<leader>mp" }, SET)
-cmap(nil, require("nvim-tree.api").marks.navigate.select, { "n", "<leader>ms" }, SET)
+cmap(nil, "<cmd>NvimTreeFindFile<CR>", { "n", "<leader>e" }, true)
 
 -- sidebar
-cmap(nil, "<cmd>SidebarNvimFocus<CR>", { "n", "<leader>s" }, SET)
+cmap(nil, "<cmd>SidebarNvimFocus<CR>", { "n", "<leader>s" }, true)
 
 -- sidebar
-cmap(nil, "<cmd>UndotreeFocus<CR>", { "n", "<leader>u" }, SET)
-
--- telescope
-cmap(nil, ":Telescope command_center<cr>", { "n", "<leader>k" }, SET)
---------------------
--- Default categories
---------------------
-cmap(nil, ":Telescope command_center category=default<cr>", { "n", "<leader>f" }, SET)
-cmap({ desc = "Live grep" }, function()
-	require("telescope").extensions.live_grep_args.live_grep_args({})
-end, { "n", "<leader>fg" }, ADD_SET)
-cmap({ desc = "Help tags" }, function()
-	require("telescope.builtin").help_tags()
-end, { "n", "<leader>fh" }, ADD_SET)
-cmap({ desc = "Find files" }, function()
-	require("telescope.builtin").find_files({})
-end, { "n", "<leader>ff" }, ADD_SET)
-cmap({ desc = "Old files" }, function()
-	require("telescope.builtin").oldfiles({ only_cwd = true })
-end, { "n", "<leader>fo" }, ADD_SET)
-cmap({ desc = "Sonictemplate" }, function()
-	vim.cmd("Telescope  sonictemplate templates")
-end, { "n", "<leader>ft" }, ADD_SET)
-cmap(nil, function()
-	vim.cmd("Telescope  sonictemplate templates")
-end, { "n", "<C-t>" }, SET)
-cmap({ desc = "Diagnostics" }, function()
-	vim.cmd("Telescope diagnostics")
-end, { "n", "<leader>fd" }, ADD_SET)
-cmap({ desc = "Resume" }, function()
-	require("telescope.builtin").resume()
-end, { "n", "<leader>fs" }, ADD_SET)
-cmap({ desc = "ToDoComments all" }, function()
-	vim.cmd("TodoTelescope keywords=TODO,FIX,FIXME,WARN,NOTE")
-end, { "n", "<leader>fa" }, ADD_SET)
-cmap({ desc = "Jump list" }, function()
-	require("telescope.builtin").jumplist()
-end, { "n", "<leader>fj" }, ADD_SET)
-cmap({ desc = "Grep cheat_sheets", cat = "default" }, function()
-	vim.g.telescope_cwd = vim.g.note_path
-	require("telescope").extensions.live_grep_args.live_grep_args({
-		prompt_title = "Cheat sheets",
-		cwd = "~/localfile/",
-		search_dirs = { "~/localfile/" },
-	})
-end, { "n", "<leder>f^", cat = "default" }, ADD_SET)
-cmap({ desc = "Buffers" }, function()
-	require("telescope.builtin").buffers()
-end, { "n", "<c-b>" }, ADD_SET)
-cmap({ desc = "Command history" }, function()
-	require("telescope.builtin").command_history()
-end, { "n", "q:" }, ADD_SET)
-cmap({ desc = "Commands" }, function()
-	require("telescope.builtin").commands()
-end, { "n", "::" }, ADD_SET)
-
---------------------
--- App categories
---------------------
-cmap(nil, ":Telescope command_center category=app<cr>", { "n", "<leader>a" }, SET)
-cmap(
-	{ desc = "KanbanOpen", cat = "app" },
-	":KanbanOpen ~/MyDrive/Applycations/Note/TODO/PersonalKanban.md<cr>",
-	{ "n", "<leader>ak" },
-	ADD_SET
-)
-
---------------------
--- Markdown categories
---------------------
-cmap(nil, ":Telescope command_center category=markdown<cr>", { "n", "m" }, SET)
-cmap({ desc = "Markdown TODO", cat = "markdown" }, ":Marktodo float<cr>", { "n", "mt" }, ADD_SET)
-cmap({ desc = "Csv to table", cat = "markdown" }, ":MakeTable<cr>", { "n", "F1" }, ADD)
-cmap({ desc = "Tsv to table", cat = "markdown" }, ":MakeTable! \t<cr>", { "n", "F1" }, ADD)
-cmap({ desc = "Insert web link", cat = "markdown" }, ":MdUrlInsert<cr>", { "n", "F1" }, ADD)
-cmap({ desc = "Set web link title", cat = "markdown" }, ":MdUrlSet<cr>", { "n", "F1" }, ADD)
-cmap({ desc = "Paste image", cat = "markdown" }, ":PasteImg<cr>", { "n", "F1" }, ADD)
-cmap({ desc = "Note", cat = "app" }, function()
-	utils.openFloatingWindow(vim.g.note_path .. "home.md")
-end, { "n", "mm" }, ADD_SET)
-cmap({ desc = "Find note status open", cat = "app" }, function()
-	require("telescope").extensions.live_grep_args.live_grep_args({ default_text = '"status: open"' })
-end, { "n", "mo" }, ADD_SET)
-cmap({ desc = "Find tag root", cat = "app" }, function()
-	require("telescope").extensions.live_grep_args.live_grep_args({ default_text = '"tag: \\[.*\\broot\\b.*\\]"' })
-end, { "n", "mr" }, ADD_SET)
-cmap({ desc = "Daily note", cat = "app" }, function()
-	vim.cmd(":e " .. vim.g.note_path .. "diary/" .. os.date("%Y-%m-%d") .. ".md")
-end, { "n", "md" }, ADD_SET)
-cmap({ desc = "Weekly note", cat = "markdown" }, function()
-	vim.cmd(":e " .. vim.g.note_path .. "diary/week-" .. os.date("%Y-%m-") .. os.date("%d") - os.date("%w") .. ".md")
-	vim.cmd(":$")
-end, { "n", "mw" }, ADD_SET)
-cmap({ desc = "Find note", cat = "app" }, function()
-	require("telescope.builtin").find_files({
-		cwd = vim.g.note_path,
-	})
-end, { "n", "mf" }, ADD_SET)
-cmap({ desc = "Markdown preview", cat = "markdown" }, ":MarkdownPreviewToggle<cr>", { "n", "mp" }, ADD_SET)
+cmap(nil, "<cmd>UndotreeFocus<CR>", { "n", "<leader>u" }, true)
 
 -- smart-splits
 local smart_splits = require("smart-splits")
 cmap(nil, function()
 	smart_splits.move_cursor_left()
-end, { "n", "<C-h>" }, SET)
+end, { "n", "<C-h>" }, true)
 cmap(nil, function()
 	smart_splits.move_cursor_left()
-end, { "n", "<BS>" }, SET)
+end, { "n", "<BS>" }, true)
 cmap(nil, function()
 	smart_splits.move_cursor_down()
-end, { "n", "<C-j>" }, SET)
+end, { "n", "<C-j>" }, true)
 cmap(nil, function()
 	smart_splits.move_cursor_up()
-end, { "n", "<C-k>" }, SET)
+end, { "n", "<C-k>" }, true)
 cmap(nil, function()
 	smart_splits.move_cursor_right()
-end, { "n", "<C-l>" }, SET)
+end, { "n", "<C-l>" }, true)
 cmap(nil, function()
 	smart_splits.resize_up()
-end, { "n", "<S-Up>" }, SET)
+end, { "n", "<S-Up>" }, true)
 cmap(nil, function()
 	smart_splits.resize_down()
-end, { "n", "<S-Down>" }, SET)
+end, { "n", "<S-Down>" }, true)
 cmap(nil, function()
 	smart_splits.resize_left()
-end, { "n", "<S-Left>" }, SET)
+end, { "n", "<S-Left>" }, true)
 cmap(nil, function()
 	smart_splits.resize_right()
-end, { "n", "<S-Right>" }, SET)
+end, { "n", "<S-Right>" }, true)
 
 -- bufferline
-cmap(nil, "<cmd>BufferLineCycleNext<cr>", { "n", "<S-l>" }, SET)
-cmap(nil, "<cmd>BufferLineCyclePrev<cr>", { "n", "<S-h>" }, SET)
-cmap(nil, "<cmd>BufferLineMoveNext<cr>", { "n", ">b" }, SET)
-cmap(nil, "<cmd>BufferLineMovePrev<cr>", { "n", "<b" }, SET)
-cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, SET)
+cmap(nil, "<cmd>BufferLineCycleNext<cr>", { "n", "<S-l>" }, true)
+cmap(nil, "<cmd>BufferLineCyclePrev<cr>", { "n", "<S-h>" }, true)
+cmap(nil, "<cmd>BufferLineMoveNext<cr>", { "n", ">b" }, true)
+cmap(nil, "<cmd>BufferLineMovePrev<cr>", { "n", "<b" }, true)
+cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, true)
 
 -- hop.vim
-cmap(nil, "<cmd>HopWord<CR>", { "n", "<leader>j" }, SET)
+cmap(nil, "<cmd>HopWord<CR>", { "n", "<leader>j" }, true)
 
 -- toggleterm
 local Terminal = require("toggleterm.terminal").Terminal
 cmap(nil, function()
 	Terminal:new({ count = 1 }):toggle()
-end, { "n", "<C-\\>" }, SET)
+end, { "n", "<C-\\>" }, true)
 cmap(nil, function()
 	Terminal:new({ count = 1 }):toggle()
-end, { "n", "<C-¥>" }, SET)
+end, { "n", "<C-¥>" }, true)
 cmap(nil, function()
 	Terminal:new({ direction = "vertical", count = 2 }):toggle()
-end, { "n", "<leader>tv" }, SET)
+end, { "n", "<leader>tv" }, true)
 cmap(nil, function()
 	Terminal:new({ direction = "horizontal", count = 3 }):toggle()
-end, { "n", "<leader>th" }, SET)
+end, { "n", "<leader>th" }, true)
 local cmd_set = {
 	ht = "htop",
 	py = "python",
@@ -298,63 +162,137 @@ for key, cmd in pairs(cmd_set) do
 				print(term)
 			end,
 		}):toggle()
-	end, { "n", ":" .. key .. "<cr>" }, SET)
+	end, { "n", ":" .. key .. "<cr>" }, true)
 end
 
 -- substitute.nvim
 cmap(nil, function()
 	require("substitute").operator()
-end, { "n", "s" }, SET)
+end, { "n", "s" }, true)
 cmap(nil, function()
 	require("substitute").line()
-end, { "n", "ss" }, SET)
+end, { "n", "ss" }, true)
 cmap(nil, function()
 	require("substitute").eol()
-end, { "n", "S" }, SET)
+end, { "n", "S" }, true)
 cmap(nil, function()
 	require("substitute").visual()
-end, { "x", "s" }, SET)
-
--- Git
-cmap({ desc = "Git log", cat = "app" }, function()
-	vim.cmd("split")
-	vim.cmd("term git log " .. vim.fn.expand("%"))
-end, { "n", ":gl<cr>" }, ADD_SET)
-cmap({ desc = "Git diff", cat = "app" }, function()
-	vim.cmd("split")
-	vim.cmd("term git diff " .. vim.fn.expand("%"))
-end, { "n", ":gd<cr>" }, ADD_SET)
+end, { "x", "s" }, true)
 
 -- Others
 cmap({ desc = "Hi group", cat = "app" }, function()
 	vim.cmd("echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')")
-end, { "n", ":higroup<cr>" }, ADD_SET)
+end, { "n", ":higroup<cr>" }, true)
 cmap({ desc = "Hi item", cat = "app" }, function()
 	vim.cmd("echo synIDattr(synID(line('.'), col('.'), 1), 'name')")
-end, { "n", ":hiitem<cr>" }, ADD_SET)
+end, { "n", ":hiitem<cr>" }, true)
 
--- translation
-cmap({ desc = "Translator", cat = "app" }, function()
-	local text = utils.input("Translator: ")
-	if text then
-		vim.cmd("split")
-		if text:match("[%sa-zA-Z0-9_]+") then
-			vim.cmd("term trans {en=ja} " .. text)
-		else
-			vim.cmd("term trans {ja=en} " .. text)
-		end
-	end
-end, { "n", ":tl<cr>" }, ADD_SET)
-
-cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, SET)
-
-cmap(nil, ":Telescope command_center category=lsp<cr>", { "n", "g" }, SET)
-cmap({desc="lspsaga: hover doc", cat="lsp"}, "<cmd>Lspsaga hover_doc<CR>", { "n", "K" }, ADD_SET)
-cmap({desc="lspsaga: lsp finder", cat="lsp"}, "<cmd>Lspsaga lsp_finder<CR>", { "n", "gr"}, ADD_SET)
-cmap({desc="lspsaga: lsp definition", cat="lsp"}, "<cmd>Lspsaga finder def+ref<CR>", { "n", "gf"}, ADD_SET)
-cmap({desc="lspsaga: peek definition", cat="lsp"}, "<cmd>Lspsaga peek_definition<CR>", { "n", "gd"}, ADD_SET)
-cmap({desc="lspsaga: code action", cat="lsp"}, "<cmd>Lspsaga code_action<CR>", { "n", "ga"}, ADD_SET)
-cmap({desc="lspsaga: rename", cat="lsp"}, "<cmd>Lspsaga rename<CR>", { "n", "gn"}, ADD_SET)
-cmap({desc="lspsaga: show line dagnostics", cat="lsp"}, "<cmd>Lspsaga show_line_diagnostics<CR>", { "n", "ge"}, ADD_SET)
-cmap({desc="lspsaga: diagnostic jump next", cat="lsp"}, "<cmd>Lspsaga diagnostic_jump_next<CR>", { "n", "[e"}, ADD_SET)
-cmap({desc="lspsaga: diagnostic jump prev", cat="lsp"}, "<cmd>Lspsaga diagnostic_jump_prev<CR>", { "n", "]e"}, ADD_SET)
+local wk = require("which-key")
+----------------------------
+-- Lspsaga
+----------------------------
+cmap({ desc = "lspsaga: hover doc", cat = "lsp" }, "<cmd>Lspsaga hover_doc<CR>", { "n", "K" }, true)
+cmap(nil, "<cmd>Lspsaga diagnostic_jump_next<CR>", { "n", "[e" }, true)
+cmap(nil, "<cmd>Lspsaga diagnostic_jump_prev<CR>", { "n", "]e" }, true)
+wk.register({
+	name = "+Lspsaga",
+	r = { "<cmd>Lspsaga lsp_finder<CR>", "Ref" },
+	f = { "<cmd>Lspsaga finder def+ref<CR>", "Finder" },
+	d = { "<cmd>Lspsaga peek_definition<CR>", "Peek Definition" },
+	a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
+	p = { "<cmd>Lspsaga rename<CR>", "Preview" },
+	e = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Diagnostics" },
+}, { prefix = "g" })
+----------------------------
+-- Markdown
+----------------------------
+wk.register({
+	name = "+Markdown",
+	m = {
+		function()
+			utils.openFloatingWindow(vim.g.note_path .. "home.md")
+		end,
+		"Note",
+	},
+	d = {
+		function()
+			vim.cmd(":e " .. vim.g.note_path .. "diary/" .. os.date("%Y-%m-%d") .. ".md")
+		end,
+		"Daily Note",
+	},
+	w = {
+		function()
+			vim.cmd(
+				":e " .. vim.g.note_path .. "weekly/" .. os.date("%Y-%m-") .. os.date("%d") - os.date("%w") .. ".md"
+			)
+			vim.cmd(":$")
+		end,
+		"Weekly Note",
+	},
+	p = { ":MarkdownPreviewToggle<cr>", "Preview" },
+}, { prefix = "m" })
+----------------------------
+-- Telescope
+----------------------------
+cmap(nil, function()
+	vim.cmd("Telescope  sonictemplate templates")
+end, { "n", "<C-t>" }, true)
+cmap({ desc = "Buffers" }, function()
+	require("telescope.builtin").buffers()
+end, { "n", "<c-b>" }, true)
+wk.register({
+	f = {
+		name = "+Telescope",
+		g = {
+			function()
+				require("telescope").extensions.live_grep_args.live_grep_args({})
+			end,
+			"Live Grep",
+		},
+		h = {
+			function()
+				require("telescope.builtin").help_tags()
+			end,
+			"Help Tags",
+		},
+		f = {
+			function()
+				require("telescope.builtin").find_files({})
+			end,
+			"Find File",
+		},
+		o = {
+			function()
+				require("telescope.builtin").oldfiles({ only_cwd = true })
+			end,
+			"Old Files",
+		},
+		t = { "Telescope  sonictemplate templates", "Sonictemplate" },
+		d = { "Telescope diagnostics", "Diagnostics" },
+		s = {
+			function()
+				require("telescope.builtin").resume()
+			end,
+			"Resume",
+		},
+		a = { "TodoTelescope keywords=TODO,FIX,FIXME,WARN,NOTE", "ToDoComments All" },
+		j = {
+			function()
+				require("telescope.builtin").jumplist()
+			end,
+			"Jump List",
+		},
+		c = {
+			function()
+				require("telescope.builtin").command_history()
+			end,
+			"Command History",
+		},
+		[":"] = {
+			function()
+				require("telescope.builtin").commands()
+			end,
+			"Commands",
+		},
+	},
+}, { prefix = "<leader>" })
