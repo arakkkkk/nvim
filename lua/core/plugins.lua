@@ -219,9 +219,18 @@ require("lazy").setup({
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 		end,
-		opts = {
-		},
+		opts = {},
 	},
+
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup({
+				filetypes = { "html", "xml", "jsx", "tsx" },
+			})
+		end,
+	},
+
 	--------------------
 	-- LSP integration
 	--------------------
