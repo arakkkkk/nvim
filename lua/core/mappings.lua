@@ -234,9 +234,7 @@ wk.register({
 ----------------------------
 -- Telescope
 ----------------------------
-cmap(nil, function()
-	vim.cmd("Telescope  sonictemplate templates")
-end, { "n", "<C-t>" }, true)
+cmap(nil, "<cmd>Telescope  sonictemplate templates<cr>", { "n", "<C-t>" }, true)
 cmap({ desc = "Buffers" }, function()
 	require("telescope.builtin").buffers()
 end, { "n", "<c-b>" }, true)
@@ -267,8 +265,8 @@ wk.register({
 			end,
 			"Old Files",
 		},
-		t = { "Telescope  sonictemplate templates", "Sonictemplate" },
-		d = { "Telescope diagnostics", "Diagnostics" },
+		t = { "<cmd>Telescope  sonictemplate templates<cr>", "Sonictemplate" },
+		d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
 		s = {
 			function()
 				require("telescope.builtin").resume()
