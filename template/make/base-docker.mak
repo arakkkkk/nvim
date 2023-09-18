@@ -1,8 +1,7 @@
 run:
 	docker compose up -d
 
-restart:
-	docker compose build && \
+restart: docker compose build && \
 	docker compose restart
 
 build:

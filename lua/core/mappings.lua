@@ -192,8 +192,8 @@ local wk = require("which-key")
 -- Lspsaga
 ----------------------------
 cmap({ desc = "lspsaga: hover doc", cat = "lsp" }, "<cmd>Lspsaga hover_doc<CR>", { "n", "K" }, true)
-cmap(nil, "<cmd>Lspsaga diagnostic_jump_next<CR>", { "n", "[e" }, true)
-cmap(nil, "<cmd>Lspsaga diagnostic_jump_prev<CR>", { "n", "]e" }, true)
+cmap(nil, "<cmd>Lspsaga diagnostic_jump_next<CR>", { "n", "]e" }, true)
+cmap(nil, "<cmd>Lspsaga diagnostic_jump_prev<CR>", { "n", "[e" }, true)
 wk.register({
 	name = "+Lspsaga",
 	r = { "<cmd>Lspsaga lsp_finder<CR>", "Ref" },
