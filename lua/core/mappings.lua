@@ -273,7 +273,7 @@ wk.register({
 			end,
 			"Resume",
 		},
-		a = { "TodoTelescope keywords=TODO,FIX,FIXME,WARN,NOTE", "ToDoComments All" },
+		a = { "<cmd>TodoTelescope keywords=TODO,FIX,FIXME,WARN,NOTE<cr>", "ToDoComments All" },
 		j = {
 			function()
 				require("telescope.builtin").jumplist()
