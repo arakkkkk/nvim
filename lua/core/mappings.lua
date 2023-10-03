@@ -179,14 +179,6 @@ cmap(nil, function()
 	require("substitute").visual()
 end, { "x", "s" }, true)
 
--- Others
-cmap({ desc = "Hi group", cat = "app" }, function()
-	vim.cmd("echo synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name')")
-end, { "n", ":higroup<cr>" }, true)
-cmap({ desc = "Hi item", cat = "app" }, function()
-	vim.cmd("echo synIDattr(synID(line('.'), col('.'), 1), 'name')")
-end, { "n", ":hiitem<cr>" }, true)
-
 local wk = require("which-key")
 ----------------------------
 -- Lspsaga
