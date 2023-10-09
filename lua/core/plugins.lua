@@ -301,11 +301,11 @@ require("lazy").setup({
 		dependencies = { "hrsh7th/nvim-cmp", "kyoh86/vim-ripgrep" },
 	},
 
-	{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-	{ "hrsh7th/cmp-path", after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
-	{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
-	{ "hrsh7th/vim-vsnip", after = "nvim-cmp" },
-	{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-buffer",   after = "nvim-cmp" },
+	{ "hrsh7th/cmp-path",     after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
+	{ "hrsh7th/cmp-vsnip",    after = "nvim-cmp" },
+	{ "hrsh7th/vim-vsnip",    after = "nvim-cmp" },
+	{ "hrsh7th/cmp-cmdline",  after = "nvim-cmp" },
 	{ "onsails/lspkind.nvim", after = "nvim-cmp" },
 
 	{
@@ -346,14 +346,22 @@ require("lazy").setup({
 	-- Markdown
 	--------------------
 	{
-		"jakewvincent/mkdnflow.nvim",
+		-- "arakkkkk/mkdnflow.nvim",
 		-- rocks = "luautf8", -- Ensures optional luautf8 dependency is installed
-		-- dir = "~/ghq/github.com/arakkkkk/mkdnflow.nvim",
+		dir = "~/ghq/github.com/arakkkkk/mkdnflow.nvim",
 		config = function()
 			require("configs.mkdnflow")
 		end,
 		ft = { "markdown" },
 	},
+
+	-- {
+	-- 	"vimwiki/vimwiki",
+	-- 	config = function()
+	-- 		require("configs.vimwiki")
+	-- 	end,
+	-- 	ft = { "markdown" },
+	-- },
 
 	{
 		"postfen/clipboard-image.nvim",

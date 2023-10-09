@@ -39,7 +39,7 @@ require("mkdnflow").setup({
 		end,
 	},
 	to_do = {
-		symbols = { " ", "x" },
+		symbols = { " ", "-", "x" },
 		update_parents = true,
 		not_started = " ",
 		in_progress = "-",
@@ -59,7 +59,7 @@ require("mkdnflow").setup({
 		MkdnPrevLink = { "n", "<S-Tab>" },
 		MkdnNextHeading = { "n", "]]" },
 		MkdnPrevHeading = { "n", "[[" },
-		MkdnGoBack = { "n", "<BS>" },
+		MkdnGoBack = { "n", "^" },
 		MkdnGoForward = { "n", "<Del>" },
 		MkdnFollowLink = false, -- see MkdnEnter
 		MkdnDestroyLink = { "n", "<M-CR>" },
@@ -88,24 +88,24 @@ require("mkdnflow").setup({
 	},
 })
 
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = "*.md",
-	callback = function()
-		-- vim.keymap.set("n", "<cr>", function()
-		-- 	local line = vim.fn.getline(".")
-		-- 	if line:match("^- %[.%]") then
-		-- 		vim.cmd("MkdnToggleToDo")
-		-- 	else
-		-- 		vim.cmd("MkdnEnter")
-		-- 	end
-		-- 	vim.cmd([[write]])
-
-		-- end, { silent = true, buffer = vim.api.nvim_get_current_buf() })
-	local bufline = vim.fn.getline(1, "$")
-	if #bufline == 1 and bufline[1] == "" then
-			-- vim.cmd("Template note")
-	end
-	end,
-})
-
-vim.api.nvim_create_autocmd("BufLeave", { pattern = "*.md", command = "silent! wall" })
+-- vim.api.nvim_create_autocmd("BufEnter", {
+-- 	pattern = "*.md",
+-- 	callback = function()
+-- 		-- vim.keymap.set("n", "<cr>", function()
+-- 		-- 	local line = vim.fn.getline(".")
+-- 		-- 	if line:match("^- %[.%]") then
+-- 		-- 		vim.cmd("MkdnToggleToDo")
+-- 		-- 	else
+-- 		-- 		vim.cmd("MkdnEnter")
+-- 		-- 	end
+-- 		-- 	vim.cmd([[write]])
+--
+-- 		-- end, { silent = true, buffer = vim.api.nvim_get_current_buf() })
+-- 	local bufline = vim.fn.getline(1, "$")
+-- 	if #bufline == 1 and bufline[1] == "" then
+-- 			-- vim.cmd("Template note")
+-- 	end
+-- 	end,
+-- })
+--
+-- -- vim.api.nvim_create_autocmd("BufLeave", { pattern = "*.md", command = "silent! wall" })

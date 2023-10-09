@@ -9,7 +9,7 @@ https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux
 ## Plugins
 
 ### LSP
-- mason
+- [[mason]]
   - LSP manual installer
 - mason-lspconfig
   - LSP auto installer(ensure_installed)
@@ -38,5 +38,4 @@ https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux
   - command to quick run
 - c
   - command to run with !
-
-
+  

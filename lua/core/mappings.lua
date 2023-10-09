@@ -206,18 +206,11 @@ wk.register({
 		end,
 		"Note",
 	},
-	d = {
-		function()
-			vim.cmd(":e " .. vim.g.note_path .. "diary/" .. os.date("%Y-%m-%d") .. ".md")
-		end,
-		"Daily Note",
-	},
 	w = {
 		function()
 			vim.cmd(
-				":e " .. vim.g.note_path .. "weekly/" .. os.date("%Y-%m-") .. os.date("%d") - os.date("%w") .. ".md"
+				":e " .. vim.g.note_path .. "weekly/" .. os.date("%Y-%m-") .. os.date("%d") - os.date("%w") + 1 .. ".md"
 			)
-			vim.cmd(":$")
 		end,
 		"Weekly Note",
 	},
