@@ -59,7 +59,6 @@ require("mkdnflow").setup({
 		MkdnPrevLink = { "n", "<S-Tab>" },
 		MkdnNextHeading = { "n", "]]" },
 		MkdnPrevHeading = { "n", "[[" },
-		MkdnGoBack = { "n", "^" },
 		MkdnGoForward = { "n", "<Del>" },
 		MkdnFollowLink = false, -- see MkdnEnter
 		MkdnDestroyLink = { "n", "<M-CR>" },
