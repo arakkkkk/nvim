@@ -348,7 +348,7 @@ require("lazy").setup({
 	{
 		"arakkkkk/mkdnflow.nvim",
 		-- rocks = "luautf8", -- Ensures optional luautf8 dependency is installed
-		-- dir = "~/ghq/github.com/arakkkkk/mkdnflow.nvim",
+		-- dir = "~/Downloads/mkdnflow.nvim",
 		config = function()
 			require("configs.mkdnflow")
 		end,

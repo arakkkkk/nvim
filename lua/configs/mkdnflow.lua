@@ -28,14 +28,14 @@ require("mkdnflow").setup({
 	silent = false,
 	links = {
 		style = "markdown",
-		name_is_source = false,
+		name_is_source = true,
 		conceal = true,
 		implicit_extension = nil,
 		transform_implicit = false,
 		transform_explicit = function(text)
 			text = text:gsub(" ", "_")
 			text = text:lower()
-			return text
+			return "./sub/" .. text
 		end,
 	},
 	to_do = {

@@ -1,7 +1,8 @@
 return {
 	markdownH1 = { fg = C.orange, bold = true },
-	markdownH2 = { fg = C.orange },
-	markdownH3 = { fg = C.orange },
+	markdownH2 = { fg = C.orange, bold = true },
+	markdownH3 = { fg = C.orange},
+	markdownH4 = { fg = C.orange},
 
 	markdownCode = { fg = C.yellow },
 	markdownCodeDelimiter = { fg = C.yellow },
