@@ -35,7 +35,7 @@ require("mkdnflow").setup({
 		transform_explicit = function(text)
 			text = text:gsub(" ", "_")
 			text = text:lower()
-			return "./sub/" .. text
+			return "sub/" .. text
 		end,
 	},
 	to_do = {
