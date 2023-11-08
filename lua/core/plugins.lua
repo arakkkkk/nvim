@@ -347,25 +347,25 @@ require("lazy").setup({
 	--------------------
 	-- Markdown
 	--------------------
-	-- {
-	-- 	-- "jakewvincent/mkdnflow.nvim",
-	-- 	"arakkkkk/mkdnflow.nvim",
-	-- 	-- rocks = "luautf8", -- Ensures optional luautf8 dependency is installed
-	-- 	-- dir = "~/Downloads/mkdnflow.nvim",
-	-- 	config = function()
-	-- 		require("configs.mkdnflow")
-	-- 	end,
-	-- 	ft = { "markdown" },
-	-- },
-
 	{
-		"vimwiki/vimwiki",
-		lazy = false,
+		-- "jakewvincent/mkdnflow.nvim",
+		"arakkkkk/mkdnflow.nvim",
+		-- rocks = "luautf8", -- Ensures optional luautf8 dependency is installed
+		-- dir = "~/Downloads/mkdnflow.nvim",
 		config = function()
-			require("configs.vimwiki")
+			require("configs.mkdnflow")
 		end,
-		-- ft = { "markdown" },
+		ft = { "markdown" },
 	},
+
+	-- {
+	-- 	"vimwiki/vimwiki",
+	-- 	lazy = false,
+	-- 	config = function()
+	-- 		require("configs.vimwiki")
+	-- 	end,
+	-- 	-- ft = { "markdown" },
+	-- },
 
 	-- {
 	-- 	"preservim/vim-markdown",

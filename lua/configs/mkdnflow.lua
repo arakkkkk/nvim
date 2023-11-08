@@ -84,6 +84,7 @@ require("mkdnflow").setup({
 		MkdnTableNewColBefore = { "n", "<leader>iC" },
 		MkdnFoldSection = false,
 		MkdnUnfoldSection = false,
+		MkdnGoBack = false,
 	},
 })
 
