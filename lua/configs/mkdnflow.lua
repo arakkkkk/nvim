@@ -5,7 +5,7 @@ require("mkdnflow").setup({
 		buffers = true,
 		conceal = true,
 		cursor = true,
-		folds = true,
+		folds = false,
 		links = true,
 		lists = true,
 		maps = true,

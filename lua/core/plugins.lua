@@ -235,24 +235,26 @@ require("lazy").setup({
 	-- LSP integration
 	--------------------
 	{
-		"neovim/nvim-lspconfig",
-		lazy = false,
-		config = function()
-			require("configs.nvim-lspconfig")
-		end,
-	},
-	{
 		"williamboman/mason.nvim",
 		lazy = false,
 		config = function()
 			require("configs.mason")
 		end,
 	},
+
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
 		config = function()
 			require("configs.mason-lspconfig")
+		end,
+	},
+
+	{
+		"neovim/nvim-lspconfig",
+		lazy = false,
+		config = function()
+			require("configs.nvim-lspconfig")
 		end,
 	},
 
@@ -345,22 +347,34 @@ require("lazy").setup({
 	--------------------
 	-- Markdown
 	--------------------
+	-- {
+	-- 	-- "jakewvincent/mkdnflow.nvim",
+	-- 	"arakkkkk/mkdnflow.nvim",
+	-- 	-- rocks = "luautf8", -- Ensures optional luautf8 dependency is installed
+	-- 	-- dir = "~/Downloads/mkdnflow.nvim",
+	-- 	config = function()
+	-- 		require("configs.mkdnflow")
+	-- 	end,
+	-- 	ft = { "markdown" },
+	-- },
+
 	{
-		"arakkkkk/mkdnflow.nvim",
-		-- rocks = "luautf8", -- Ensures optional luautf8 dependency is installed
-		-- dir = "~/Downloads/mkdnflow.nvim",
+		"vimwiki/vimwiki",
+		lazy = false,
 		config = function()
-			require("configs.mkdnflow")
+			require("configs.vimwiki")
 		end,
-		ft = { "markdown" },
+		-- ft = { "markdown" },
 	},
 
 	-- {
-	-- 	"vimwiki/vimwiki",
+	-- 	"preservim/vim-markdown",
+	-- 	dependencies = {
+	-- 		"godlygeek/tabular",
+	-- 	},
 	-- 	config = function()
-	-- 		require("configs.vimwiki")
+	-- 		require("configs.vim-markdown")
 	-- 	end,
-	-- 	ft = { "markdown" },
 	-- },
 
 	{
@@ -432,13 +446,28 @@ require("lazy").setup({
 		config = function()
 			require("configs.todo-comments")
 		end,
+		ft = { "markdown", "vimwiki" },
 	},
+
+	-- {
+	-- 	-- "hrsh7th/nvim-pasta",
+	-- 	dir = "~/ghq/github.com/hrsh7th/nvim-pasta",
+	-- 	config = function()
+	-- 		require("configs.nvim-pasta")
+	-- 	end,
+	-- },
 
 	{
 		"stevearc/aerial.nvim",
 		config = function()
 			require("configs.aerial")
 		end,
+		opts = {},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
 	},
 
 	{

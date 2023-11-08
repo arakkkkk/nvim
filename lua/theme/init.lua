@@ -26,7 +26,8 @@ for _, plugin in ipairs({
 	-- "nvim-web-devicons",
 	"telescope",
 	"nvim-cmp",
-	"mkdnflow",
+	-- "mkdnflow",
+	"markdown",
 	"vimtex",
 	"scrollbar",
 }) do

@@ -68,6 +68,7 @@ cmp.setup({
 				end,
 			},
 		},
+		{ name = "mkdnflow" },
 		{
 			name = "buffer",
 			option = {
