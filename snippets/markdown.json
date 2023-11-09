@@ -72,5 +72,10 @@
     "prefix": ["fix comment"],
     "body": ["${VIM:split(&commentstring, '%s')[0]} FIX: $0 ${VIM:split(&commentstring, '%s')[1]}"],
     "description": ""
+  },
+  "akamaru": {
+    "prefix": [":maru"],
+    "body": ["🔴"],
+    "description": ""
   }
 }
