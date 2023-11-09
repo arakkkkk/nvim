@@ -1,4 +1,4 @@
-# {{_expr_:substitute(expand('%:.:r'), '[/_]', ' ', 'g')}}
+# {{_expr_:substitute(expand('%:t:r'), '[/_]', ' ', 'g')}}
 ## Links
 - 
 ## Contents
