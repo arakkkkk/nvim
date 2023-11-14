@@ -7,6 +7,7 @@ sudo apt install nvim
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
 
 ## Plugins
+See all plugins in [here](lua/core/plugins.lua).
 
 ### LSP
 - nvim-lspconfig
@@ -34,7 +35,6 @@ See all keymaps in [here](lua/core/mappings.lua).
 | <C-h>/<C-j>/<C-k>/<C-l> | Move cursole                | smart-splits.nvim |
 | <S-h>/<S-l>             | Shift buffer                | bufferline.nvim   |
 | <C-\>                   | Floating term               | toggleterm.nvim   |
-|                         |                             |                   |
 |                         |                             |                   |
 | ss                      |                             |                   |
 | siw                     |                             |                   |
