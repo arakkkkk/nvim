@@ -257,20 +257,25 @@ require("lazy").setup({
 			require("configs.nvim-lspconfig")
 		end,
 	},
-
-	{
-		"neovim-stuff/null-ls.nvim",
-		lazy = false,
-		dependencies = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("configs.null-ls")
-		end,
-	},
-
 	{
 		"nvimdev/lspsaga.nvim",
 		config = function()
 			require("configs.lspsaga")
+		end,
+	},
+
+	{
+		-- "mfussenegger/nvim-lint",
+		dir = "~/ghq/github.com/mfussenegger/nvim-lint",
+		config = function()
+			require("configs.lint")
+		end,
+	},
+
+	{
+		'stevearc/conform.nvim',
+		config = function()
+			require("configs.conform")
 		end,
 	},
 
