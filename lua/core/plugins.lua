@@ -273,7 +273,7 @@ require("lazy").setup({
 	},
 
 	{
-		'stevearc/conform.nvim',
+		"stevearc/conform.nvim",
 		config = function()
 			require("configs.conform")
 		end,
@@ -308,11 +308,11 @@ require("lazy").setup({
 		dependencies = { "hrsh7th/nvim-cmp", "kyoh86/vim-ripgrep" },
 	},
 
-	{ "hrsh7th/cmp-buffer",   after = "nvim-cmp" },
-	{ "hrsh7th/cmp-path",     after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
-	{ "hrsh7th/cmp-vsnip",    after = "nvim-cmp" },
-	{ "hrsh7th/vim-vsnip",    after = "nvim-cmp" },
-	{ "hrsh7th/cmp-cmdline",  after = "nvim-cmp" },
+	{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-path", after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
+	{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
+	{ "hrsh7th/vim-vsnip", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
 	{ "onsails/lspkind.nvim", after = "nvim-cmp" },
 
 	{
@@ -454,13 +454,13 @@ require("lazy").setup({
 		ft = { "markdown", "vimwiki" },
 	},
 
-	-- {
-	-- 	-- "hrsh7th/nvim-pasta",
-	-- 	dir = "~/ghq/github.com/hrsh7th/nvim-pasta",
-	-- 	config = function()
-	-- 		require("configs.nvim-pasta")
-	-- 	end,
-	-- },
+	{
+		"hrsh7th/nvim-pasta",
+		-- dir = "~/ghq/github.com/hrsh7th/nvim-pasta",
+		config = function()
+			require("configs.nvim-pasta")
+		end,
+	},
 
 	{
 		"stevearc/aerial.nvim",
