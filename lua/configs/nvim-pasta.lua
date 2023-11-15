@@ -1,4 +1,4 @@
-vim.keymap.set({ "n", "x" }, "x", require("pasta.mapping").p)
+vim.keymap.set({ "n", "x" }, "p", require("pasta.mapping").p)
 vim.keymap.set({ "n", "x" }, "P", require("pasta.mapping").P)
 
 -- This is the default. You can omit `setup` call if you don't want to change this.
