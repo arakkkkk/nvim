@@ -1,7 +1,7 @@
-# neovim config by arakkk
+# neovim config
 ## Instration
 ```sh
-https://github.com/arakkkkk/nvim
+git clone https://github.com/arakkkkk/nvim ~/.config/nvim
 sudo apt install nvim
 ```
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
@@ -9,12 +9,19 @@ https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux
 ## Plugins
 See all plugins in [here](lua/core/plugins.lua).
 
-### LSP
+### LSP completion
+1. Install LS with `:Mason`.
+2. Set up automatically.
 - nvim-lspconfig
-- mason
-- mason-lspconfig
-- conform.nvim
-- nvim-lint.nvim
+- nvim-cmp
+### Formatter
+1. Install Formatter with `:Mason`.
+2. Set up formatter with conform.nvim.
+- `nvim/lua/configs/conform.lua`
+### Linter
+1. Install Formatter with `:Mason`.
+2. Set up formatter with nvim-lint.nvim.
+- `nvim/lua/configs/lint.lua`
 
 ## Usage
 ### Keymap
@@ -43,7 +50,6 @@ See all keymaps in [here](lua/core/mappings.lua).
 ### How to add LSP
 1. Select and install LSP with Mason by `:Mason`
 ### check lsp status
-`:NullLsInfo`
 `:LspInfo`
 
 ### commands
