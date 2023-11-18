@@ -454,13 +454,12 @@ require("lazy").setup({
 		ft = { "markdown", "vimwiki" },
 	},
 
-	{
-		"hrsh7th/nvim-pasta",
-		-- dir = "~/ghq/github.com/hrsh7th/nvim-pasta",
-		config = function()
-			require("configs.nvim-pasta")
-		end,
-	},
+	-- {
+	-- 	"hrsh7th/nvim-pasta",
+	-- 	config = function()
+	-- 		require("configs.nvim-pasta")
+	-- 	end,
+	-- },
 
 	{
 		"stevearc/aerial.nvim",
