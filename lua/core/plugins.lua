@@ -466,8 +466,6 @@ require("lazy").setup({
 		config = function()
 			require("configs.aerial")
 		end,
-		opts = {},
-		-- Optional dependencies
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",

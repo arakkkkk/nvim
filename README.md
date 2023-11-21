@@ -64,4 +64,3 @@ See all keymaps in [here](lua/core/mappings.lua).
   - command to quick run
 - c
   - command to run with !
-  
