@@ -265,8 +265,8 @@ require("lazy").setup({
 	},
 
 	{
-		-- "mfussenegger/nvim-lint",
-		dir = "~/ghq/github.com/mfussenegger/nvim-lint",
+		"mfussenegger/nvim-lint",
+		-- dir = "~/ghq/github.com/mfussenegger/nvim-lint",
 		config = function()
 			require("configs.lint")
 		end,
