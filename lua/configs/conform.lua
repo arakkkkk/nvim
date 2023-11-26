@@ -5,6 +5,7 @@ require("conform").setup({
 		lua = { "stylua" },
 		-- Conform will run multiple formatters sequentially
 		go = { "goimports", "gofmt" },
+		python = { "isort", "black" },
 	},
 })
 
