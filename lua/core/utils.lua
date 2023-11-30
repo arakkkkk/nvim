@@ -30,6 +30,9 @@ function utils.run_in_term()
 	elseif file_ext == "lua" then
 		vim.cmd("split")
 		vim.cmd("term lua " .. file_name)
+	elseif file_ext == "sh" then
+		vim.cmd("split")
+		vim.cmd("term sh " .. file_name)
 	end
 end
 
@@ -52,7 +55,7 @@ function utils.getOS()
 		return jit.os
 	end
 	-- Unix, Linux variants
-	local fh,err = assert(io.popen("uname -o 2>/dev/null","r"))
+	local fh, err = assert(io.popen("uname -o 2>/dev/null", "r"))
 	if fh then
 		osname = fh:read()
 	end
@@ -62,9 +65,9 @@ end
 function utils.setHOMEPath(path)
 	local replaced_path
 	if utils.getOS() == "Windows" then
-   replaced_path	= string.gsub(path, "^~", os.getenv("UserProfile"))
+		replaced_path = string.gsub(path, "^~", os.getenv("UserProfile"))
 	else
-   replaced_path	= string.gsub(path, "^~", os.getenv("HOME"))
+		replaced_path = string.gsub(path, "^~", os.getenv("HOME"))
 	end
 	return replaced_path
 end
@@ -77,7 +80,7 @@ function utils.openFloatingWindow(path)
 		col = 10,
 		width = vim.o.columns - 10 * 2,
 		height = vim.fn.winheight(0) - 5 * 2,
-		border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 		-- style = "minimal",
 		zindex = 10,
 	}
@@ -87,7 +90,7 @@ function utils.openFloatingWindow(path)
 	vim.api.nvim_create_autocmd("BufLeave", {
 		buffer = buf_nr,
 		callback = function()
-			vim.api.nvim_buf_delete(buf_nr,{})
+			vim.api.nvim_buf_delete(buf_nr, {})
 		end,
 	})
 
