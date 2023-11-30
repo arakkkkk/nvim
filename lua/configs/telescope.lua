@@ -58,7 +58,10 @@ require("telescope").setup({
 				["<C-c>"] = actions.close,
 				["yy"] = function()
 					local buf_select = action_state.get_selected_entry()
-					vim.fn.setreg("+", buf_select[1])
+					local path = buf_select[1]
+					path = path:gsub(".md$", "")
+					path = path:gsub("\\", "/")
+					vim.fn.setreg("+", path)
 				end,
 				["<C-^>"] = swicher.file_browser,
 			},
@@ -166,6 +169,14 @@ require("telescope").setup({
 				},
 			},
 		},
+		aerial = {
+			-- Display symbols as <root>.<parent>.<symbol>
+			show_nesting = {
+				["_"] = false, -- This key will be the default
+				json = true, -- You can set the option for specific filetypes
+				yaml = true,
+			},
+		},
 	},
 })
 require("telescope").load_extension("file_browser")
@@ -173,3 +184,4 @@ require("telescope").load_extension("file_browser")
 -- require("telescope").load_extension("frecency")
 require("telescope").load_extension("live_grep_args")
 require("telescope").load_extension("sonictemplate")
+require("telescope").load_extension("aerial")
