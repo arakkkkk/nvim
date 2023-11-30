@@ -74,7 +74,7 @@ require("telescope").setup({
 					register = string.gsub(register, "\n", "")
 					vim.api.nvim_feedkeys(register, "i", true)
 				end,
-				["C-y"] = function()
+				["C-Y"] = function()
 					local buf_select = action_state.get_selected_entry()
 					vim.fn.setreg("+", buf_select[1])
 				end,
