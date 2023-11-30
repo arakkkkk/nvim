@@ -58,7 +58,10 @@ require("telescope").setup({
 				["<C-c>"] = actions.close,
 				["yy"] = function()
 					local buf_select = action_state.get_selected_entry()
-					vim.fn.setreg("+", buf_select[1])
+					local path = buf_select[1]
+					path = path:gsub(".md$", "")
+					path = path:gsub("\\", "/")
+					vim.fn.setreg("+", path)
 				end,
 				["<C-^>"] = swicher.file_browser,
 			},
@@ -73,10 +76,6 @@ require("telescope").setup({
 					local register = vim.fn.getreg('"')
 					register = string.gsub(register, "\n", "")
 					vim.api.nvim_feedkeys(register, "i", true)
-				end,
-				["C-Y"] = function()
-					local buf_select = action_state.get_selected_entry()
-					vim.fn.setreg("+", buf_select[1])
 				end,
 			},
 		},
