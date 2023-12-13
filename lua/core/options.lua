@@ -1,8 +1,8 @@
 utils = require("core.utils")
 
-vim.scriptencoding = 'utf-8'
-vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
+vim.scriptencoding = "utf-8"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 
 -- vim.o.shell = "/bin/bash"
 vim.o.clipboard = "unnamedplus" -- Connection to the system clipboard
@@ -33,7 +33,7 @@ vim.o.termguicolors = true -- Enable 24-bit RGB color in the TUI
 vim.o.timeoutlen = 300 -- Length of time to wait for a mapped sequence
 vim.o.undofile = true -- Enable persistent undo
 vim.o.updatetime = 300 -- Length of time to wait before triggering the plugin
-vim.o.wrap = false -- Disable wrapping of lines longer than the width of window
+vim.o.wrap = true -- Disable wrapping of lines longer than the width of window
 -- vim.opt.textwidth = 120
 vim.o.writebackup = false -- Disable making a backup before overwriting a file
 
@@ -42,10 +42,10 @@ vim.opt.formatoptions:remove("t")
 vim.opt.formatoptions:append("mM")
 
 if utils.getOS() == "Windows" then
-  vim.g.nvim_path = utils.setHOMEPath("~\\AppData\\Local\\nvim\\")
-  vim.g.note_path = utils.setHOMEPath("~\\notes.wiki\\")
+	vim.g.nvim_path = utils.setHOMEPath("~\\AppData\\Local\\nvim\\")
+	vim.g.note_path = utils.setHOMEPath("~\\notes.wiki\\")
 else
-  vim.g.nvim_path = utils.setHOMEPath("~/.config/nvim/")
-  vim.g.note_path = utils.setHOMEPath("~/Note/")
+	vim.g.nvim_path = utils.setHOMEPath("~/.config/nvim/")
+	vim.g.note_path = utils.setHOMEPath("~/Note/")
 end
 vim.g.vsnip_snippet_dir = vim.g.nvim_path .. "snippets"

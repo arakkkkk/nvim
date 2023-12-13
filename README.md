@@ -52,6 +52,11 @@ See all keymaps in [here](lua/core/mappings.lua).
 ### check lsp status
 `:LspInfo`
 
+### For python development
+```
+pip install pynvim
+```
+
 ### commands
 
 ### Registers
