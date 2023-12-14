@@ -55,7 +55,7 @@ require("lazy").setup({
 
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+		dependencies = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("configs.lualine")
 		end,
@@ -308,12 +308,12 @@ require("lazy").setup({
 		dependencies = { "hrsh7th/nvim-cmp", "kyoh86/vim-ripgrep" },
 	},
 
-	{ "hrsh7th/cmp-buffer"},
+	{ "hrsh7th/cmp-buffer" },
 	{ "hrsh7th/cmp-path", dependencies = { "hrsh7th/cmp-vsnip" } },
-	{ "hrsh7th/cmp-vsnip"},
-	{ "hrsh7th/vim-vsnip"},
-	{ "hrsh7th/cmp-cmdline"},
-	{ "onsails/lspkind.nvim"},
+	{ "hrsh7th/cmp-vsnip" },
+	{ "hrsh7th/vim-vsnip" },
+	{ "hrsh7th/cmp-cmdline" },
+	{ "onsails/lspkind.nvim" },
 
 	{
 		"mattn/vim-sonictemplate",
