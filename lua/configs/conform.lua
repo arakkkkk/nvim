@@ -6,6 +6,9 @@ require("conform").setup({
 		-- Conform will run multiple formatters sequentially
 		go = { "goimports", "gofmt" },
 		python = { "isort", "black" },
+		html = { "prettier" },
+		css = { "prettier" },
+		javascriptreact = { "prettier" },
 	},
 })
 

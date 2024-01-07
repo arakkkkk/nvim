@@ -1,0 +1,18 @@
+{
+  "p-tag": {
+    "prefix": ["p"],
+    "body": ["<p>$0</p>"]
+  },
+  "a-tag": {
+    "prefix": ["a"],
+    "body": ["<a>$0</a>"]
+  },
+  "div-tag": {
+    "prefix": ["div"],
+    "body": ["<div>$0</div>"]
+  },
+  "span-tag": {
+    "prefix": ["span"],
+    "body": ["<span>$0</span>"]
+  }
+}
