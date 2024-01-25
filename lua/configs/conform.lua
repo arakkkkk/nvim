@@ -9,6 +9,7 @@ require("conform").setup({
 		html = { "prettier" },
 		css = { "prettier" },
 		javascriptreact = { "prettier" },
+		javascript = { "prettier" },
 	},
 })
 
