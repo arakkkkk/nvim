@@ -16,7 +16,7 @@ require("lazy").setup({
 	---------------------
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.0",
+		-- tag = "0.1.5",
 		dependencies = {
 			{
 				"nvim-lua/plenary.nvim",
@@ -55,7 +55,7 @@ require("lazy").setup({
 
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
+		dependencies = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("configs.lualine")
 		end,
@@ -75,16 +75,16 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"folke/noice.nvim",
-		config = function()
-			require("configs.noice")
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		},
-	},
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	config = function()
+	-- 		require("configs.noice")
+	-- 	end,
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"rcarriga/nvim-notify",
+	-- 	},
+	-- },
 
 	{
 		"utilyre/barbecue.nvim",
@@ -308,12 +308,12 @@ require("lazy").setup({
 		dependencies = { "hrsh7th/nvim-cmp", "kyoh86/vim-ripgrep" },
 	},
 
-	{ "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-	{ "hrsh7th/cmp-path", after = "nvim-cmp", dependencies = { "hrsh7th/cmp-vsnip" } },
-	{ "hrsh7th/cmp-vsnip", after = "nvim-cmp" },
-	{ "hrsh7th/vim-vsnip", after = "nvim-cmp" },
-	{ "hrsh7th/cmp-cmdline", after = "nvim-cmp" },
-	{ "onsails/lspkind.nvim", after = "nvim-cmp" },
+	{ "hrsh7th/cmp-buffer" },
+	{ "hrsh7th/cmp-path", dependencies = { "hrsh7th/cmp-vsnip" } },
+	{ "hrsh7th/cmp-vsnip" },
+	{ "hrsh7th/vim-vsnip" },
+	{ "hrsh7th/cmp-cmdline" },
+	{ "onsails/lspkind.nvim" },
 
 	{
 		"mattn/vim-sonictemplate",
@@ -336,6 +336,7 @@ require("lazy").setup({
 	-- Git integration
 	{
 		"lewis6991/gitsigns.nvim",
+		lazy = false,
 		config = function()
 			require("configs.gitsigns")
 		end,
@@ -468,7 +469,6 @@ require("lazy").setup({
 		end,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
 		},
 	},
 
