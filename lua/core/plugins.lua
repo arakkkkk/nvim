@@ -343,8 +343,8 @@ require("lazy").setup({
 	},
 
 	-- {
-	-- 	"arakkkkk/kanban.nvim",
-	-- 	-- dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+	-- 	-- "arakkkkk/kanban.nvim",
+	-- 	dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
 	-- 	config = function()
 	-- 		require("configs.kanban")
 	-- 	end,
@@ -354,8 +354,8 @@ require("lazy").setup({
 	-- Markdown
 	--------------------
 	{
-		-- "jakewvincent/mkdnflow.nvim",
-		"arakkkkk/mkdnflow.nvim",
+		"jakewvincent/mkdnflow.nvim",
+		-- "arakkkkk/mkdnflow.nvim",
 		-- rocks = "luautf8", -- Ensures optional luautf8 dependency is installed
 		-- dir = "~/Downloads/mkdnflow.nvim",
 		config = function()
@@ -455,12 +455,12 @@ require("lazy").setup({
 		ft = { "markdown", "vimwiki" },
 	},
 
-	-- {
-	-- 	"hrsh7th/nvim-pasta",
-	-- 	config = function()
-	-- 		require("configs.nvim-pasta")
-	-- 	end,
-	-- },
+	{
+		"hrsh7th/nvim-pasta",
+		config = function()
+			require("configs.nvim-pasta")
+		end,
+	},
 
 	{
 		"stevearc/aerial.nvim",

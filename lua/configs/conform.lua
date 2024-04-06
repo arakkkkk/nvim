@@ -1,6 +1,6 @@
 require("conform").setup({
 	formatters_by_ft = {
-		markdown = { "markdown-toc" },
+		-- markdown = { "markdown-toc" },
 		json = { "prettier" },
 		lua = { "stylua" },
 		-- Conform will run multiple formatters sequentially
