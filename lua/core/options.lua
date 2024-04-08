@@ -33,7 +33,7 @@ vim.o.termguicolors = true -- Enable 24-bit RGB color in the TUI
 vim.o.timeoutlen = 300 -- Length of time to wait for a mapped sequence
 vim.o.undofile = true -- Enable persistent undo
 vim.o.updatetime = 300 -- Length of time to wait before triggering the plugin
-vim.o.wrap = true -- Disable wrapping of lines longer than the width of window
+vim.o.wrap = false -- Disable wrapping of lines longer than the width of window
 -- vim.opt.textwidth = 120
 vim.o.writebackup = false -- Disable making a backup before overwriting a file
 
