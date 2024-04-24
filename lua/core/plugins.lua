@@ -75,16 +75,16 @@ require("lazy").setup({
 		end,
 	},
 
-	-- {
-	-- 	"folke/noice.nvim",
-	-- 	config = function()
-	-- 		require("configs.noice")
-	-- 	end,
-	-- 	dependencies = {
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		"rcarriga/nvim-notify",
-	-- 	},
-	-- },
+	{
+		"folke/noice.nvim",
+		config = function()
+			require("configs.noice")
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			-- "rcarriga/nvim-notify",
+		},
+	},
 
 	{
 		"utilyre/barbecue.nvim",
