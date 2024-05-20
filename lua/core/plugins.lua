@@ -231,6 +231,13 @@ require("lazy").setup({
 		end,
 	},
 
+	{
+		"rhysd/clever-f.vim",
+		config = function() end,
+	},
+
+	{ "junegunn/vim-easy-align" },
+
 	--------------------
 	-- LSP integration
 	--------------------
@@ -432,6 +439,15 @@ require("lazy").setup({
 		ft = { "markdown", "tex" },
 	},
 
+	{
+		"folke/todo-comments.nvim",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = function()
+			require("configs.todo-comments")
+		end,
+		ft = { "markdown", "vimwiki" },
+	},
+
 	--------------------
 	-- LaTeX integration
 	--------------------
@@ -446,15 +462,6 @@ require("lazy").setup({
 	--------------------
 	-- Others
 	--------------------
-	{
-		"folke/todo-comments.nvim",
-		dependencies = "nvim-lua/plenary.nvim",
-		config = function()
-			require("configs.todo-comments")
-		end,
-		ft = { "markdown", "vimwiki" },
-	},
-
 	-- {
 	-- 	"hrsh7th/nvim-pasta",
 	-- 	config = function()
@@ -478,8 +485,6 @@ require("lazy").setup({
 			require("close_buffers").setup({})
 		end,
 	},
-
-	{ "junegunn/vim-easy-align" },
 
 	{
 		"ShikChen/osc52.vim",
