@@ -24,6 +24,7 @@ require("lazy").setup({
 				"nvim-telescope/telescope-file-browser.nvim",
 				"nvim-telescope/telescope-live-grep-args.nvim",
 				"arakkkkk/telescope-sonictemplate.nvim",
+				"delphinus/telescope-memo.nvim",
 			},
 		},
 		config = function()
@@ -483,6 +484,13 @@ require("lazy").setup({
 		"kazhala/close-buffers.nvim",
 		config = function()
 			require("close_buffers").setup({})
+		end,
+	},
+
+	{
+		"glidenote/memolist.vim",
+		config = function()
+			require("configs.memolist")
 		end,
 	},
 

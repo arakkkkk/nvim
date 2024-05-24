@@ -200,20 +200,15 @@ wk.register({
 ----------------------------
 wk.register({
 	name = "+Markdown",
-	m = {
+	r = {
 		function()
-			utils.openFloatingWindow(vim.g.note_path .. "home.md")
+			utils.openFloatingWindow(vim.g.note_path .. "README.md")
 		end,
 		"Note",
 	},
-	w = {
-		function()
-			vim.cmd(
-				":e " .. vim.g.note_path .. "weekly/" .. os.date("%Y-%m-") .. os.date("%d") - os.date("%w") + 1 .. ".md"
-			)
-		end,
-		"Weekly Note",
-	},
+	n = { "<cmd>MemoNew<cr>", "Memo New" },
+	l = { "<cmd>Telescope memo list<cr>", "Memo list" },
+	g = { "<cmd>Telescope memo live_grep<cr>", "Memo live_grep" },
 	p = { ":MarkdownPreviewToggle<cr>", "Preview" },
 }, { prefix = "m" })
 ----------------------------

@@ -1,0 +1,60 @@
+-- -- suffix type (default markdown)
+-- vim.g["memolist_memo_suffix"] = "markdown"
+-- vim.g["memolist_memo_suffix"] = "txt"
+--
+-- -- date format (default %Y-%m-%d %H:%M)
+-- vim.g["memolist_memo_date"] = "%Y-%m-%d %H:%M"
+-- vim.g["memolist_memo_date"] = "epoch"
+-- vim.g["memolist_memo_date"] = "%D %T"
+--
+-- -- tags prompt (default 0)
+-- vim.g["memolist_prompt_tags"] = 1
+--
+-- -- categories prompt (default 0)
+-- vim.g["memolist_prompt_categories"] = 1
+--
+-- -- use qfixgrep (default 0)
+-- vim.g["memolist_qfixgrep"] = 1
+--
+-- -- use vimfiler (default 0)
+-- vim.g["memolist_vimfiler"] = 1
+--
+-- -- use fzf (default 0)
+-- vim.g["memolist_fzf"] = 1
+--
+-- -- remove filename prefix (default 0)
+-- vim.g["memolist_filename_prefix_none"] = 1
+--
+-- -- use unite (default 0)
+-- vim.g["memolist_unite"] = 1
+--
+-- -- use arbitrary unite source (default is 'file')
+-- vim.g["memolist_unite_source"] = "file_rec"
+--
+-- -- use arbitrary unite option (default is empty)
+-- vim.g["memolist_unite_option"] = "-auto-preview -start-insert"
+--
+-- -- use denite (default 0)
+-- vim.g["memolist_denite"] = 1
+--
+-- -- use arbitrary denite source (default is 'file_rec')
+-- vim.g["memolist_denite_source"] = "anything"
+--
+-- -- use arbitrary denite option (default is empty)
+-- vim.g["memolist_denite_option"] = "anything"
+--
+-- -- use various Ex commands (default '')
+-- vim.g["memolist_ex_cmd"] = "CtrlP"
+-- vim.g["memolist_ex_cmd"] = "NERDTree"
+-- vim.g["memolist_ex_cmd"] = "Defx"
+-- vim.g["memolist_ex_cmd"] = "Clap files"
+--
+-- -- use delimiter of array in yaml front matter (default is ' ')
+-- vim.g["memolist_delimiter_yaml_array"] = ","
+--
+-- -- use when get items from yaml front matter
+-- -- first line string pattern of yaml front matter (default "==========")
+-- vim.g["memolist_delimiter_yaml_start"] = "---"
+--
+-- -- last line string pattern of yaml front matter (default "- - -")
+-- vim.g["memolist_delimiter_yaml_end "] = "---"
