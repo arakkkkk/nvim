@@ -1,5 +1,5 @@
 -- -- suffix type (default markdown)
--- vim.g["memolist_memo_suffix"] = "markdown"
+vim.g["memolist_memo_suffix"] = "md"
 -- vim.g["memolist_memo_suffix"] = "txt"
 --
 -- -- date format (default %Y-%m-%d %H:%M)
