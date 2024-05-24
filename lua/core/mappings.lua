@@ -207,8 +207,8 @@ wk.register({
 		"Note",
 	},
 	n = { "<cmd>MemoNew<cr>", "Memo New" },
-	l = { "<cmd>Telescope memo list<cr>", "Memo list" },
-	g = { "<cmd>Telescope memo live_grep<cr>", "Memo live_grep" },
+	l = { "<cmd>Telescope memolist list<cr>", "Memo list" },
+	g = { "<cmd>Telescope memolist live_grep<cr>", "Memo live_grep" },
 	p = { ":MarkdownPreviewToggle<cr>", "Preview" },
 }, { prefix = "m" })
 ----------------------------

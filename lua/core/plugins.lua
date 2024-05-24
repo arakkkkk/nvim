@@ -24,7 +24,7 @@ require("lazy").setup({
 				"nvim-telescope/telescope-file-browser.nvim",
 				"nvim-telescope/telescope-live-grep-args.nvim",
 				"arakkkkk/telescope-sonictemplate.nvim",
-				"delphinus/telescope-memo.nvim",
+				"arakkkkk/telescope-memolist.nvim",
 			},
 		},
 		config = function()
