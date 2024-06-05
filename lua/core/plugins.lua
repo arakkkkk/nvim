@@ -239,6 +239,8 @@ require("lazy").setup({
 
 	{ "junegunn/vim-easy-align" },
 
+	{ "monaqa/dial.nvim" },
+
 	--------------------
 	-- LSP integration
 	--------------------
@@ -347,6 +349,13 @@ require("lazy").setup({
 		lazy = false,
 		config = function()
 			require("configs.gitsigns")
+		end,
+	},
+
+	{
+		"rhysd/git-messenger.vim",
+		config = function()
+			require("configs.git-messenger")
 		end,
 	},
 

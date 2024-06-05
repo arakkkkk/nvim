@@ -165,7 +165,25 @@ for key, cmd in pairs(cmd_set) do
 	end, { "n", ":" .. key .. "<cr>" }, true)
 end
 
+----------------------------
+-- Lspsaga
+----------------------------
+cmap(nil, function()
+	require("dial.map").manipulate("increment", "normal")
+end, { "n", "<C-a>" }, true)
+cmap(nil, function()
+	require("dial.map").manipulate("decrement", "normal")
+end, { "n", "<C-x>" }, true)
+cmap(nil, function()
+	require("dial.map").manipulate("increment", "gnormal")
+end, { "n", "g<C-a>" }, true)
+cmap(nil, function()
+	require("dial.map").manipulate("decrement", "gnormal")
+end, { "n", "g<C-x>" }, true)
+
+----------------------------
 -- substitute.nvim
+----------------------------
 cmap(nil, function()
 	require("substitute").operator()
 end, { "n", "s" }, true)
@@ -187,13 +205,15 @@ cmap({ desc = "lspsaga: hover doc", cat = "lsp" }, "<cmd>Lspsaga hover_doc<CR>",
 cmap(nil, "<cmd>Lspsaga diagnostic_jump_next<CR>", { "n", "]e" }, true)
 cmap(nil, "<cmd>Lspsaga diagnostic_jump_prev<CR>", { "n", "[e" }, true)
 wk.register({
-	name = "+Lspsaga",
-	r = { "<cmd>Lspsaga lsp_finder<CR>", "Ref" },
-	f = { "<cmd>Lspsaga finder def+ref<CR>", "Finder" },
-	d = { "<cmd>Lspsaga peek_definition<CR>", "Peek Definition" },
-	a = { "<cmd>Lspsaga code_action<CR>", "Code Action" },
-	p = { "<cmd>Lspsaga rename<CR>", "Preview" },
-	e = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Diagnostics" },
+	name = "+Lspsaga+Gitmessenger",
+	r = { "<cmd>Lspsaga lsp_finder<CR>", "Lspsaga Ref" },
+	f = { "<cmd>Lspsaga finder def+ref<CR>", "Lspsaga Finder" },
+	d = { "<cmd>Lspsaga peek_definition<CR>", "Lspsaga Peek Definition" },
+	a = { "<cmd>Lspsaga code_action<CR>", "Lspsaga Code Action" },
+	p = { "<cmd>Lspsaga rename<CR>", "Lspsaga Preview" },
+	e = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Lspsaga Diagnostics" },
+	k = { "<cmd>Lspsaga hover_doc<CR>", "Lspsaga Hover Doc" },
+	m = { "<cmd>GitMessenger<CR>", "GitMessenger" },
 }, { prefix = "g" })
 ----------------------------
 -- Markdown
