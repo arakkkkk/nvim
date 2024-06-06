@@ -6,6 +6,7 @@ for _, source in ipairs({
 	"core.utils",
 	"core.mappings",
 	"core.autocmd",
+	"core.treesitter",
 
 	"theme.init",
 	"mymods.init",
