@@ -70,13 +70,6 @@ require("lazy").setup({
 	},
 
 	{
-		"nvim-treesitter/nvim-treesitter",
-		config = function()
-			require("nvim-treesitter")
-		end,
-	},
-
-	{
 		"folke/noice.nvim",
 		config = function()
 			require("configs.noice")
@@ -121,6 +114,7 @@ require("lazy").setup({
 	-- Session manager
 	{
 		"Shatur/neovim-session-manager",
+		lazy = false,
 		config = function()
 			require("configs.session-manager")
 		end,

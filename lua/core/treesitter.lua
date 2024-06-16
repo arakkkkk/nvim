@@ -5,13 +5,14 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	end,
 })
 
-require("nvim-treesitter").setup({
+require("nvim-treesitter.configs").setup({
 	ensure_installed = { "lua", "regex", "bash", "markdown", "markdown_inline", "turtle" },
 	sync_install = true,
 	ignore_install = {},
 	highlight = {
 		enable = true,
-		additional_vim_regex_highlighting = false,
+		disable = { "lua", "markdown", "python", "go" },
+		additional_vim_regex_highlighting = true,
 	},
 	context_commentstring = {
 		enable = true,
