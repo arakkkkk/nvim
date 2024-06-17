@@ -29,6 +29,7 @@ require("aerial").setup({
 			"Module",
 			"Method",
 			"Struct",
+			"String",
 		},
 		tex = {
 			"Class",
