@@ -114,7 +114,6 @@ require("lazy").setup({
 	-- Session manager
 	{
 		"Shatur/neovim-session-manager",
-		lazy = false,
 		config = function()
 			require("configs.session-manager")
 		end,
@@ -240,7 +239,6 @@ require("lazy").setup({
 	--------------------
 	{
 		"williamboman/mason.nvim",
-		lazy = false,
 		config = function()
 			require("configs.mason")
 		end,
@@ -248,7 +246,10 @@ require("lazy").setup({
 
 	{
 		"williamboman/mason-lspconfig.nvim",
-		lazy = false,
+		dependencies = {
+			{ "williamboman/mason.nvim" },
+			{ "neovim/nvim-lspconfig" },
+		},
 		config = function()
 			require("configs.mason-lspconfig")
 		end,
@@ -256,7 +257,6 @@ require("lazy").setup({
 
 	{
 		"neovim/nvim-lspconfig",
-		lazy = false,
 		config = function()
 			require("configs.nvim-lspconfig")
 		end,
@@ -340,7 +340,6 @@ require("lazy").setup({
 	-- Git integration
 	{
 		"lewis6991/gitsigns.nvim",
-		lazy = false,
 		config = function()
 			require("configs.gitsigns")
 		end,
