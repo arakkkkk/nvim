@@ -14,7 +14,6 @@ def text2obj(text):
   headRegExp = re.compile(r"h(\d+)\. .+")
   paragRegExp = re.compile(r"p\(\. .+")
   res = []
-  line_count = 0
   for i, line in enumerate(lines):
     if re.match(headRegExp, line):
       res.append({
@@ -23,7 +22,7 @@ def text2obj(text):
         "text": line,
         "type": "header",
         "level": int(re.match(headRegExp, line).group(1)),
-        "line_count": line_count,
+        "start_num": i+1,
       })
     elif re.match(paragRegExp, line):
       res.append({
@@ -31,17 +30,16 @@ def text2obj(text):
         "head": None,
         "text": line,
         "type": "paragraph",
-        "line_count": line_count,
+        "start_num": i+1,
       })
     else:
-      res.append({
-        "id": i + 1,
-        "head": None,
-        "text": line,
-        "type": "text",
-        "line_count": line_count,
-      })
-    line_count += len(line) + 1
+      pass
+      # res.append({
+      #   "id": i + 1,
+      #   "head": None,
+      #   "text": line,
+      #   "type": "text",
+      # })
   return res
 
 def parseTextile(lines, level, head_id, res=[], watched=[]):
@@ -65,14 +63,12 @@ def parseTextile(lines, level, head_id, res=[], watched=[]):
       if line["level"] == level:
         watched.append(line["id"])
         line["head"] = head_id
-        res.append(line)
         parseTextile(lines, level + 1, line["id"], res, watched)
       elif line["level"] < level:
         return
     elif line["type"] == "paragraph":
       watched.append(line["id"])
       line["head"] = head_id
-      res.append(line)
 
 # テキスト例
 text = """
@@ -93,9 +89,12 @@ h2. Header2
 
 # テキストをオブジェクトに変換
 objects = text2obj(text)
+print(len(objects))
 
 # オブジェクトを解析
 parseTextile(objects, 1, None, objects)
+print(len(objects))
 
 # 解析結果を出力
-print(objects)
+for o in objects:
+  print(o)
