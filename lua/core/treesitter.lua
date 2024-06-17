@@ -1,9 +1,3 @@
--- vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
--- 	pattern = "*.tt",
--- 	callback = function()
--- 		vim.bo.filetype = "textile"
--- 	end,
--- })
 --
 -- require("nvim-treesitter.configs").setup({
 -- 	ensure_installed = { "lua", "regex", "bash", "markdown", "markdown_inline", "turtle" },

@@ -1,3 +1,9 @@
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "*.tt",
+	callback = function()
+		vim.bo.filetype = "textile"
+	end,
+})
 for _, source in ipairs({
 	"core.options",
 	"core.config",

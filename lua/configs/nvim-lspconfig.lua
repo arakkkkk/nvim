@@ -1,3 +1,6 @@
+local nvim_lsp = require("lspconfig")
+
+require("lspconfig")
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
 	{ name = "DiagnosticSignWarn", text = "" },
@@ -8,7 +11,7 @@ for _, sign in ipairs(signs) do
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
-require("lspconfig").html.setup({
+nvim_lsp.html.setup({
 	filetypes = { "html", "htmldjango" },
 })
 
@@ -56,5 +59,34 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- vim.keymap.set("n", "<space>fm", function()
 		-- 	vim.lsp.buf.format({ async = true })
 		-- end, opts)
+	end,
+})
+
+-- nvim_lsp.my_lsp_server = {
+-- 	default_config = {
+-- 		cmd = { "python", "~/Downloads/lsp-textile/lsp-textile.py" },
+-- 		filetypes = { "plaintext" },
+-- 		root_dir = function(fname)
+-- 			return vim.loop.cwd()
+-- 		end,
+-- 		settings = {},
+-- 	},
+-- }
+-- nvim_lsp.my_lsp_server.setup({})
+
+-- Create an event handler for the FileType autocommand
+vim.api.nvim_create_autocmd("FileType", {
+	-- This handler will fire when the buffer's 'filetype' is "python"
+	pattern = "textile",
+	callback = function(ev)
+		vim.lsp.start({
+			name = "lsp-textile",
+			cmd = { "python", "/home/arakkk/Downloads/lsp-textile/lsp-textile.py" },
+			-- Set the "root directory" to the parent directory of the file in the
+			-- current buffer (`ev.buf`) that contains either a "setup.py" or a
+			-- "pyproject.toml" file. Files that share a root directory will reuse
+			-- the connection to the same LSP server.
+			root_dir = vim.fs.root(ev.buf, { "setup.py", "pyproject.toml" }),
+		})
 	end,
 })
