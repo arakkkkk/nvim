@@ -75,18 +75,35 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- nvim_lsp.my_lsp_server.setup({})
 
 -- Create an event handler for the FileType autocommand
-vim.api.nvim_create_autocmd("FileType", {
-	-- This handler will fire when the buffer's 'filetype' is "python"
-	pattern = "textile",
-	callback = function(ev)
-		vim.lsp.start({
-			name = "lsp-textile",
-			cmd = { "python", "/home/arakkk/Downloads/lsp-textile/lsp-textile.py" },
-			-- Set the "root directory" to the parent directory of the file in the
-			-- current buffer (`ev.buf`) that contains either a "setup.py" or a
-			-- "pyproject.toml" file. Files that share a root directory will reuse
-			-- the connection to the same LSP server.
-			root_dir = vim.fs.root(ev.buf, { "setup.py", "pyproject.toml" }),
-		})
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	-- This handler will fire when the buffer's 'filetype' is "python"
+-- 	pattern = "textile",
+-- 	callback = function(ev)
+-- 		vim.lsp.start({
+-- 			name = "lsp-textile",
+-- 			cmd = { "python", "/home/arakkk/Downloads/lsp-textile/lsp-textile.py" },
+-- 			-- Set the "root directory" to the parent directory of the file in the
+-- 			-- current buffer (`ev.buf`) that contains either a "setup.py" or a
+-- 			-- "pyproject.toml" file. Files that share a root directory will reuse
+-- 			-- the connection to the same LSP server.
+-- 			root_dir = vim.fn.getcwd(), -- Use PWD as project root dir.
+-- 		})
+-- 	end,
+-- })
+
+local lspconfig = require("lspconfig")
+local configs = require("lspconfig.configs")
+
+if not configs.textilels then
+	configs.textilels = {
+		default_config = {
+			-- cmd = { "nargo", "lsp" },
+			cmd = { "textilels" },
+			-- cmd = { "python", "/home/arakkk/Downloads/lsp-textile/pygls/lsp-textile.py" },
+			root_dir = lspconfig.util.root_pattern("*"),
+			-- root_dir = vim.fn.getcwd(), -- Use PWD as project root dir.
+			filetypes = { "textile" },
+		},
+	}
+end
+lspconfig.textilels.setup({})
