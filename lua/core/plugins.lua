@@ -451,9 +451,9 @@ require("lazy").setup({
 		ft = { "markdown", "vimwiki" },
 	},
 
-	{
-		"arakkkkk/textile.nvim",
-	},
+	-- {
+	-- 	"arakkkkk/textile.nvim",
+	-- },
 
 	--------------------
 	-- LaTeX integration
