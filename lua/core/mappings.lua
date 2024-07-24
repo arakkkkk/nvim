@@ -204,33 +204,28 @@ local wk = require("which-key")
 cmap({ desc = "lspsaga: hover doc", cat = "lsp" }, "<cmd>Lspsaga hover_doc<CR>", { "n", "K" }, true)
 cmap(nil, "<cmd>Lspsaga diagnostic_jump_next<CR>", { "n", "]e" }, true)
 cmap(nil, "<cmd>Lspsaga diagnostic_jump_prev<CR>", { "n", "[e" }, true)
-wk.register({
-	name = "+Lspsaga+Gitmessenger",
-	r = { "<cmd>Lspsaga lsp_finder<CR>", "Lspsaga Ref" },
-	f = { "<cmd>Lspsaga finder def+ref<CR>", "Lspsaga Finder" },
-	d = { "<cmd>Lspsaga peek_definition<CR>", "Lspsaga Peek Definition" },
-	a = { "<cmd>Lspsaga code_action<CR>", "Lspsaga Code Action" },
-	p = { "<cmd>Lspsaga rename<CR>", "Lspsaga Preview" },
-	e = { "<cmd>Lspsaga show_line_diagnostics<CR>", "Lspsaga Diagnostics" },
-	k = { "<cmd>Lspsaga hover_doc<CR>", "Lspsaga Hover Doc" },
-	m = { "<cmd>GitMessenger<CR>", "GitMessenger" },
+wk.add({
+		{"<leader>g", group="+Lspsaga+Gitmessenger"},
+	{"<leader>gr", "<cmd>Lspsaga lsp_finder<CR>", desc="Lspsaga Ref" },
+	{"<leader>gf", "<cmd>Lspsaga finder def+ref<CR>", desc= "Lspsaga Finder" },
+	{"<leader>gd", "<cmd>Lspsaga peek_definition<CR>", desc= "Lspsaga Peek Definition" },
+	{"<leader>ga", "<cmd>Lspsaga code_action<CR>", desc= "Lspsaga Code Action" },
+	{"<leader>gp", "<cmd>Lspsaga rename<CR>", desc= "Lspsaga Preview" },
+	{"<leader>ge", "<cmd>Lspsaga show_line_diagnostics<CR>", desc= "Lspsaga Diagnostics" },
+	{"<leader>gk", "<cmd>Lspsaga hover_doc<CR>", desc= "Lspsaga Hover Doc" },
+	{"<leader>gm", "<cmd>GitMessenger<CR>", desc= "GitMessenger" },
 }, { prefix = "g" })
 ----------------------------
 -- Markdown
 ----------------------------
-wk.register({
-	name = "+Markdown",
-	r = {
-		function()
-			utils.openFloatingWindow(vim.g.note_path .. "README.md")
-		end,
-		"Note",
-	},
-	n = { "<cmd>MemoNew<cr>", "Memo New" },
-	l = { "<cmd>Telescope memolist list<cr>", "Memo list" },
-	g = { "<cmd>Telescope memolist live_grep<cr>", "Memo live_grep" },
-	p = { ":MarkdownPreviewToggle<cr>", "Preview" },
-}, { prefix = "m" })
+wk.add({
+		{"<leader>m", group="+Markdown"},
+	{"<leader>mf", function() utils.openFloatingWindow(vim.g.note_path .. "README.md") end, desc = "Note"},
+	{"<leader>mn", "<cmd>MemoNew<cr>", desc="Memo New" },
+	{"<leader>ml", "<cmd>Telescope memolist list<cr>", desc="Memo list" },
+	{ "<leader>mg","<cmd>Telescope memolist live_grep<cr>", desc="Memo live_grep" },
+	{"<leader>mp", ":MarkdownPreviewToggle<cr>",desc ="Preview" },
+}, { mode = "n" })
 ----------------------------
 -- Telescope
 ----------------------------
@@ -238,59 +233,17 @@ cmap(nil, "<cmd>Telescope  sonictemplate templates<cr>", { "n", "<C-t>" }, true)
 cmap({ desc = "Buffers" }, function()
 	require("telescope.builtin").buffers()
 end, { "n", "<c-b>" }, true)
-wk.register({
-	f = {
-		name = "+Telescope",
-		g = {
-			function()
-				require("telescope").extensions.live_grep_args.live_grep_args({})
-			end,
-			"Live Grep",
-		},
-		h = {
-			function()
-				require("telescope.builtin").help_tags()
-			end,
-			"Help Tags",
-		},
-		f = {
-			function()
-				require("telescope.builtin").find_files({})
-			end,
-			"Find File",
-		},
-		o = {
-			function()
-				require("telescope.builtin").oldfiles({ only_cwd = true })
-			end,
-			"Old Files",
-		},
-		t = { "<cmd>Telescope  sonictemplate templates<cr>", "Sonictemplate" },
-		d = { "<cmd>Telescope diagnostics<cr>", "Diagnostics" },
-		s = {
-			function()
-				require("telescope.builtin").resume()
-			end,
-			"Resume",
-		},
-		a = { "<cmd>TodoTelescope keywords=TODO,FIX,FIXME,WARN,NOTE<cr>", "ToDoComments All" },
-		j = {
-			function()
-				require("telescope.builtin").jumplist()
-			end,
-			"Jump List",
-		},
-		c = {
-			function()
-				require("telescope.builtin").command_history()
-			end,
-			"Command History",
-		},
-		[":"] = {
-			function()
-				require("telescope.builtin").commands()
-			end,
-			"Commands",
-		},
-	},
-}, { prefix = "<leader>" })
+wk.add({
+		{"<leader>f", group="+Telescope"},
+		{"<leader>fg",function() require("telescope").extensions.live_grep_args.live_grep_args() end,desc = "Live Grep"},
+		{"<leader>fh",function() require("telescope.builtin").help_tags() end,desc = "Help Tags"},
+		{"<leader>ff",function() require("telescope.builtin").find_files({}) end, desc = "Find File"},
+		{"<leader>fo",function() require("telescope.builtin").oldfiles({ only_cwd = true }) end, desc = "Old Files"},
+		{"<leader>ft", "<cmd>Telescope  sonictemplate templates<cr>", desc = "Sonictemplate" },
+		{"<leader>fd", "<cmd>Telescope diagnostics<cr>", desc="Diagnostics" },
+		{"<leader>fs",function() require("telescope.builtin").resume() end, desc = "Resume"},
+		{"<leader>fa", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME,WARN,NOTE<cr>", desc="ToDoComments All" },
+		{"<leader>fj",function() require("telescope.builtin").jumplist() end, desc = "Jump List"},
+		{"<leader>fc",function() require("telescope.builtin").command_history() end, desc = "Command History"},
+		{"<leader>f:",function() require("telescope.builtin").commands() end, desc = "Commands"},
+	},{ mode = "n" })
