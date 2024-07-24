@@ -1,10 +1,18 @@
 # neovim config
 ## Instration
+### Linux
 ```sh
 git clone https://github.com/arakkkkk/nvim ~/.config/nvim
 sudo apt install nvim
 ```
+
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
+
+### Windows
+```sh
+git clone https://github.com/arakkkkk/nvim AppData/Local/nvim
+winget install Neovim.Neovim
+```
 
 ## Plugins
 See all plugins in [here](lua/core/plugins.lua).

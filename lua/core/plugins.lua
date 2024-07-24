@@ -202,7 +202,7 @@ require("lazy").setup({
 	{
 		"gbprod/substitute.nvim",
 		config = function()
-			require("configs.substitute")
+			require("substitute").setup({})
 		end,
 	},
 
