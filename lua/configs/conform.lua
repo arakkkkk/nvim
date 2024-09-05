@@ -10,6 +10,7 @@ require("conform").setup({
 		css = { "prettier" },
 		javascriptreact = { "prettier" },
 		javascript = { "prettier" },
+		yaml = { "yamlfmt" }
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
