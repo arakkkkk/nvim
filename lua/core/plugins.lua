@@ -353,6 +353,10 @@ require("lazy").setup({
 			require("configs.git-messenger")
 		end,
 	},
+	{
+		"sindrets/diffview.nvim",
+		config = function() end,
+	},
 
 	-- {
 	-- 	-- "arakkkkk/kanban.nvim",

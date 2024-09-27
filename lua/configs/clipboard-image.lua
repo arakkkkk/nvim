@@ -3,7 +3,7 @@ require("clipboard-image").setup({
 		img_dir = function()
 			-- save on buffer's directory
 			local abs_path = vim.fn.expand("%:h")
-			return abs_path .. "/uploads"
+			return string.gsub(abs_path, "\\", "/") .. "/uploads"
 		end,
 		img_dir_txt = "./uploads",
 		img_name = function()
