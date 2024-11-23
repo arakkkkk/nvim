@@ -462,6 +462,14 @@ require("lazy").setup({
 		-- dir = "~/ghq/github.com/arakkkkk/textile.nvim",
 	},
 
+	{
+		"arakkkkk/plantuml-ascii.nvim",
+		-- dir = "~/ghq/github.com/arakkkkk/plantuml-ascii.nvim",
+		config = function()
+			require("plantuml_ascii").setup({})
+		end,
+	},
+
 	--------------------
 	-- LaTeX integration
 	--------------------
