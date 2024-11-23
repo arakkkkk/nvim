@@ -50,7 +50,6 @@ See all keymaps in [here](lua/core/mappings.lua).
 | <C-h>/<C-j>/<C-k>/<C-l> | Move cursole                | smart-splits.nvim |
 | <S-h>/<S-l>             | Shift buffer                | bufferline.nvim   |
 | <C-\>                   | Floating term               | toggleterm.nvim   |
-|                         |                             |                   |
 | ss                      |                             |                   |
 | siw                     |                             |                   |
 
