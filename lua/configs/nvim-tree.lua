@@ -1,6 +1,7 @@
 if vim.fn.getcwd():match("Note$") then
 	require("nvim-tree").setup({
-		sort_by = "modification_time",
+		-- sort_by = "modification_time",
+		sort_by = "case_sensitive",
 		view = {
 			width = 30,
 			adaptive_size = false,
