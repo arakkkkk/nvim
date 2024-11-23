@@ -7,7 +7,14 @@ sudo apt install nvim
 ```
 
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
-
+                                                                                                                                                               
+    1   cyan = "#56b6c2",                                                                                                                                                                                                                                     
+  48    cyan_1 = "#c5f6fa",                                                                                                                                                                                                                                   
+    1   cyan_2 = "#99e9f2",                                                                                                                                                                                                                                   
+    2   cyan_3 = "#66d9e8",                                                                                                                                                                                                                                   
+    3   purple = "#c678dd",                                                                                                                                                                                                                                   
+    4   purple_1 = "#a9a1e1",                                                                                                                                                                                                                                 
+    5                                                                                                                 
 ### Windows
 ```sh
 git clone https://github.com/arakkkkk/nvim AppData/Local/nvim
@@ -35,7 +42,7 @@ See all plugins in [here](lua/core/plugins.lua).
 ### Keymap
 See all keymaps in [here](lua/core/mappings.lua).
 
-|  key                    | action                      | plugin            |
+| key                     | action                      | plugin            |
 | ----------------------- | --------------------------- | ----------------- |
 | <leader>ff              | Find file(file name)        | telescope.nvim    |
 | <leader>fg              | Search file                 | telescope.nvim    |
@@ -45,7 +52,7 @@ See all keymaps in [here](lua/core/mappings.lua).
 | K                       | Code information            | lspsaga.nvim      |
 | gd                      | Jump definition             | lspsaga.nvim      |
 | ga                      | Code action                 | lspsaga.nvim      |
-| [e / ]e                 | Next / Previous diagnostics | lspsaga/nvim      |
+| [e / ]e                 | Next / Previous diagnostics | lspsaga.nvim      |
 | <leader>j               | Jump cursole                | hop.nvim          |
 | <C-h>/<C-j>/<C-k>/<C-l> | Move cursole                | smart-splits.nvim |
 | <S-h>/<S-l>             | Shift buffer                | bufferline.nvim   |
