@@ -380,6 +380,15 @@ require("lazy").setup({
 		ft = { "markdown" },
 	},
 
+	{
+		"jubnzv/mdeval.nvim",
+		config = function()
+			vim.g.markdown_fenced_languages = { "python", "cpp", "sh", "go" }
+			require("mdeval").setup()
+		end,
+		ft = { "markdown" },
+	},
+
 	-- {
 	-- 	"vimwiki/vimwiki",
 	-- 	lazy = false,
@@ -445,7 +454,6 @@ require("lazy").setup({
 		config = function()
 			require("configs.image")
 		end,
-		ft = { "markdown", "tex" },
 	},
 
 	{
