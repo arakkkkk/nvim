@@ -409,9 +409,17 @@ require("lazy").setup({
 	-- },
 
 	{
-		"postfen/clipboard-image.nvim",
+		"arakkkkk/clipboard-image.nvim",
 		config = function()
 			require("configs.clipboard-image")
+		end,
+		ft = { "markdown", "vimwiki" },
+	},
+
+	{
+		dir = "~/ghq/github.com/arakkkkk/smart-paste.nvim",
+		config = function()
+			require("smart-paste").setup()
 		end,
 		ft = { "markdown", "vimwiki" },
 	},

@@ -91,11 +91,11 @@ cmp.setup({
 		["<C-l>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
-		["<Tab>"] = cmp.mapping(function()
-			if vim.fn["vsnip#available"](1) == 1 then
-				feedkey("<Plug>(vsnip-expand-or-jump)", "")
-			end
-		end, { "i", "s" }),
+		-- ["<Tab>"] = cmp.mapping(function()
+		-- 	if vim.fn["vsnip#available"](1) == 1 then
+		-- 		feedkey("<Plug>(vsnip-expand-or-jump)", "")
+		-- 	end
+		-- end, { "i", "s" }),
 	}),
 	experimental = {
 		ghost_text = true,
