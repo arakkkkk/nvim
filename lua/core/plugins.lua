@@ -410,8 +410,8 @@ require("lazy").setup({
 	-- },
 
 	{
-		"arakkkkk/clipboard-image.nvim",
-		-- dir = "~/ghq/github.com/arakkkkk/clipboard-image.nvim",
+		-- "arakkkkk/clipboard-image.nvim",
+		dir = "~/ghq/github.com/arakkkkk/clipboard-image.nvim",
 		config = function()
 			require("configs.clipboard-image")
 		end,

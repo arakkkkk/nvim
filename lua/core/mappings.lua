@@ -131,7 +131,6 @@ cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, true)
 
 -- clipboard-image
 cmap(nil, "<cmd>PasteImgSmarter<cr>", { "i", "<C-V>" }, true)
-cmap(nil, "<cmd>PasteImgSmarter<cr>", { "n", "p" }, true)
 
 -- hop.vim
 cmap(nil, "<cmd>HopWord<CR>", { "n", "<leader>j" }, true)
