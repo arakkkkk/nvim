@@ -10,11 +10,11 @@ vim.g.mapleader = " "
 -----------------------
 -- default
 -----------------------
-cmap(nil, function()
-	local register = vim.fn.getreg('"')
-	register = string.gsub(register, "\n", "")
-	vim.api.nvim_feedkeys(register, "i", true)
-end, { "c", "<C-V>" }, true)
+-- cmap(nil, function()
+-- 	local register = vim.fn.getreg('"')
+-- 	register = string.gsub(register, "\n", "")
+-- 	vim.api.nvim_feedkeys(register, "i", true)
+-- end, { "c", "<C-V>" }, true)
 cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, true)
 
 cmap(nil, function()
@@ -77,6 +77,7 @@ end, {
 -----------------------
 -- plugins
 -----------------------
+---Lazy
 cmap(nil, "<cmd>Lazy sync<CR>", { "n", "<leader>ls" }, true)
 
 -- AerialToggle
@@ -128,6 +129,10 @@ cmap(nil, "<cmd>BufferLineMoveNext<cr>", { "n", ">b" }, true)
 cmap(nil, "<cmd>BufferLineMovePrev<cr>", { "n", "<b" }, true)
 cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, true)
 
+-- clipboard-image
+cmap(nil, "<cmd>PasteImgSmarter<cr>", { "i", "<C-V>" }, true)
+cmap(nil, "<cmd>PasteImgSmarter<cr>", { "n", "p" }, true)
+
 -- hop.vim
 cmap(nil, "<cmd>HopWord<CR>", { "n", "<leader>j" }, true)
 
@@ -166,7 +171,7 @@ for key, cmd in pairs(cmd_set) do
 end
 
 ----------------------------
--- Lspsaga
+-- dial
 ----------------------------
 cmap(nil, function()
 	require("dial.map").manipulate("increment", "normal")

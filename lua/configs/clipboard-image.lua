@@ -10,6 +10,7 @@ require("clipboard-image").setup({
 			return vim.fn.inputdialog("File name -> ")
 			-- return os.date("%Y-%m-%d-%H-%M-%S")
 		end,
-		affix = "![img](%s)",
+		insert_txt = "![$IMG_NAME]($IMG_PATH)",
+		use_forward_slash = "true",
 	},
 })

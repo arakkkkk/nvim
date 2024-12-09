@@ -263,6 +263,7 @@ require("lazy").setup({
 			require("configs.nvim-lspconfig")
 		end,
 	},
+
 	{
 		"nvimdev/lspsaga.nvim",
 		config = function()
@@ -409,9 +410,27 @@ require("lazy").setup({
 	-- },
 
 	{
-		"arakkkkk/clipboard-image.nvim",
+		-- "arakkkkk/clipboard-image.nvim",
+		dir = "~/ghq/github.com/arakkkkk/clipboard-image.nvim",
 		config = function()
 			require("configs.clipboard-image")
+		end,
+		ft = { "markdown", "vimwiki" },
+	},
+
+	{
+		"TobinPalmer/pastify.nvim",
+		config = function()
+			require("pastify").setup({
+				opts = {
+					absolute_path = false,
+					local_path = "/" .. vim.fn.expand("%:h") .. "/uploads",
+					filename = function()
+						return vim.fn.inputdialog("File name -> ")
+					end,
+					default_ft = "markdown",
+				},
+			})
 		end,
 		ft = { "markdown", "vimwiki" },
 	},
