@@ -411,34 +411,34 @@ require("lazy").setup({
 
 	{
 		"arakkkkk/clipboard-image.nvim",
-		dir = "~/ghq/github.com/arakkkkk/clipboard-image.nvim",
+		-- dir = "~/ghq/github.com/arakkkkk/clipboard-image.nvim",
 		config = function()
 			require("configs.clipboard-image")
 		end,
 		ft = { "markdown", "vimwiki" },
 	},
 
-	{
-		"arakkkkk/pastify.nvim",
-		-- dir = "~/ghq/github.com/arakkkkk/pastify.nvim",
-		config = function()
-			require("pastify").setup({
-				opts = {
-					absolute_path = false,
-					local_path = "/" .. vim.fn.expand("%:h") .. "/uploads",
-					filename = function()
-						return vim.fn.inputdialog("File name -> ")
-					end,
-					default_ft = "markdown",
-				},
-				ft = { -- Custom snippets for different filetypes, will replace $IMG$ with the image url
-					markdown = "![$NAME$](./$IMG$)",
-				},
-			})
-		end,
-		ft = { "markdown", "vimwiki" },
-	},
-
+	-- {
+	-- 	"arakkkkk/pastify.nvim",
+	-- 	-- dir = "~/ghq/github.com/arakkkkk/pastify.nvim",
+	-- 	config = function()
+	-- 		require("pastify").setup({
+	-- 			opts = {
+	-- 				absolute_path = false,
+	-- 				local_path = "/" .. vim.fn.expand("%:h") .. "/uploads",
+	-- 				filename = function()
+	-- 					return vim.fn.inputdialog("File name -> ")
+	-- 				end,
+	-- 				default_ft = "markdown",
+	-- 			},
+	-- 			ft = { -- Custom snippets for different filetypes, will replace $IMG$ with the image url
+	-- 				markdown = "![$NAME$](./$IMG$)",
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	ft = { "markdown", "vimwiki" },
+	-- },
+	--
 	{
 		dir = "~/ghq/github.com/arakkkkk/smart-paste.nvim",
 		config = function()
