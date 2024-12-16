@@ -263,7 +263,6 @@ require("lazy").setup({
 			require("configs.nvim-lspconfig")
 		end,
 	},
-
 	{
 		"nvimdev/lspsaga.nvim",
 		config = function()
@@ -390,59 +389,11 @@ require("lazy").setup({
 		ft = { "markdown" },
 	},
 
-	-- {
-	-- 	"vimwiki/vimwiki",
-	-- 	lazy = false,
-	-- 	config = function()
-	-- 		require("configs.vimwiki")
-	-- 	end,
-	-- 	-- ft = { "markdown" },
-	-- },
-
-	-- {
-	-- 	"preservim/vim-markdown",
-	-- 	dependencies = {
-	-- 		"godlygeek/tabular",
-	-- 	},
-	-- 	config = function()
-	-- 		require("configs.vim-markdown")
-	-- 	end,
-	-- },
-
 	{
 		"arakkkkk/clipboard-image.nvim",
 		-- dir = "~/ghq/github.com/arakkkkk/clipboard-image.nvim",
 		config = function()
 			require("configs.clipboard-image")
-		end,
-		ft = { "markdown", "vimwiki" },
-	},
-
-	-- {
-	-- 	"arakkkkk/pastify.nvim",
-	-- 	-- dir = "~/ghq/github.com/arakkkkk/pastify.nvim",
-	-- 	config = function()
-	-- 		require("pastify").setup({
-	-- 			opts = {
-	-- 				absolute_path = false,
-	-- 				local_path = "/" .. vim.fn.expand("%:h") .. "/uploads",
-	-- 				filename = function()
-	-- 					return vim.fn.inputdialog("File name -> ")
-	-- 				end,
-	-- 				default_ft = "markdown",
-	-- 			},
-	-- 			ft = { -- Custom snippets for different filetypes, will replace $IMG$ with the image url
-	-- 				markdown = "![$NAME$](./$IMG$)",
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- 	ft = { "markdown", "vimwiki" },
-	-- },
-	--
-	{
-		dir = "~/ghq/github.com/arakkkkk/smart-paste.nvim",
-		config = function()
-			require("smart-paste").setup()
 		end,
 		ft = { "markdown", "vimwiki" },
 	},
@@ -458,16 +409,6 @@ require("lazy").setup({
 		"mattn/vim-maketable",
 		ft = { "markdown" },
 	},
-
-	-- {
-	-- 	"toppair/peek.nvim",
-	-- 	event = { "VeryLazy" },
-	-- 	build = "deno task --quiet build:fast",
-	-- 	config = function()
-	-- 		require("configs.peek")
-	-- 	end,
-	-- 	ft = { "markdown" },
-	-- },
 
 	{
 		"iamcco/markdown-preview.nvim",
