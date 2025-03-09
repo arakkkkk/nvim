@@ -1,12 +1,16 @@
 require("lazy").setup({
-	{ "nvim-lua/plenary.nvim" },
+	{
+		"vhyrro/luarocks.nvim",
+		priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
+		config = true,
+	},
+	{ "nvim-lua/plenary.nvim", lazy = true },
 
 	---------------------
 	-- File exploler
 	---------------------
 	{
 		"kyazdani42/nvim-tree.lua",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("configs.nvim-tree")
 		end,
@@ -17,20 +21,16 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		-- tag = "0.1.5",
-		dependencies = {
-			{
-				"nvim-lua/plenary.nvim",
-				"nvim-telescope/telescope-fzf-native.nvim",
-				"nvim-telescope/telescope-file-browser.nvim",
-				"nvim-telescope/telescope-live-grep-args.nvim",
-				"arakkkkk/telescope-sonictemplate.nvim",
-				"arakkkkk/telescope-memolist.nvim",
-			},
-		},
+		cmd = { "Telescope" },
 		config = function()
 			require("configs.telescope")
 		end,
 	},
+	{ "nvim-telescope/telescope-fzf-native.nvim", lazy = true },
+	{ "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+	{ "nvim-telescope/telescope-live-grep-args.nvim", lazy = true },
+	{ "arakkkkk/telescope-sonictemplate.nvim", lazy = true },
+	{ "arakkkkk/telescope-memolist.nvim", lazy = true },
 
 	---------------------
 	-- Theme
@@ -38,15 +38,15 @@ require("lazy").setup({
 	-- theme
 	{ "arcticicestudio/nord-vim" },
 	{ "projekt0n/github-nvim-theme" },
+	{ "kyazdani42/nvim-web-devicons", lazy = true },
 
 	-- tab
 	{ "lukas-reineke/indent-blankline.nvim" },
 
-	{ "famiu/bufdelete.nvim" },
+	{ "famiu/bufdelete.nvim", cmd = { "Bdelete" }, lazy = true },
 
 	{
 		"akinsho/bufferline.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("configs.bufferline")
 		end,
@@ -56,7 +56,6 @@ require("lazy").setup({
 
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("configs.lualine")
 		end,
@@ -67,30 +66,17 @@ require("lazy").setup({
 		config = function()
 			require("configs.cinnamon")
 		end,
+		lazy = true,
 	},
 
+	{ "MunifTanjim/nui.nvim", lazy = true },
 	{
 		"folke/noice.nvim",
 		config = function()
 			require("configs.noice")
 		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			-- "rcarriga/nvim-notify",
-		},
+		event = "VeryLazy",
 	},
-
-	{
-		"utilyre/barbecue.nvim",
-		name = "barbecue",
-		version = "*",
-		dependencies = {
-			"SmiteshP/nvim-navic",
-		},
-		opts = {},
-	},
-
-	{ "p00f/nvim-ts-rainbow" },
 
 	-- Cololizer
 	{
@@ -98,6 +84,7 @@ require("lazy").setup({
 		config = function()
 			require("colorizer").setup()
 		end,
+		lazy = true,
 	},
 
 	---------------------
@@ -109,11 +96,13 @@ require("lazy").setup({
 		config = function()
 			require("configs.indent-o-matic")
 		end,
+		lazy = true,
 	},
 
 	-- Session manager
 	{
 		"Shatur/neovim-session-manager",
+		cmd = { "SessionManager" },
 		config = function()
 			require("configs.session-manager")
 		end,
@@ -125,6 +114,7 @@ require("lazy").setup({
 		config = function()
 			require("configs.toggleterm")
 		end,
+		lazy = true,
 	},
 
 	-- Start page
@@ -135,14 +125,11 @@ require("lazy").setup({
 		end,
 	},
 
-	{ "mbbill/undotree" },
-
-	{
-		"sidebar-nvim/sidebar.nvim",
-		config = function()
-			require("configs.sidebar")
-		end,
-	},
+	{ "mbbill/undotree", cmd = {
+		"UndotreeHide",
+		"UndotreeShow",
+		"UndotreeToggle",
+	} },
 
 	{
 		"petertriho/nvim-scrollbar",
@@ -155,7 +142,6 @@ require("lazy").setup({
 		"kevinhwang91/nvim-hlslens",
 		config = function()
 			require("hlslens").setup()
-			require("scrollbar.handlers.search").setup()
 		end,
 	},
 
@@ -175,14 +161,15 @@ require("lazy").setup({
 		config = function()
 			require("configs.smart-splits")
 		end,
+		lazy = true,
 	},
 
 	{
 		"phaazon/hop.nvim",
-		branch = "v1", -- optional but strongly recommended
 		config = function()
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
+		cmd = { "HopWord" },
 	},
 
 	{
@@ -204,6 +191,7 @@ require("lazy").setup({
 		config = function()
 			require("substitute").setup({})
 		end,
+		lazy = true,
 	},
 
 	{
@@ -213,7 +201,6 @@ require("lazy").setup({
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
 		end,
-		opts = {},
 	},
 
 	{
@@ -223,33 +210,36 @@ require("lazy").setup({
 				filetypes = { "html", "xml", "jsx", "tsx" },
 			})
 		end,
+		ft = { "html", "xml", "jsx", "tsx" },
 	},
 
-	{
-		"rhysd/clever-f.vim",
-		config = function() end,
-	},
+	{ "junegunn/vim-easy-align", cmd = "EazyAlign" },
 
-	{ "junegunn/vim-easy-align" },
-
-	{ "monaqa/dial.nvim" },
+	{ "monaqa/dial.nvim", lazy = true },
 
 	--------------------
 	-- LSP integration
 	--------------------
+
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("configs.nvim-lspconfig")
+		end,
+	},
+
 	{
 		"williamboman/mason.nvim",
-		lazy = false,
 		config = function()
 			require("configs.mason")
 		end,
+		cmd = { "Mason" },
 	},
 
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
 		dependencies = {
-			{ "williamboman/mason.nvim" },
 			{ "neovim/nvim-lspconfig" },
 		},
 		config = function()
@@ -258,16 +248,11 @@ require("lazy").setup({
 	},
 
 	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			require("configs.nvim-lspconfig")
-		end,
-	},
-	{
 		"nvimdev/lspsaga.nvim",
 		config = function()
 			require("configs.lspsaga")
 		end,
+		cmd = { "Lspsaga" },
 	},
 
 	{
@@ -276,6 +261,7 @@ require("lazy").setup({
 		config = function()
 			require("configs.lint")
 		end,
+		ft = { "go" },
 	},
 
 	{
@@ -309,18 +295,12 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"arakkkkk/cmp-builder",
-		dependencies = { "hrsh7th/nvim-cmp", "kyoh86/vim-ripgrep" },
-	},
-
-	{ "hrsh7th/cmp-buffer" },
-	{ "hrsh7th/cmp-path", dependencies = { "hrsh7th/cmp-vsnip" } },
 	{ "hrsh7th/cmp-vsnip" },
 	{ "hrsh7th/vim-vsnip" },
+	{ "hrsh7th/cmp-buffer" },
+	{ "hrsh7th/cmp-path" },
 	{ "hrsh7th/cmp-cmdline" },
 	{ "onsails/lspkind.nvim" },
-
 	{
 		"mattn/vim-sonictemplate",
 		config = function()
@@ -337,6 +317,7 @@ require("lazy").setup({
 		config = function()
 			require("configs.translate")
 		end,
+		cmd = { "Translate" },
 	},
 
 	-- Git integration
@@ -352,19 +333,22 @@ require("lazy").setup({
 		config = function()
 			require("configs.git-messenger")
 		end,
+		cmd = { "GitMessenger" },
 	},
 	{
 		"sindrets/diffview.nvim",
 		config = function() end,
+		cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" },
 	},
 
-	-- {
-	-- 	-- "arakkkkk/kanban.nvim",
-	-- 	dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
-	-- 	config = function()
-	-- 		require("configs.kanban")
-	-- 	end,
-	-- },
+	{
+		-- "arakkkkk/kanban.nvim",
+		dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+		config = function()
+			require("configs.kanban")
+		end,
+		cmd = { "KanbanOpen" },
+	},
 
 	--------------------
 	-- Markdown
@@ -402,12 +386,14 @@ require("lazy").setup({
 	{
 		"shinespark/vim-list2tree",
 		ft = { "markdown" },
+		cmd = { "List2Tree" },
 	},
 
 	-- cav to table
 	{
 		"mattn/vim-maketable",
 		ft = { "markdown" },
+		cmd = { "MakeTable" },
 	},
 
 	{
@@ -415,22 +401,22 @@ require("lazy").setup({
 		config = function()
 			vim.fn["mkdp#util#install"]()
 		end,
+		ft = { "markdown" },
+		cmd = { "MarkdownPreviewToggle" },
 	},
 
 	-- Others
 	{
 		"samodostal/image.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
 		config = function()
 			require("configs.image")
 		end,
+		ft = { "markdown" },
+		cmd = { "MarkdownPreviewToggle" },
 	},
 
 	{
 		"folke/todo-comments.nvim",
-		dependencies = "nvim-lua/plenary.nvim",
 		config = function()
 			require("configs.todo-comments")
 		end,
@@ -438,17 +424,29 @@ require("lazy").setup({
 	},
 
 	{
-		"arakkkkk/textile.nvim",
-		-- dir = "~/ghq/github.com/arakkkkk/textile.nvim",
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+		config = function()
+			require("configs.render-markdown")
+		end,
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		ft = { "markdown" },
 	},
 
-	{
-		"arakkkkk/plantuml-ascii.nvim",
-		-- dir = "~/ghq/github.com/arakkkkk/plantuml-ascii.nvim",
-		config = function()
-			require("plantuml_ascii").setup({})
-		end,
-	},
+	-- {
+	-- 	"arakkkkk/textile.nvim",
+	-- 	dir = "~/ghq/github.com/arakkkkk/textile.nvim",
+	-- },
+
+	-- {
+	-- 	"arakkkkk/plantuml-ascii.nvim",
+	-- 	-- dir = "~/ghq/github.com/arakkkkk/plantuml-ascii.nvim",
+	-- 	config = function()
+	-- 		require("plantuml_ascii").setup({})
+	-- 	end,
+	-- 	cmd = { "PlantUMLAscii" },
+	-- },
 
 	--------------------
 	-- LaTeX integration
@@ -476,9 +474,7 @@ require("lazy").setup({
 		config = function()
 			require("configs.aerial")
 		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
+		cmd = { "AerialToggle" },
 	},
 
 	{
@@ -493,6 +489,7 @@ require("lazy").setup({
 		config = function()
 			require("configs.memolist")
 		end,
+		lazy = true,
 	},
 
 	{
@@ -508,15 +505,5 @@ require("lazy").setup({
 				})
 			end
 		end,
-	},
-
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-		config = function()
-			require("configs.render-markdown")
-		end,
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
 	},
 })

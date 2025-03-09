@@ -68,7 +68,7 @@ cmp.setup({
 				end,
 			},
 		},
-		{ name = "mkdnflow" },
+		-- { name = "mkdnflow" },
 		{
 			name = "buffer",
 			option = {
@@ -101,14 +101,14 @@ cmp.setup({
 		ghost_text = true,
 	},
 })
-cmp.setup.cmdline("/", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sorting = sorting,
-	sources = {
-		{ name = "buffer" },
-		{ name = "mdtags" },
-	},
-})
+-- cmp.setup.cmdline("/", {
+-- 	mapping = cmp.mapping.preset.cmdline(),
+-- 	sorting = sorting,
+-- 	sources = {
+-- 		{ name = "buffer" },
+-- 		{ name = "mdtags" },
+-- 	},
+-- })
 cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sorting = sorting,
