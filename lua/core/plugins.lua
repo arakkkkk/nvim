@@ -342,8 +342,8 @@ require("lazy").setup({
 	},
 
 	{
-		-- "arakkkkk/kanban.nvim",
-		dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+		"arakkkkk/kanban.nvim",
+		-- dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
 		config = function()
 			require("configs.kanban")
 		end,
