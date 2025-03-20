@@ -42,7 +42,15 @@ cmp.setup({
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
-			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+			local lspkind = require("lspkind")
+			lspkind.init({
+				symbol_map = {
+					Copilot = "",
+				},
+			})
+			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { bg = "#519aba" })
+
+			local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
 			local strings = vim.split(kind.kind, "%s", { trimempty = true })
 			kind.kind = " " .. strings[1] .. " "
 			kind.menu = "    " .. "[" .. entry.source.name .. "]" .. " " .. strings[2] .. ""
@@ -55,6 +63,7 @@ cmp.setup({
 		end,
 	},
 	sources = {
+		{ name = "copilot" },
 		{ name = "vsnip" },
 		{ name = "nvim_lsp" },
 		{ name = "git" },
@@ -101,14 +110,13 @@ cmp.setup({
 		ghost_text = true,
 	},
 })
--- cmp.setup.cmdline("/", {
--- 	mapping = cmp.mapping.preset.cmdline(),
--- 	sorting = sorting,
--- 	sources = {
--- 		{ name = "buffer" },
--- 		{ name = "mdtags" },
--- 	},
--- })
+cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sorting = sorting,
+	sources = {
+		{ name = "buffer" },
+	},
+})
 cmp.setup.cmdline(":", {
 	mapping = cmp.mapping.preset.cmdline(),
 	sorting = sorting,

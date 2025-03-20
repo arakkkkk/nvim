@@ -7,6 +7,39 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim", lazy = true },
 
 	---------------------
+	-- AI
+	---------------------
+	-- { "github/copilot.vim" },
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = true },
+			})
+		end,
+	},
+
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup({})
+		end,
+		event = { "InsertEnter", "LspAttach" },
+		fix_pairs = true,
+	},
+
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		build = "make tiktoken", -- Only on MacOS or Linux
+		config = function()
+			require("configs.copilot-chat")
+		end,
+	},
+
+	---------------------
 	-- File exploler
 	---------------------
 	{
@@ -84,7 +117,7 @@ require("lazy").setup({
 		config = function()
 			require("colorizer").setup()
 		end,
-		lazy = true,
+		cmd = { "ColorizerAttachToBuffer", "ColorizerToggle" },
 	},
 
 	---------------------
