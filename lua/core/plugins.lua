@@ -456,16 +456,16 @@ require("lazy").setup({
 		ft = { "markdown", "vimwiki" },
 	},
 
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
-		config = function()
-			require("configs.render-markdown")
-		end,
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
-		ft = { "markdown" },
-	},
+	-- {
+	-- 	"MeanderingProgrammer/render-markdown.nvim",
+	-- 	dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+	-- 	config = function()
+	-- 		require("configs.render-markdown")
+	-- 	end,
+	-- 	---@module 'render-markdown'
+	-- 	---@type render.md.UserConfig
+	-- 	ft = { "markdown" },
+	-- },
 
 	-- {
 	-- 	"arakkkkk/textile.nvim",

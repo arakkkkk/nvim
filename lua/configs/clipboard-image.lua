@@ -7,7 +7,11 @@ require("clipboard-image").setup({
 		end,
 		img_dir_txt = "./uploads",
 		img_name = function()
-			return vim.fn.inputdialog("File name -> ")
+			local fn = vim.fn.inputdialog("File name -> ")
+			if fn == "" then
+				fn = vim.fn.expand("%:t:r") .. "-" .. os.date("%Y%m%d%H%M%S")
+			end
+			return fn
 			-- return os.date("%Y-%m-%d-%H-%M-%S")
 		end,
 		insert_txt = "![$IMG_NAME]($IMG_PATH)",

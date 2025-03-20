@@ -92,6 +92,10 @@ cmap(nil, "<cmd>SidebarNvimFocus<CR>", { "n", "<leader>s" }, true)
 -- sidebar
 cmap(nil, "<cmd>UndotreeFocus<CR>", { "n", "<leader>u" }, true)
 
+-- clipboard-image
+cmap(nil, "<cmd>PasteImgSmarter<CR>", { "n", "<C-v>" }, true)
+cmap(nil, "<cmd>PasteImgSmarter<CR>", { "i", "<C-v>" }, true)
+
 -- smart-splits
 local smart_splits = require("smart-splits")
 cmap(nil, function()

@@ -9,7 +9,7 @@ sudo apt install nvim
 https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
                                                                                                                                                                
     1   cyan = "#56b6c2",                                                                                                                                                                                                                                     
-  48    cyan_1 = "#c5f6fa",                                                                                                                                                                                                                                   
+   48   cyan_1 = "#c5f6fa",                                                                                                                                                                                                                                   
     1   cyan_2 = "#99e9f2",                                                                                                                                                                                                                                   
     2   cyan_3 = "#66d9e8",                                                                                                                                                                                                                                   
     3   purple = "#c678dd",                                                                                                                                                                                                                                   
@@ -83,7 +83,3 @@ pip install pynvim
   - command to quick run
 - c
   - command to run with !
-
-
-
-
