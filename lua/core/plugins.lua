@@ -453,7 +453,7 @@ require("lazy").setup({
 		config = function()
 			require("configs.todo-comments")
 		end,
-		ft = { "markdown", "vimwiki" },
+		lazy = true,
 	},
 
 	-- {

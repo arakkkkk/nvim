@@ -96,6 +96,14 @@ cmap(nil, "<cmd>UndotreeFocus<CR>", { "n", "<leader>u" }, true)
 cmap(nil, "<cmd>PasteImgSmarter<CR>", { "n", "<C-v>" }, true)
 cmap(nil, "<cmd>PasteImgSmarter<CR>", { "i", "<C-v>" }, true)
 
+-- todo-comments
+cmap(nil, function()
+	require("todo-comments").jump_next()
+end, { "n", "[t" }, true)
+cmap(nil, function()
+	require("todo-comments").jump_prev()
+end, { "n", "]t" }, true)
+
 -- smart-splits
 local smart_splits = require("smart-splits")
 cmap(nil, function()
