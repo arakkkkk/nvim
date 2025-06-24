@@ -6,6 +6,8 @@ require("lazy").setup({
 	},
 	{ "nvim-lua/plenary.nvim", lazy = true },
 
+	{ "nvim-treesitter/nvim-treesitter", branch = "master", lazy = false, build = ":TSUpdate" },
+
 	---------------------
 	-- AI
 	---------------------
@@ -17,7 +19,7 @@ require("lazy").setup({
 		config = function()
 			require("copilot").setup({
 				suggestion = { enabled = false },
-				panel = { enabled = true },
+				panel = { enabled = false },
 			})
 		end,
 	},
@@ -27,8 +29,6 @@ require("lazy").setup({
 		config = function()
 			require("copilot_cmp").setup({})
 		end,
-		event = { "InsertEnter", "LspAttach" },
-		fix_pairs = true,
 	},
 
 	{
@@ -103,6 +103,7 @@ require("lazy").setup({
 	},
 
 	{ "MunifTanjim/nui.nvim", lazy = true },
+
 	{
 		"folke/noice.nvim",
 		config = function()
@@ -374,14 +375,20 @@ require("lazy").setup({
 		cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" },
 	},
 
-	{
-		"arakkkkk/kanban.nvim",
-		-- dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
-		config = function()
-			require("configs.kanban")
-		end,
-		cmd = { "KanbanOpen" },
-	},
+	-- {
+	-- 	-- "arakkkkk/kanban.nvim",
+	-- 	dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+	-- 	config = function()
+	-- 		require("configs.kanban")
+	-- 	end,
+	-- 	cmd = { "KanbanOpen" },
+	-- },
+	--
+	-- {
+	-- 	dir = "~/ghq/github.com/arakkkkk/obsidian-kanban.nvim",
+	-- },
+	--
+	-- { "obsidian-nvim/obsidian.nvim" },
 
 	--------------------
 	-- Markdown
@@ -456,7 +463,7 @@ require("lazy").setup({
 		lazy = true,
 	},
 
-	{ "urhysd/clever-f.vim" },
+	{ "rhysd/clever-f.vim" },
 
 	-- {
 	-- 	"MeanderingProgrammer/render-markdown.nvim",

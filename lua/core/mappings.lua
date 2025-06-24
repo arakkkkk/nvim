@@ -330,3 +330,23 @@ wk.add({
 		desc = "Commands",
 	},
 }, { mode = "n" })
+
+----------------------------
+-- AI
+----------------------------
+wk.add({
+	{ "<leader>a", group = "+AI Support" },
+	{
+		"<leader>ap",
+		function()
+			local actions = require("CopilotChat.actions")
+			require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+		end,
+		desc = "CopilotChat Promts",
+	},
+	{ "<leader>ac", "<cmd>CopilotChat<cr>", desc = "CopilotChat" },
+}, { mode = "n" })
+cmap({ desc = "Buffers" }, function()
+	local actions = require("CopilotChat.actions")
+	require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+end, { "v", "<leader>ap" }, true)
