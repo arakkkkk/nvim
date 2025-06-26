@@ -331,9 +331,8 @@ wk.add({
 	},
 }, { mode = "n" })
 
-----------------------------
--- AI
-----------------------------
+-- cmap(nil, function() end, { "n", "<leader>" }, true)
+
 wk.add({
 	{ "<leader>a", group = "+AI Support" },
 	{
@@ -345,8 +344,9 @@ wk.add({
 		desc = "CopilotChat Promts",
 	},
 	{ "<leader>ac", "<cmd>CopilotChat<cr>", desc = "CopilotChat" },
-}, { mode = "n" })
-cmap({ desc = "Buffers" }, function()
+}, { mode = "n", "v" })
+cmap(nil, "<cmd>CopilotChat<CR>", { "v", "<leader>ac" }, true)
+cmap(nil, function()
 	local actions = require("CopilotChat.actions")
 	require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
 end, { "v", "<leader>ap" }, true)

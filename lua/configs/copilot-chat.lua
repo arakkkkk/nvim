@@ -52,4 +52,14 @@ require("CopilotChat").setup({
 			end,
 		},
 	},
+	selection = require("CopilotChat.select").buffer,
+	mappings = {
+		close = {
+			normal = "q",
+		},
+		submit_prompt = {
+			normal = "<CR>",
+			insert = "<C-s>",
+		},
+	},
 })

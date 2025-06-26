@@ -33,6 +33,7 @@ require("lazy").setup({
 
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
+		branch = "main",
 		build = "make tiktoken", -- Only on MacOS or Linux
 		config = function()
 			require("configs.copilot-chat")
@@ -375,15 +376,15 @@ require("lazy").setup({
 		cmd = { "DiffviewFileHistory", "DiffviewClose", "DiffviewOpen" },
 	},
 
-	-- {
-	-- 	-- "arakkkkk/kanban.nvim",
-	-- 	dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
-	-- 	config = function()
-	-- 		require("configs.kanban")
-	-- 	end,
-	-- 	cmd = { "KanbanOpen" },
-	-- },
-	--
+	{
+		-- "arakkkkk/kanban.nvim",
+		dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+		config = function()
+			require("configs.kanban")
+		end,
+		cmd = { "KanbanOpen" },
+	},
+
 	-- {
 	-- 	dir = "~/ghq/github.com/arakkkkk/obsidian-kanban.nvim",
 	-- },
