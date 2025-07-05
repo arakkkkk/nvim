@@ -20,6 +20,7 @@ require("lazy").setup({
 			require("copilot").setup({
 				suggestion = { enabled = false },
 				panel = { enabled = false },
+				auto_trigger = false,
 			})
 		end,
 	},
@@ -34,6 +35,7 @@ require("lazy").setup({
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "main",
+		cmd = { "CopilotChat", "CopilotChatOpen" },
 		build = "make tiktoken", -- Only on MacOS or Linux
 		config = function()
 			require("configs.copilot-chat")
@@ -532,7 +534,6 @@ require("lazy").setup({
 		config = function()
 			require("configs.memolist")
 		end,
-		lazy = true,
 	},
 
 	{
