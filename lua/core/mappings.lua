@@ -343,8 +343,10 @@ wk.add({
 		end,
 		desc = "CopilotChat Promts",
 	},
-	{ "<leader>ac", "<cmd>CopilotChat<cr>", desc = "CopilotChat" },
+	-- { "<leader>ac", "<cmd>CopilotChat<cr>", desc = "CopilotChat" },
+	{ "<leader>ac", "<cmd>AvanteChat<cr>", desc = "AvanteChat" },
 }, { mode = "n", "v" })
+
 cmap(nil, "<cmd>CopilotChat<CR>", { "v", "<leader>ac" }, true)
 cmap(nil, function()
 	local actions = require("CopilotChat.actions")

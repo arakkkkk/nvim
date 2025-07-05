@@ -1,8 +1,10 @@
+-- https://chatgpt.com/c/68692479-30e8-8013-b1dc-3ea21ea56f62
 local colors = {
 	none = "NONE",
 	fg = "#abb2bf",
-	bg = "#1e222a",
-	bg_1 = "#303742",
+	bg = "#2E3440",
+	bg_1 = "#282D39",
+	bg_2 = "#232831",
 	black = "#181a1f",
 	black_1 = "#1f1f25",
 	green = "#98c379",

@@ -93,7 +93,7 @@ require("lazy").setup({
 	-- Theme
 	---------------------
 	-- theme
-	{ "arcticicestudio/nord-vim" },
+	{ "nordtheme/vim" },
 	{ "projekt0n/github-nvim-theme" },
 	{ "kyazdani42/nvim-web-devicons", lazy = true },
 
