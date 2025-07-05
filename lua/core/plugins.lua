@@ -42,6 +42,27 @@ require("lazy").setup({
 		end,
 	},
 
+	{
+		"yetone/avante.nvim",
+		build = function()
+			-- conditionally use the correct build system for the current OS
+			if vim.fn.has("win32") == 1 then
+				return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+			else
+				return "make"
+			end
+		end,
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"stevearc/dressing.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("configs.avante")
+		end,
+	},
+
 	---------------------
 	-- File exploler
 	---------------------
