@@ -2,8 +2,9 @@ require("avante").setup({
 	---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
 	provider = "copilot",
 
+	hints = { enabled = false },
 	behaviour = {
-		auto_suggestions = true, -- Experimental stage
+		auto_suggestions = false, -- Experimental stage
 		auto_set_highlight_group = true,
 		aauto_set_keymaps = false,
 		auto_apply_diff_after_generation = false,

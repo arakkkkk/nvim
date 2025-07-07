@@ -345,6 +345,7 @@ wk.add({
 	},
 	-- { "<leader>ac", "<cmd>CopilotChat<cr>", desc = "CopilotChat" },
 	{ "<leader>ac", "<cmd>AvanteChat<cr>", desc = "AvanteChat" },
+	{ "<leader>aa", "<cmd>AvanteAsk<cr>", desc = "AvanteAsk" },
 }, { mode = "n", "v" })
 
 cmap(nil, "<cmd>CopilotChat<CR>", { "v", "<leader>ac" }, true)
@@ -352,3 +353,5 @@ cmap(nil, function()
 	local actions = require("CopilotChat.actions")
 	require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
 end, { "v", "<leader>ap" }, true)
+
+cmap(nil, "<cmd>AvanteEdit<CR>", { "v", "<leader>ae" }, true)
