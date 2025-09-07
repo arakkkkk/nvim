@@ -402,10 +402,10 @@ require("lazy").setup({
 	{
 		-- "arakkkkk/kanban.nvim",
 		dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+		-- dir = "~/ghq/github.com/4DRIAN0RTIZ/kanban.nvim",
 		config = function()
 			require("configs.kanban")
 		end,
-		cmd = { "KanbanOpen" },
 	},
 
 	-- {
@@ -569,6 +569,13 @@ require("lazy").setup({
 					end,
 				})
 			end
+		end,
+	},
+
+	{
+		dir = "~/Downloads/codex.nvim",
+		config = function()
+			require("codex").setup({})
 		end,
 	},
 })

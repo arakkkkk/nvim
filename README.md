@@ -1,85 +1,111 @@
-# neovim config
-## Instration
+# Neovim Config
+
+Opinionated Neovim configuration powered by lazy.nvim. It provides sensible defaults, LSP + completion, formatting, a file explorer, fuzzy finding, and a set of handy keymaps.
+
+See plugin list and per‑plugin configs in the repository:
+- Plugins: `lua/core/plugins.lua`
+- Keymaps: `lua/core/mappings.lua`
+- Bootstrapping lazy.nvim: `lua/core/config.lua`
+
+## Installation
+
 ### Linux
 ```sh
+# Install Neovim from your distro or official releases
+sudo apt install neovim   # example for Debian/Ubuntu
+
+# Clone config
 git clone https://github.com/arakkkkk/nvim ~/.config/nvim
-sudo apt install nvim
 ```
 
-https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package
-                                                                                                                                                               
-    1   cyan = "#56b6c2",                                                                                                                                                                                                                                     
-   48   cyan_1 = "#c5f6fa",                                                                                                                                                                                                                                   
-    1   cyan_2 = "#99e9f2",                                                                                                                                                                                                                                   
-    2   cyan_3 = "#66d9e8",                                                                                                                                                                                                                                   
-    3   purple = "#c678dd",                                                                                                                                                                                                                                   
-    4   purple_1 = "#a9a1e1",                                                                                                                                                                                                                                 
-    5                                                                                                                 
 ### Windows
-```sh
-git clone https://github.com/arakkkkk/nvim AppData/Local/nvim
+```powershell
+# Install Neovim
 winget install Neovim.Neovim
+
+git clone https://github.com/arakkkkk/nvim "$env:LOCALAPPDATA\nvim"
 ```
 
-## Plugins
-See all plugins in [here](lua/core/plugins.lua).
+### First Launch
+1. Start Neovim: `nvim`
+2. lazy.nvim is bootstrapped automatically by `lua/core/config.lua`.
+3. Run `:Lazy sync` if you want to explicitly install/update plugins.
 
-### LSP completion
-1. Install LS with `:Mason`.
-2. Set up automatically.
-- nvim-lspconfig
-- nvim-cmp
-### Formatter
-1. Install Formatter with `:Mason`.
-2. Set up formatter with conform.nvim.
-- `nvim/lua/configs/conform.lua`
-### Linter
-1. Install Formatter with `:Mason`.
-2. Set up formatter with nvim-lint.nvim.
-- `nvim/lua/configs/lint.lua`
+## Features
 
-## Usage
-### Keymap
-See all keymaps in [here](lua/core/mappings.lua).
+- LSP via `nvim-lspconfig` + `mason.nvim`/`mason-lspconfig.nvim`
+- Completion via `nvim-cmp` (+ optional Copilot integration)
+- Formatting via `conform.nvim`
+- File explorer with `nvim-tree.lua`
+- Telescope for fuzzy finding and search
+- UI/UX improvements: bufferline, lualine, noice, etc.
 
-| key                     | action                      | plugin            |
-| ----------------------- | --------------------------- | ----------------- |
-| <leader>ff              | Find file(file name)        | telescope.nvim    |
-| <leader>fg              | Search file                 | telescope.nvim    |
-| <leader>fo              | File history                | telescope.nvim    |
-| <leader>e               | File tree                   | nvim-tree.lua     |
-| <leader>t               | Code outline                | aerial.nvim       |
-| K                       | Code information            | lspsaga.nvim      |
-| gd                      | Jump definition             | lspsaga.nvim      |
-| ga                      | Code action                 | lspsaga.nvim      |
-| [e / ]e                 | Next / Previous diagnostics | lspsaga.nvim      |
-| <leader>j               | Jump cursole                | hop.nvim          |
-| <C-h>/<C-j>/<C-k>/<C-l> | Move cursole                | smart-splits.nvim |
-| <S-h>/<S-l>             | Shift buffer                | bufferline.nvim   |
-| <C-\>                   | Floating term               | toggleterm.nvim   |
-| ss                      |                             |                   |
-| siw                     |                             |                   |
+## LSP / Completion
 
-## Others
-### How to add LSP
-1. Select and install LSP with Mason by `:Mason`
-### check lsp status
-`:LspInfo`
+1. Open `:Mason` and install the language servers you need.
+2. LSP is configured in `lua/configs/nvim-lspconfig.lua` and attached automatically.
+3. Completion is configured in `lua/configs/nvim-cmp.lua`.
 
-### For python development
-```
+## Formatting
+
+Formatting is handled by `conform.nvim`. See `lua/configs/conform.lua` for formatters per filetype and on‑save behavior.
+
+## Keymaps (Quick Reference)
+
+See full list in `lua/core/mappings.lua`. Common ones are below:
+
+| Key                      | Action                          | Plugin/Feature        |
+| ------------------------ | --------------------------------| --------------------- |
+| <leader>ff               | Find files                      | telescope.nvim        |
+| <leader>fg               | Live grep                       | telescope.nvim        |
+| <leader>fo               | Recent files                    | telescope.nvim        |
+| <leader>fd               | Diagnostics picker              | telescope.nvim        |
+| <leader>e                | Reveal in file tree             | nvim-tree.lua         |
+| <leader>t                | Toggle symbols outline          | aerial.nvim           |
+| <leader>j                | Jump to word                    | hop.nvim              |
+| <S-h> / <S-l>            | Prev/Next buffer                | bufferline.nvim       |
+| <C-h/j/k/l>              | Move between splits             | smart-splits.nvim     |
+| <S-Arrow Keys>           | Resize splits                   | smart-splits.nvim     |
+| <C-\>                    | Toggle floating terminal        | toggleterm.nvim       |
+| <leader>ls               | Lazy sync                       | lazy.nvim             |
+| <leader>u                | Focus Undotree                  | undotree              |
+
+LSP (via lspsaga):
+
+| Key        | Action                         |
+| ---------- | ------------------------------ |
+| K          | Hover doc                      |
+| <leader>gf | Finder (definitions + refs)    |
+| <leader>gd | Peek definition                 |
+| <leader>ga | Code action                    |
+| <leader>ge | Show line diagnostics          |
+| [e / ]e    | Prev / Next diagnostics        |
+
+Terminal app shortcuts (toggleterm):
+
+| Key (Normal) | Command               |
+| ------------ | --------------------- |
+| :lg          | lazygit               |
+| :ld          | lazydocker            |
+| :gh          | gh dash               |
+| :ht          | htop                  |
+| :py          | python REPL           |
+
+Utilities:
+
+- `yp` / `yP`: copy relative / absolute file path to clipboard
+- `<C-v>` in Normal/Insert on Markdown: paste image from clipboard (clipboard-image.nvim)
+- `<leader>q`: save all and quit
+- `<leader>c`: delete current buffer
+
+## Python
+
+For Python plugins and providers:
+```sh
 pip install pynvim
 ```
 
-### commands
+## Notes
 
-### Registers
-- "
-- *
-  - clipboard
-- +
-  - clipboard
-- r
-  - command to quick run
-- c
-  - command to run with !
+- Plugin specs live in `lua/core/plugins.lua`; per‑plugin settings are under `lua/configs/`.
+- If something feels off, run `:Lazy sync` and check health with `:checkhealth`.
