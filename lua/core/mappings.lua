@@ -65,6 +65,19 @@ end, {
 	":c<CR>",
 }, true)
 cmap(nil, function()
+	-- 全バッファを強制的に閉じる（現在のウィンドウは空バッファに）
+	vim.cmd("enew")
+	local cur = vim.api.nvim_get_current_buf()
+	for _, b in ipairs(vim.api.nvim_list_bufs()) do
+		if b ~= cur and vim.fn.buflisted(b) == 1 then
+			pcall(vim.api.nvim_buf_delete, b, { force = true })
+		end
+	end
+end, {
+	"n",
+	":clear<CR>",
+}, true)
+cmap(nil, function()
 	local text = utils.input("Quic run vim command: ", vim.fn.getreg("C"))
 	if text then
 		vim.cmd("call setreg('c', '" .. text .. "')")
@@ -333,25 +346,17 @@ wk.add({
 
 -- cmap(nil, function() end, { "n", "<leader>" }, true)
 
-wk.add({
-	{ "<leader>a", group = "+AI Support" },
-	{
-		"<leader>ap",
-		function()
-			local actions = require("CopilotChat.actions")
-			require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
-		end,
-		desc = "CopilotChat Promts",
-	},
-	-- { "<leader>ac", "<cmd>CopilotChat<cr>", desc = "CopilotChat" },
-	{ "<leader>ac", "<cmd>AvanteChat<cr>", desc = "AvanteChat" },
-	{ "<leader>aa", "<cmd>AvanteAsk<cr>", desc = "AvanteAsk" },
-}, { mode = "n", "v" })
+wk.add({ { "<leader>a", group = "+AI Support" } }, { mode = "n", "v" })
 
-cmap(nil, "<cmd>CopilotChat<CR>", { "v", "<leader>ac" }, true)
+-- Avante: シンプルで直感的なキーマップ
+vim.keymap.set("n", "<leader>ac", "<cmd>AvanteChat<CR>", { desc = "Avante: Chat" })
+vim.keymap.set("n", "<leader>aa", "<cmd>AvanteAsk<CR>", { desc = "Avante: Ask" })
+vim.keymap.set("v", "<leader>aa", "<cmd>AvanteAsk<CR>", { desc = "Avante: Ask (selection)" })
+vim.keymap.set("v", "<leader>ae", "<cmd>AvanteEdit<CR>", { desc = "Avante: Edit " })
+
+-- CopilotChat は別キーで利用（競合回避）
 cmap(nil, function()
 	local actions = require("CopilotChat.actions")
 	require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
 end, { "v", "<leader>ap" }, true)
-
-cmap(nil, "<cmd>AvanteEdit<CR>", { "v", "<leader>ae" }, true)
+vim.keymap.set("v", "<leader>ae", "<cmd>AvanteEdit<CR>", { desc = "Avante: Edit (selection)" })

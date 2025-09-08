@@ -14,8 +14,6 @@ require("lazy").setup({
 	-- { "github/copilot.vim" },
 	{
 		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
 				suggestion = { enabled = false },
@@ -35,7 +33,6 @@ require("lazy").setup({
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "main",
-		cmd = { "CopilotChat", "CopilotChatOpen" },
 		build = "make tiktoken", -- Only on MacOS or Linux
 		config = function()
 			require("configs.copilot-chat")
@@ -157,13 +154,16 @@ require("lazy").setup({
 		lazy = true,
 	},
 
-	-- Session manager
 	{
-		"Shatur/neovim-session-manager",
-		cmd = { "SessionManager" },
-		config = function()
-			require("configs.session-manager")
-		end,
+		"folke/persistence.nvim",
+		event = "BufReadPre", -- this will only start session saving when an actual file was opened
+		opts = {
+			dir = vim.fn.stdpath("state") .. "/sessions/", -- directory where session files are saved
+			-- minimum number of file buffers that need to be open to save
+			-- Set to 0 to always save
+			need = 1,
+			branch = true, -- use git branch to save session
+		},
 	},
 
 	-- Terminal integration
@@ -575,7 +575,14 @@ require("lazy").setup({
 	{
 		dir = "~/Downloads/codex.nvim",
 		config = function()
-			require("codex").setup({})
+			require("codex").setup({
+				edit = {
+					args = { "edit", "--stdin" },
+					instruction_flag = "--instructions",
+					force_no_pty = true,
+					env = { CODEX_NONINTERACTIVE = "1", NO_COLOR = "1", TERM = "dumb" },
+				},
+			})
 		end,
 	},
 })

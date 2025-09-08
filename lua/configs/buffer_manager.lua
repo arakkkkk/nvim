@@ -1,1 +1,1 @@
-require("buffer_manager").setup({ })
+require("buffer_manager").setup({})

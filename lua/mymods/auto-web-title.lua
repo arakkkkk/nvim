@@ -56,7 +56,7 @@ function M.insertWebUrl()
 
 	local line = vim.fn.getline(".")
 	local col = vim.fn.charcol(".")
-	local rep_line = line:sub(1, col) .. ins_line .. line:sub(col+1)
+	local rep_line = line:sub(1, col) .. ins_line .. line:sub(col + 1)
 
 	vim.fn.setline(vim.fn.line("."), rep_line)
 end

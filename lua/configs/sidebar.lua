@@ -2,13 +2,13 @@ require("sidebar-nvim").setup({
 	disable_default_keybindings = 0,
 	bindings = {
 		["<tab>"] = function()
-			vim.cmd[[NvimTreeFocus]]
-			vim.cmd[[SidebarNvimClose]]
+			vim.cmd([[NvimTreeFocus]])
+			vim.cmd([[SidebarNvimClose]])
 		end,
 		["<CR>"] = function()
-			vim.api.nvim_input('t')
-			vim.api.nvim_input('e')
-		end
+			vim.api.nvim_input("t")
+			vim.api.nvim_input("e")
+		end,
 	},
 	open = false,
 	side = "left",
