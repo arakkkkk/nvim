@@ -21,11 +21,7 @@ require("alpha").setup({
 		{
 			type = "group",
 			val = {
-				alpha_button(
-					"LDR S l",
-					"  Load Session  ",
-					"<cmd>lua require('persistence').load({ last = true })<CR>"
-				),
+				alpha_button("LDR S l", "  Load Session  ", "<cmd>lua require('persistence').load()<CR>"),
 				alpha_button("LDR S f", "  Finder  ", "<cmd>e .<CR>"),
 				alpha_button("LDR f f", "  Find File  ", "<leader>ff<cr>"),
 				alpha_button("LDR f o", "  Recents  ", "<leader>fo<cr>"),

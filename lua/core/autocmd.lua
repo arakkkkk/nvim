@@ -49,3 +49,30 @@ pcall(vim.api.nvim_del_user_command, "ReloadConfig")
 vim.api.nvim_create_user_command("ReloadConfig", function()
 	reload_all()
 end, { desc = "Reload entire Neovim config" })
+
+-- Session: exclude specific filetypes from being recorded
+local session_ignore = vim.api.nvim_create_augroup("SessionIgnoreFiletypes", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	group = session_ignore,
+	-- ここに session 保存から除外したい filetype を追加
+	pattern = {
+		"help",
+		"qf",
+		"gitcommit",
+		"gitrebase",
+		"TelescopePrompt",
+		"TelescopeResults",
+		"NvimTree",
+		"neo-tree",
+		"alpha",
+		"starter",
+		"toggleterm",
+		"terminal",
+		"dapui_*",
+	},
+	callback = function()
+		-- バッファ一覧に載せず、非表示時は破棄（セッションに残りにくくする）
+		vim.opt_local.buflisted = false
+		vim.opt_local.bufhidden = "wipe"
+	end,
+})
