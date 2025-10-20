@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "clicker",
+  "version": "0.1.0",
+  "description": "クリック前に確認ダイアログを表示し、スタート/ストップで切り替えられる拡張機能。",
+  "permissions": ["storage"],
+  "host_permissions": ["http://localhost:11434/*", "http://127.0.0.1:11434/*"],
+  "action": {
+    "default_title": "クリック確認の切り替え",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["ollama_api.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}

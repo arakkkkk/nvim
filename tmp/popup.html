@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>クリッカー</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          sans-serif;
+        margin: 12px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .status {
+        font-weight: 600;
+      }
+      button {
+        padding: 6px 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background: #fff;
+        cursor: pointer;
+      }
+      button.on {
+        background: #e6ffed;
+        border-color: #34c759;
+      }
+      button.off {
+        background: #ffecec;
+        border-color: #ff3b30;
+      }
+      small {
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row" style="margin-bottom: 8px">
+      <button id="toggle" class="off" aria-pressed="false">OFF</button>
+    </div>
+    <div class="row">
+      <span class="status" id="status">無効</span>
+    </div>
+    <p>
+      <small
+        >ONにすると、ページ内のクリック前に確認ダイアログを表示します。</small
+      >
+    </p>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
