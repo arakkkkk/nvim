@@ -5,7 +5,7 @@ require("clipboard-image").setup({
 			local abs_path = vim.fn.expand("%:h")
 			return string.gsub(abs_path, "\\", "/") .. "/uploads"
 		end,
-		img_dir_txt = "./uploads",
+		img_dir_txt = "uploads",
 		img_name = function()
 			local fn = vim.fn.inputdialog("File name -> ")
 			if fn == "" then

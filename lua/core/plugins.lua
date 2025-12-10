@@ -1,4 +1,5 @@
-require("lazy").setup({
+-- NOTE: Plugins list is built first so we can post-process specs.
+local plugins = {
 	{
 		"vhyrro/luarocks.nvim",
 		priority = 1000, -- Very high priority is required, luarocks.nvim should run as the first plugin in your config.
@@ -6,18 +7,19 @@ require("lazy").setup({
 	},
 	{ "nvim-lua/plenary.nvim", lazy = true },
 
+	{ "nvim-treesitter/nvim-treesitter", branch = "master", lazy = false, build = ":TSUpdate" },
+
 	---------------------
 	-- AI
 	---------------------
 	-- { "github/copilot.vim" },
 	{
 		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({
 				suggestion = { enabled = false },
-				panel = { enabled = true },
+				panel = { enabled = false },
+				auto_trigger = false,
 			})
 		end,
 	},
@@ -27,17 +29,37 @@ require("lazy").setup({
 		config = function()
 			require("copilot_cmp").setup({})
 		end,
-		event = { "InsertEnter", "LspAttach" },
-		fix_pairs = true,
 	},
 
 	{
 		"CopilotC-Nvim/CopilotChat.nvim",
+		branch = "main",
 		build = "make tiktoken", -- Only on MacOS or Linux
 		config = function()
 			require("configs.copilot-chat")
 		end,
 	},
+
+	-- {
+	-- 	"yetone/avante.nvim",
+	-- 	build = function()
+	-- 		-- conditionally use the correct build system for the current OS
+	-- 		if vim.fn.has("win32") == 1 then
+	-- 			return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+	-- 		else
+	-- 			return "make"
+	-- 		end
+	-- 	end,
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 		"stevearc/dressing.nvim",
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"MunifTanjim/nui.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		require("configs.avante")
+	-- 	end,
+	-- },
 
 	---------------------
 	-- File exploler
@@ -69,7 +91,7 @@ require("lazy").setup({
 	-- Theme
 	---------------------
 	-- theme
-	{ "arcticicestudio/nord-vim" },
+	{ "nordtheme/vim" },
 	{ "projekt0n/github-nvim-theme" },
 	{ "kyazdani42/nvim-web-devicons", lazy = true },
 
@@ -103,6 +125,7 @@ require("lazy").setup({
 	},
 
 	{ "MunifTanjim/nui.nvim", lazy = true },
+
 	{
 		"folke/noice.nvim",
 		config = function()
@@ -132,13 +155,16 @@ require("lazy").setup({
 		lazy = true,
 	},
 
-	-- Session manager
 	{
-		"Shatur/neovim-session-manager",
-		cmd = { "SessionManager" },
-		config = function()
-			require("configs.session-manager")
-		end,
+		"folke/persistence.nvim",
+		event = "BufReadPre", -- this will only start session saving when an actual file was opened
+		opts = {
+			dir = vim.fn.stdpath("state") .. "/sessions/", -- directory where session files are saved
+			-- minimum number of file buffers that need to be open to save
+			-- Set to 0 to always save
+			need = 1,
+			branch = true, -- use git branch to save session
+		},
 	},
 
 	-- Terminal integration
@@ -375,13 +401,19 @@ require("lazy").setup({
 	},
 
 	{
-		"arakkkkk/kanban.nvim",
-		-- dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+		-- "arakkkkk/kanban.nvim",
+		dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+		-- dir = "~/ghq/github.com/4DRIAN0RTIZ/kanban.nvim",
 		config = function()
 			require("configs.kanban")
 		end,
-		cmd = { "KanbanOpen" },
 	},
+
+	-- {
+	-- 	dir = "~/ghq/github.com/arakkkkk/obsidian-kanban.nvim",
+	-- },
+	--
+	-- { "obsidian-nvim/obsidian.nvim" },
 
 	--------------------
 	-- Markdown
@@ -456,6 +488,8 @@ require("lazy").setup({
 		lazy = true,
 	},
 
+	{ "rhysd/clever-f.vim" },
+
 	-- {
 	-- 	"MeanderingProgrammer/render-markdown.nvim",
 	-- 	dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
@@ -522,7 +556,6 @@ require("lazy").setup({
 		config = function()
 			require("configs.memolist")
 		end,
-		lazy = true,
 	},
 
 	{
@@ -539,4 +572,32 @@ require("lazy").setup({
 			end
 		end,
 	},
-})
+}
+
+-- Disable local-dir plugins when the directory is missing
+do
+	local uv = vim.uv or vim.loop
+	local function path_exists(path)
+		return uv.fs_stat(path) ~= nil
+	end
+
+	for _, spec in ipairs(plugins) do
+		if type(spec) == "table" and type(spec.dir) == "string" then
+			local original_enabled = spec.enabled
+			local dir_value = spec.dir
+			spec.enabled = function()
+				local ok = true
+				if original_enabled ~= nil then
+					ok = (type(original_enabled) == "function") and original_enabled() or not not original_enabled
+				end
+				local p = dir_value
+				if p:sub(1, 1) == "~" then
+					p = vim.fn.expand(p)
+				end
+				return ok and path_exists(p)
+			end
+		end
+	end
+end
+
+require("lazy").setup(plugins)

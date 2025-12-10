@@ -36,6 +36,21 @@ vim.o.updatetime = 300 -- Length of time to wait before triggering the plugin
 vim.o.wrap = false -- Disable wrapping of lines longer than the width of window
 -- vim.opt.textwidth = 120
 vim.o.writebackup = false -- Disable making a backup before overwriting a file
+-- Ignore case for command-line filename/path completion (e.g. :e, :find, :!)
+vim.o.wildignorecase = true
+
+-- Session options: 明示的に指定
+-- - "buffers" を入れると listed buffer のみセーブ対象になる
+-- - "help" を外すとヘルプウィンドウをセッションに含めない
+vim.opt.sessionoptions = {
+	"buffers",
+	"curdir",
+	"folds",
+	-- "help", -- 保存しない（除外）
+	"tabpages",
+	"winsize",
+	"winpos",
+}
 
 -- vim.opt.guifont = { "Source Code Pro", "h20" }
 vim.opt.formatoptions:remove("t")

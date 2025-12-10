@@ -7,7 +7,7 @@ require("CopilotChat").setup({
 			description = "コードの説明をお願いする",
 		},
 		Review = {
-			prompt = "/COPILOT_REVIEW コードを日本語でレビューしてください。",
+			prompt = "/COPILOT_REVIEW #buffer コードを日本語でレビューしてください。",
 			mapping = "<leader>cr",
 			description = "コードのレビューをお願いする",
 		},
@@ -38,18 +38,40 @@ require("CopilotChat").setup({
 			selection = require("CopilotChat.select").diagnostics,
 		},
 		Commit = {
-			prompt = "実装差分に対するコミットメッセージを日本語で記述してください。",
+			prompt = "実装差分に対するコミットメッセージを記述してください。",
 			mapping = "<leader>cco",
 			description = "コミットメッセージの作成をお願いする",
 			selection = require("CopilotChat.select").gitdiff,
 		},
 		CommitStaged = {
-			prompt = "ステージ済みの変更に対するコミットメッセージを日本語で記述してください。",
+			prompt = "ステージ済みの変更に対するコミットメッセージを記述してください。",
 			mapping = "<leader>cs",
 			description = "ステージ済みのコミットメッセージの作成をお願いする",
 			selection = function(source)
 				return require("CopilotChat.select").gitdiff(source, true)
 			end,
+		},
+	},
+	window = {
+		width = 0.4,
+	},
+	selection = function(source)
+		local select = require("CopilotChat.select")
+		return select.visual(source) or select.buffer(source)
+	end,
+	mappings = {
+		close = {
+			normal = "q",
+		},
+		complete = {
+			insert = "<CR>",
+		},
+		submit_prompt = {
+			normal = "<CR>",
+			insert = "<C-s>",
+		},
+		show_diff = {
+			full_diff = false,
 		},
 	},
 })

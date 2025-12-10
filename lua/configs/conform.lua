@@ -5,7 +5,7 @@ require("conform").setup({
 		lua = { "stylua" },
 		-- Conform will run multiple formatters sequentially
 		go = { "goimports", "gofmt" },
-		python = { "isort", "black" },
+		python = { "ruff" },
 		html = { "prettier" },
 		css = { "prettier" },
 		javascriptreact = { "prettier" },
@@ -14,7 +14,7 @@ require("conform").setup({
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
-		timeout_ms = 500,
+		timeout_ms = 30000,
 		lsp_format = "fallback",
 	},
 })

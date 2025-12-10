@@ -30,6 +30,7 @@ for _, plugin in ipairs({
 	"markdown",
 	"vimtex",
 	"scrollbar",
+	"avante",
 }) do
 	highlights = vim.tbl_deep_extend("force", highlights, require("theme.plugins." .. plugin))
 end

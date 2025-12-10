@@ -1,4 +1,4 @@
-require('indent-o-matic').setup {
+require("indent-o-matic").setup({
 	-- Global settings (optional, used as fallback)
 	max_lines = 2048,
 	standard_widths = { 2, 4, 8 },
@@ -8,14 +8,12 @@ require('indent-o-matic').setup {
 		max_lines = 0,
 	},
 
-
 	filetype_lua = {
 		standard_widths = { 2 },
 	},
 	filetype_js = {
 		standard_widths = { 2 },
 	},
-
 
 	filetype_pythoh = {
 		standard_widths = { 4 },
@@ -27,5 +25,4 @@ require('indent-o-matic').setup {
 	filetype_markdown = {
 		standard_widths = { 2 },
 	},
-}
-
+})

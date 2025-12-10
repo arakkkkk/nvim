@@ -65,6 +65,19 @@ end, {
 	":c<CR>",
 }, true)
 cmap(nil, function()
+	-- 全バッファを強制的に閉じる（現在のウィンドウは空バッファに）
+	vim.cmd("enew")
+	local cur = vim.api.nvim_get_current_buf()
+	for _, b in ipairs(vim.api.nvim_list_bufs()) do
+		if b ~= cur and vim.fn.buflisted(b) == 1 then
+			pcall(vim.api.nvim_buf_delete, b, { force = true })
+		end
+	end
+end, {
+	"n",
+	":clear<CR>",
+}, true)
+cmap(nil, function()
 	local text = utils.input("Quic run vim command: ", vim.fn.getreg("C"))
 	if text then
 		vim.cmd("call setreg('c', '" .. text .. "')")
@@ -95,14 +108,6 @@ cmap(nil, "<cmd>UndotreeFocus<CR>", { "n", "<leader>u" }, true)
 -- clipboard-image
 cmap(nil, "<cmd>PasteImgSmarter<CR>", { "n", "<C-v>" }, true)
 cmap(nil, "<cmd>PasteImgSmarter<CR>", { "i", "<C-v>" }, true)
-
--- todo-comments
-cmap(nil, function()
-	require("todo-comments").jump_next()
-end, { "n", "[t" }, true)
-cmap(nil, function()
-	require("todo-comments").jump_prev()
-end, { "n", "]t" }, true)
 
 -- smart-splits
 local smart_splits = require("smart-splits")
@@ -140,9 +145,6 @@ cmap(nil, "<cmd>BufferLineCyclePrev<cr>", { "n", "<S-h>" }, true)
 cmap(nil, "<cmd>BufferLineMoveNext<cr>", { "n", ">b" }, true)
 cmap(nil, "<cmd>BufferLineMovePrev<cr>", { "n", "<b" }, true)
 cmap(nil, "<cmd>Bdelete<cr>", { "n", "<leader>c" }, true)
-
--- hop.vim
-cmap(nil, "<cmd>HopWord<CR>", { "n", "<leader>j" }, true)
 
 -- toggleterm
 local Terminal = require("toggleterm.terminal").Terminal
@@ -212,11 +214,36 @@ end, { "x", "s" }, true)
 
 local wk = require("which-key")
 ----------------------------
+-- Jump
+----------------------------
+-- hop.vim
+cmap(nil, "<cmd>HopWord<CR>", { "n", "<leader>j" }, true)
+wk.add({
+	{
+		"]t",
+		function()
+			require("todo-comments").jump_next()
+		end,
+		desc = "Next ToDo Comment",
+	},
+	{ "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Next Diagnostics" },
+	{ "]]", "]]", desc = "Next Section" },
+	{
+		"[t",
+		function()
+			require("todo-comments").jump_prev()
+		end,
+		desc = "Prev ToDo Comment",
+	},
+	{ "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Prev Diagnostics" },
+	{ "[[", "[", desc = "Prev Section" },
+}, { mode = "n" })
+
+----------------------------
 -- Lspsaga
 ----------------------------
 cmap({ desc = "lspsaga: hover doc", cat = "lsp" }, "<cmd>Lspsaga hover_doc<CR>", { "n", "K" }, true)
-cmap(nil, "<cmd>Lspsaga diagnostic_jump_next<CR>", { "n", "]e" }, true)
-cmap(nil, "<cmd>Lspsaga diagnostic_jump_prev<CR>", { "n", "[e" }, true)
+
 wk.add({
 	{ "<leader>g", group = "+Lspsaga+Gitmessenger" },
 	{ "<leader>gr", "<cmd>Lspsaga lsp_finder<CR>", desc = "Lspsaga Ref" },
@@ -227,7 +254,7 @@ wk.add({
 	{ "<leader>ge", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Lspsaga Diagnostics" },
 	{ "<leader>gk", "<cmd>Lspsaga hover_doc<CR>", desc = "Lspsaga Hover Doc" },
 	{ "<leader>gm", "<cmd>GitMessenger<CR>", desc = "GitMessenger" },
-}, { prefix = "g" })
+}, { mode = "n" })
 ----------------------------
 -- Markdown
 ----------------------------
@@ -316,3 +343,20 @@ wk.add({
 		desc = "Commands",
 	},
 }, { mode = "n" })
+
+-- cmap(nil, function() end, { "n", "<leader>" }, true)
+
+wk.add({ { "<leader>a", group = "+AI Support" } }, { mode = "n", "v" })
+
+-- Avante: シンプルで直感的なキーマップ
+vim.keymap.set("n", "<leader>ac", "<cmd>AvanteChat<CR>", { desc = "Avante: Chat" })
+vim.keymap.set("n", "<leader>aa", "<cmd>AvanteAsk<CR>", { desc = "Avante: Ask" })
+vim.keymap.set("v", "<leader>aa", "<cmd>AvanteAsk<CR>", { desc = "Avante: Ask (selection)" })
+vim.keymap.set("v", "<leader>ae", "<cmd>AvanteEdit<CR>", { desc = "Avante: Edit " })
+
+-- CopilotChat は別キーで利用（競合回避）
+cmap(nil, function()
+	local actions = require("CopilotChat.actions")
+	require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+end, { "v", "<leader>ap" }, true)
+vim.keymap.set("v", "<leader>ae", "<cmd>AvanteEdit<CR>", { desc = "Avante: Edit (selection)" })

@@ -1,4 +1,4 @@
-local nvim_lsp = require("lspconfig")
+local nvim_lsp = vim.lsp.config
 
 require("lspconfig")
 local signs = {
@@ -11,9 +11,47 @@ for _, sign in ipairs(signs) do
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
-nvim_lsp.html.setup({
-	filetypes = { "html", "htmldjango" },
-})
+-- Python: pyright
+do
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	local ok_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+	if ok_cmp then
+		capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+	end
+
+	-- Try to respect project venv automatically
+	local function detect_python()
+		local uv = vim.uv or vim.loop
+		local cwd = vim.fn.getcwd()
+		local candidates = {
+			cwd .. "/.venv/bin/python",
+			cwd .. "/venv/bin/python",
+			cwd .. "/.tox/venv/bin/python",
+			"python3",
+			"python",
+		}
+		for _, p in ipairs(candidates) do
+			if uv.fs_stat(p) then
+				return p
+			end
+		end
+		return "python3"
+	end
+
+	-- nvim_lsp.pyright.setup({
+	-- 	capabilities = capabilities,
+	-- 	settings = {
+	-- 		python = {
+	-- 			pythonPath = detect_python(),
+	-- 			analysis = {
+	-- 				typeCheckingMode = "basic",
+	-- 				autoImportCompletions = true,
+	-- 				useLibraryCodeForTypes = true,
+	-- 			},
+	-- 		},
+	-- 	},
+	-- })
+end
 
 vim.diagnostic.config({
 	virtual_text = true,
