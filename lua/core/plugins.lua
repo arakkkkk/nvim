@@ -429,14 +429,14 @@ local plugins = {
 		ft = { "markdown" },
 	},
 
-	{
-		"jubnzv/mdeval.nvim",
-		config = function()
-			vim.g.markdown_fenced_languages = { "python", "cpp", "sh", "go" }
-			require("mdeval").setup()
-		end,
-		ft = { "markdown" },
-	},
+	-- {
+	-- 	"jubnzv/mdeval.nvim",
+	-- 	config = function()
+	-- 		vim.g.markdown_fenced_languages = { "python", "cpp", "sh", "go" }
+	-- 		require("mdeval").setup()
+	-- 	end,
+	-- 	ft = { "markdown" },
+	-- },
 
 	{
 		"arakkkkk/clipboard-image.nvim",
