@@ -76,3 +76,13 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.bufhidden = "wipe"
 	end,
 })
+
+local markdown_style = vim.api.nvim_create_augroup("MarkdownStyle", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	group = markdown_style,
+	pattern = "markdown",
+	callback = function()
+		vim.opt_local.textwidth = 120
+		vim.opt_local.formatoptions:append("t")
+	end,
+})
