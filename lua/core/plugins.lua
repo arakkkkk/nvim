@@ -401,8 +401,9 @@ local plugins = {
 	},
 
 	{
-		-- "arakkkkk/kanban.nvim",
-		dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+		"arakkkkk/kanban.nvim",
+		-- dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
+		-- dir = "~/Downloads/kanban.nvim",
 		-- dir = "~/ghq/github.com/4DRIAN0RTIZ/kanban.nvim",
 		config = function()
 			require("configs.kanban")
@@ -514,17 +515,27 @@ local plugins = {
 	-- 	end,
 	-- 	cmd = { "PlantUMLAscii" },
 	-- },
+	--
+  {
+      "andrewferrier/wrapping.nvim",
+      config = function()
+          require("wrapping").setup({
+            hard_wrap = true,
+            hard_wrap_width = 120,
+          })
+      end
+  },
 
 	--------------------
 	-- LaTeX integration
 	--------------------
-	{
-		"lervag/vimtex",
-		config = function()
-			require("configs.vimtex")
-		end,
-		ft = { "tex" },
-	},
+	-- {
+	-- 	"lervag/vimtex",
+	-- 	config = function()
+	-- 		require("configs.vimtex")
+	-- 	end,
+	-- 	ft = { "tex" },
+	-- },
 
 	--------------------
 	-- Others

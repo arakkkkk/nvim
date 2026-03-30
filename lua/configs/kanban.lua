@@ -15,6 +15,12 @@ require("kanban").setup({
 				ops = { bg = "None" },
 			},
 		},
+		default_lists = {
+			{ title = "TODO", tasks = {} },
+			{ title = "Work in progress", tasks = {} },
+			{ title = "Done", tasks = {} },
+			{ titles = "Archiveiii", tasks = {} },
+		},
 	},
 })
 -- require("kanban").setup()

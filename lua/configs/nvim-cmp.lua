@@ -51,9 +51,16 @@ cmp.setup({
 			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { bg = "#519aba" })
 
 			local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-			local strings = vim.split(kind.kind, "%s", { trimempty = true })
-			kind.kind = " " .. strings[1] .. " "
-			kind.menu = "    " .. "[" .. entry.source.name .. "]" .. " " .. strings[2] .. ""
+			local kind_text = kind.kind or ""
+			local strings = vim.split(kind_text, "%s", { trimempty = true })
+			local kind_icon = strings[1] or ""
+			local kind_label = table.concat(strings, " ", 2)
+			local source_name = (entry.source and entry.source.name) or "unknown"
+			kind.kind = kind_icon ~= "" and (" " .. kind_icon .. " ") or ""
+			kind.menu = "    " .. "[" .. source_name .. "]"
+			if kind_label ~= "" then
+				kind.menu = kind.menu .. " " .. kind_label
+			end
 			return kind
 		end,
 	},

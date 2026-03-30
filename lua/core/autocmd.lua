@@ -80,9 +80,11 @@ vim.api.nvim_create_autocmd("FileType", {
 local markdown_style = vim.api.nvim_create_augroup("MarkdownStyle", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	group = markdown_style,
-	pattern = "markdown",
+	pattern = { "markdown", "vimwiki", "pandoc" },
 	callback = function()
 		vim.opt_local.textwidth = 120
 		vim.opt_local.formatoptions:append("t")
+		vim.opt_local.wrap = true
+		vim.opt_local.linebreak = true
 	end,
 })

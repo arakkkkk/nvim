@@ -6,6 +6,21 @@ local lsp_clients = function()
 	return " " .. table.concat(clients, ", ")
 end
 
+local visual_chars = function()
+	local mode = vim.fn.mode()
+	if mode ~= "v" and mode ~= "V" and mode ~= "\22" then
+		return ""
+	end
+
+	local wc = vim.fn.wordcount()
+	local chars = wc.visual_chars or 0
+	if chars == 0 then
+		return ""
+	end
+
+	return "󰘍 " .. chars
+end
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -40,7 +55,7 @@ require("lualine").setup({
 			},
 		},
 		lualine_x = { { lsp_clients }, "encoding", "fileformat", "filetype" },
-		lualine_y = { "progress" },
+		lualine_y = { visual_chars, "progress" },
 		lualine_z = { "location" },
 	},
 	inactive_sections = {
