@@ -12,7 +12,7 @@ require("mkdnflow").setup({
 		paths = true,
 		tables = true,
 	},
-	filetypes = { md = true, rmd = true, markdown = true },
+	filetypes = { markdown = true, rmd = true },
 	create_dirs = true,
 	perspective = {
 		priority = "current",
@@ -39,10 +39,18 @@ require("mkdnflow").setup({
 		end,
 	},
 	to_do = {
-		symbols = { " ", "x" },
-		update_parents = true,
-		not_started = " ",
-		complete = "x",
+		statuses = {
+			not_started = {
+				marker = " ",
+			},
+			complete = {
+				marker = "x",
+			},
+		},
+		status_order = { "not_started", "complete" },
+		status_propagation = {
+			up = true,
+		},
 	},
 	tables = {
 		trim_whitespace = true,
