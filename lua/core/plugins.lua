@@ -192,6 +192,7 @@ local plugins = {
 
 	{
 		"petertriho/nvim-scrollbar",
+		branch = "v1",
 		config = function()
 			require("configs.scrollbar")
 		end,
@@ -224,7 +225,7 @@ local plugins = {
 	},
 
 	{
-		"phaazon/hop.nvim",
+		"wsdjeg/hop.nvim",
 		config = function()
 			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
 		end,
@@ -401,9 +402,9 @@ local plugins = {
 	},
 
 	{
-		"arakkkkk/kanban.nvim",
+		-- "arakkkkk/kanban.nvim",
 		-- dir = "~/ghq/github.com/arakkkkk/kanban.nvim",
-		-- dir = "~/Downloads/kanban.nvim",
+		dir = "~/Downloads/kanban.nvim",
 		-- dir = "~/ghq/github.com/4DRIAN0RTIZ/kanban.nvim",
 		config = function()
 			require("configs.kanban")
@@ -464,11 +465,13 @@ local plugins = {
 
 	{
 		"iamcco/markdown-preview.nvim",
+		init = function()
+			vim.g.mkdp_theme = "light"
+		end,
 		config = function()
 			vim.fn["mkdp#util#install"]()
 		end,
 		ft = { "markdown" },
-		cmd = { "MarkdownPreviewToggle" },
 	},
 
 	-- Others
